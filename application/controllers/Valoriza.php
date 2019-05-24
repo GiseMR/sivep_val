@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+require_once(__DIR__.'/src/autoload.php');
+
 class Valoriza extends CI_Controller {
 
+	
     public function __construct(){
         parent::__construct();
         $this->load->library('grocery_CRUD');
@@ -45,6 +48,25 @@ class Valoriza extends CI_Controller {
 		}
 	}
 
+	public function consultadni(){
+		$dni = $this->input->post('dni');
+		$consulta = file_get_contents('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni);
+		$partes = explode("|", $consulta);
+		$datos = array(
+		'dni' => $dni,
+		'firtsname' => $partes[0],
+		'lastname' => $partes[1],
+		'name' => $partes[2],
+		);		
+		echo json_encode($datos);
+	}
+
+	public function consultarruc(){
+		$company = new \Sunat\Sunat( true, true );
+		$ruc = $this->input->post('ruc');
+		$search = $company->search( $ruc );
+		echo $search->json();
+	}
 }
 
 ?>

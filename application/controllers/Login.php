@@ -16,13 +16,14 @@ class Login extends CI_Controller {
 						$this->load->view('index');
 						$this->load->view('v_footer');
           }else{
-            $this->MuestraLogin();
+            $this->MuestraLogin('');
           }
      }
 	 
 	 /*FUNCION QUE CARGA EL LOGIN*/
-     public function MuestraLogin(){
-          $this->load->view('v_login');
+     public function MuestraLogin($validationMessage) {
+		 $data['validationMessage'] = $validationMessage;
+          $this->load->view('v_login', $data);
 	 }
      public function salir(){
 		$this->session->sess_destroy(); 
@@ -31,38 +32,56 @@ class Login extends CI_Controller {
      }
 
 	public function iniciar(){
+		if($this->verificarUserDataSesion()){
+            $this->load->view('v_header');
+			$this->load->view('v_iframe');
+			$this->load->view('v_footer');
+			return;
+		  }		  
+
 		if ($this->input->post('iniciar')){
-			$user=$this->input->post('user');
-			$clave=md5($this->input->post('pass'));
-			$datos=$this->m_login->LoginBD($user);
-			
+			$user = $this->input->post('usuario');
+			$clave = md5($this->input->post('password'));
+			$datos = $this->m_login->LoginBD($user);
 			if (count($datos)==1){
 				$pass = $datos->PASS_USU;
 				if($clave==$pass){
-					if($datos->EST_USU=='1'){
-					//si el uuuario esta inactivo 
-					echo 'Usuario inactivo, consulte al administrador del sistema';
+					if($datos->ESTADO_USU=='0'){
+						$this->MuestraLogin('* Usuario inactivo, consulte al administrador del sistema');
 						return;
 					}
 					$sesion = array('logged_in' => true,
-									'login' => $datos->COD_USU,
-									'dni' => $datos->DNI_USU,
+									'codigo' => $datos->COD_USU,
 									'nombres' => $datos->NOM_USU,								
 									'cargo' => $datos->CARGO_USU
 									);
-					/*Cargamos permisos de usuario y lo guardamos en una sesion
-					$Menu = $this->m_login->PermisosMenu($datos->COD_USU);
+					$menu = $this->m_login->PermisosMenu($datos->COD_USU);
 					$this->session->set_userdata($sesion);
-					$this->session->set_userdata($Menu);//cargamos la sesion del menu de acuerdo a los permisos*/
+					$this->session->set_userdata($menu);
 
+					if(count($menu['Permisos'])==1){
+						$row='';
+						foreach ($menu['Permisos'] as $result) {
+							$row = $result['ID']; 
+							break;
+						}
+						if($row=='Error'){
+							$this->MuestraLogin('* El usuario no tiene permisos');	
+							return;
+						}
+					}
+					$this->load->view('v_header');
+					$this->load->view('v_iframe');
+					$this->load->view('v_footer');
 
-					echo 'true';
 				}else{
-					echo 'Contraseña incorrecta';
+					$this->MuestraLogin('* Contraseña incorrecta');
 				}
 			}else{
-				echo 'Usuario no registrado';	
+				$this->MuestraLogin('* Usuario no registrado');
 			}
+		} else {
+			$this->MuestraLogin('');
 		}
 	}
 

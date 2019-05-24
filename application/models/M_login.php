@@ -16,12 +16,12 @@ class M_login extends CI_Model{
 
 
 function PermisosMenu($Id){
-          $this->db->select('m.ID_MENU as ID, m.DESCRIPCION as DESCRIPCION, m.IMAGEN as IMAGEN,m.URL as URL,p.ESTATUS as ESTATUS');
+          $this->db->select('m.ID_MENU as ID, m.DESC_MENU, m.IMG_MENU, m.URL_MENU, p.ESTATUS');
           $this->db->from('menu as m');
-          $this->db->join('permisosmenu as p', 'm.ID=p.ID_MENU');
+          $this->db->join('permisosmenu as p', 'm.ID_MENU=p.ID_MENU');
           $this->db->where('p.COD_USU', $Id);
-          $this->db->where('p.ESTATUS', 0);
-      $this->db->order_by("m.ORDENAMIENTO", "asc");
+          $this->db->where('p.ESTATUS', 1);
+          $this->db->order_by("m.ORD_MENU", "asc");
           $query = $this->db->get();
          if ($query->num_rows() > 0) {
              $data['Permisos'] =  $query->result_array();
@@ -29,9 +29,7 @@ function PermisosMenu($Id){
              $data['Permisos'] =  Array (0 => Array("ID" =>"Error"));
          }
          $query->free_result();
-         //return the array to the controller
          return $data;
      }
-
 
 }?>

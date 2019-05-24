@@ -8,12 +8,12 @@ class Inicio extends CI_Controller {
      }
 	 
 	public function index(){
-		//if($this->verificarUserDataSesion()){
+		if($this->verificarUserDataSesion()){
 			$this->load->view('v_header');
 			$this->load->view('v_iframe');
-		/*}else{
+		}else{
 			$this->load->view('v_login');
-		}*/
+		}
 	}
 	
 	public function main(){

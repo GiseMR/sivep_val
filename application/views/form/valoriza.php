@@ -77,39 +77,40 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                            <div class="col-sm-1"></div>
+                                                <label for="dni" class="col-sm-1 text-left control-label col-form-label">DNI</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" id="dni" name="dni" placeholder="Consulte DNI">
+                                                </div>
                                                 <div class="col-sm-1"></div>
                                                 <label for="propietario" class="col-sm-3 text-left control-label col-form-label">1.02 Propietarios</label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="propietario">
                                                 </div>
-                                                <div class="col-sm-1"></div>
-                                                <label for="dni" class="col-sm-1 text-left control-label col-form-label">DNI</label>
-                                                <div class="col-sm-2">
-                                                    <input type="text" class="form-control" id="dni"placeholder="Consulte DNI">
-                                                </div>
+                                                
                                             </div>
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
-                                                <label for="solicitante" class="col-sm-3 text-left control-label col-form-label">1.03 Solicitante</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="solicitante">
-                                                </div>
                                                 <div class="col-sm-1"></div>
                                                 <label for="dnisol" class="col-sm-1 text-left control-label col-form-label">DNI</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" class="form-control" id="dnisol"placeholder="Consulte DNI">
                                                 </div>
+                                                <div class="col-sm-1"></div>
+                                                <label for="solicitante" class="col-sm-3 text-left control-label col-form-label">1.03 Solicitante</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="solicitante">
+                                                </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
-                                                <label for="entidadfinan" class="col-sm-3 text-left control-label col-form-label">1.04 Entidad Financiera</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="entidadfinan">
-                                                </div>
                                                 <div class="col-sm-1"></div>
                                                 <label for="ruc" class="col-sm-1 text-left control-label col-form-label">RUC</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" class="form-control" id="ruc" >
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <label for="entidadfinan" class="col-sm-3 text-left control-label col-form-label">1.04 Entidad Financiera</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="entidadfinan">
                                                 </div>
                                             </div>
 
@@ -904,6 +905,55 @@
     <script>
         $(function() {
             $("span.number").hide();
+
+            $("#dni").blur(function() {
+                    let dni= $("#dni").val();
+                    consultarDni(dni, 'propietario');
+            }); 
+
+            $("#dnisol").blur(function() {
+                    let dni= $("#dnisol").val();
+                    consultarDni(dni, 'solicitante');
+            }); 
+
+            function consultarDni(dni, mostrarResultado){
+                $.ajax(
+                        {
+                            type:"post",
+                            url: " <?php echo base_url(); ?>Valoriza/consultadni",
+                            data:{ dni:dni},
+                            success:function(response)
+                            {
+                                let data = JSON.parse(response);
+                                $('#'+mostrarResultado).val(data.name + ' '+data.firtsname+ ' '+data.lastname );
+                            },
+                            error: function() 
+                            {
+                                alert("Invalide!");
+                            }
+                        }
+                    );
+            }
+
+            $('#ruc').blur(function(){
+                let ruc = $("#ruc").val();
+                $.ajax(
+                        {
+                            type:"post",
+                            url: " <?php echo base_url(); ?>Valoriza/consultarruc",
+                            data:{ ruc:ruc},
+                            success:function(response)
+                            {
+                                let data = JSON.parse(response);
+                                $('#entidadfinan').val(data.result.razon_social);
+                            },
+                            error: function() 
+                            {
+                                alert("Invalide!");
+                            }
+                        }
+                    );
+            });
         });
         // Basic Example with form
         var form = $("#example-form");

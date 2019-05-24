@@ -46,7 +46,8 @@
           </div>
           <br>
           <!-- Form -->
-          <form class="form-horizontal m-t-20" id="loginform" action="<?=base_url()?>inicio">
+          <form class="form-horizontal m-t-20" id="loginform" method="post" action="<?=base_url()?>login/iniciar">
+          <input type="hidden" name="iniciar" value="login">
             <div class="row p-b-30">
               <div class="col-12">
                 <div class="input-group mb-3">
@@ -65,6 +66,7 @@
             </div>
             <div class="row border-top border-secondary">
               <div class="col-12">
+              <span class="text-white"><?php echo $validationMessage; ?></span>
                 <div class="form-group">
                   <div class="p-t-20">
                     <br>
@@ -72,7 +74,6 @@
                     <button class="btn btn-success  " type="submit">Ingresar</button>                                    
                     <button class="btn btn-danger" type="reset">Cancelar</button>   
                     </center> 
-                    
                   </div>
                 </div>
               </div>
