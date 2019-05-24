@@ -15,6 +15,9 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/proceso.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -139,40 +142,53 @@
                                             <div class="form-group row">
                                                 <label for="ubiautoavaluo" class="col-sm-2 text-right control-label col-form-label">DEPARTAMENTO</label>
                                                 <div class="col-sm-2">
-                                                    <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                        <option>Seleccione...</option>
-                                                        <option>Lima</option>
-                                                        <option>Cusco</option>
-                                                        <option>Apurimac</option>
+                                                    <select id="departamento" name="departamento" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                    <?php   
+                                                     if($consulta_departamento)
+                                                    { 
+                                                    foreach ($consulta_departamento as $row):?>    
+                                                    <option value="<?=$row->C_CODDPTO?>"><?=$row->C_NOMUBIGEO?></option>
+                                                    <?php 
+                                                    endforeach;
+                                                    }
+                                                    ?>                                                        
                                                     </select>
                                                 </div>
                                                 <label for="ubiautoavaluo" class="col-sm-2 text-right control-label col-form-label">PROVINCIA</label>
                                                 <div class="col-sm-2">
-                                                    <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                        <option>Seleccione...</option>
+                                                    <select id="provincia" name="provincia" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                       
                                                     </select>
                                                 </div>
                                                 <label for="ubiautoavaluo" class="col-sm-2 text-right control-label col-form-label">DISTRITO</label>
                                                 <div class="col-sm-2">
-                                                    <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                        <option>Seleccione...</option>
+                                                    <select id="distrito" name="distrito" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                        
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>                                         
+
+
 
                                             <h5 class="card-title">3.0 DESCRIPCION DETALLADA</h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="descrozoni" class="col-sm-3 text-left control-label col-form-label">3.01 Zonificación</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="descrozoni">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                        <option>Seleccione...</option>
+                                                        <option>Urbana</option>
+                                                        <option>Rural</option>
+                                                        <option>Semirural</option>
+                                                    </select>                                               
+                                                
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="descri-linder" class="col-sm-3 text-left control-label col-form-label">3.02 Linderos</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="descri-linde" placeholder="<Fuente>">
+                                                <input type="text" class="form-control" id="descri-linde" placeholder="<Fuente>"> 
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -234,6 +250,25 @@
                                                 <label for="edibloque" class="col-sm-6 text-left control-label col-form-label alert alert-danger">URGENTE: EVALUAR CUADRO<label>
                                                         <div class="col-sm-3">
                                                         </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="ocupacion" class="col-sm-3 text-left control-label col-form-label">Estado de Conservación </label>
+                                                <div class="col-sm-3">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                        <option>Seleccione...</option>
+                                                        <option>Muy Buena</option>
+                                                        <option>Buena</option>
+                                                        <option>Regular</option>
+                                                        <option>Malo</option>
+                                                        <option>Muy Malo</option>
+                                                    </select> 
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <label for="antiguedad" class="col-sm-1 text-left control-label col-form-label">Antiguedad</label>
+                                                <div class="col-sm-2">
+                                                <input type="number" class="form-control" id="antiguedad"placeholder="">
+                                                </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
@@ -316,12 +351,13 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="descripredio" class="col-sm-11 text-left control-label col-form-label">3.09 Declaratoria de Fabrica</label>
                                                 <div class="col-sm-1"></div>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-4">
                                                     <input type="text" class="form-control" id="siscons">
                                                 </div>
-                                                <label for="descripredio" class="col-sm-2 text-left control-label col-form-label">Porcentaje</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="siscons">
+                                                <div class="col-sm-1"></div>
+                                                <label for="descripredio" class="col-sm-1 text-left control-label col-form-label">Porcentaje</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control" id="siscons">
                                                 </div>
                                             </div>
                                             <h5 class="card-title">4.00 ANALISIS DEL MEJOR Y MÁS INTENSIVO USOS POSIBLE DEL BIEN</h5>
@@ -517,6 +553,33 @@
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="siscons">
                                                 </div>
+                                                <div class="row">
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+</div>
+<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-6">.col-md-6</div>
+  <div class="col-md-6">.col-md-6</div>
+</div>
                                                 <div class="col-sm-12">
                                                     <div class="mapouter">
                                                         <div class="gmap_canvas"><iframe width="800" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=cusco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net">crocothemes.net</a></div>
