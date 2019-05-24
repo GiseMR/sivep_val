@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
 	//RUTA DE NUESTRO PROYECTO... IMPORTANTE!!!! CAMBIARLO CUANDO SE CAMBIA DE CARPETA O SE PONE EN UN SERVIDOR ****
-    //****EN TU CASO ABIGAL CHA  JEJE MENTIRA ABI .. LO CAMBIAS CON TU PUERTO ;)PDT.. BORRA ESTA PARTE
-  	var base_url ='http://localhost/salita_penal/index.php/';
+   
+  	var base_url ='http://localhost/sivep/index.php/';
     
   
 
