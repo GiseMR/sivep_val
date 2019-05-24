@@ -16,7 +16,6 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
     <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/proceso.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -965,6 +964,7 @@
     <!-- this page js -->
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/proceso.js"></script>
     <script>
         $(function() {
             $("span.number").hide();
