@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_chof" value="name:N_IDCHFR;datatype:int,name:N_DNICFR;datatype:int,name:C_NOMCFR;datatype:string,name:C_LICCFR;datatype:string,name:C_CATLIC;datatype:string,name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+</info>

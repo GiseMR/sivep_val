@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_lpas" value="name:N_NUMASI;datatype:int,name:N_DNICLI;datatype:int,name:NOM;datatype:string" />
+</info>

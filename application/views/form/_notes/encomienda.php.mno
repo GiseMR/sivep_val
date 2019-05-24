@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_AGENACT" value="name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+	<infoitem key="UD_ALLAGEN" value="name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+	<infoitem key="UD_TIPO" value="name:N_IDTIEN;datatype:int,name:DES;datatype:string" />
+	<infoitem key="UD_RUTAS" value="name:C_IDRUTA;datatype:string,name:DESCRI;datatype:string" />
+	<infoitem key="UD_DATA" value="name:N_IDENCO;datatype:int,name:N_IDVIAJ;datatype:int,name:N_DNIREM;datatype:int,name:N_DNIDES;datatype:int,name:C_IDRUTA;datatype:string,name:D_FECREG;datatype:date,name:D_HORREG;datatype:time,name:N_TOTENC;datatype:real,name:C_COMENC;datatype:string,name:D_FECENT;datatype:date,name:D_HORENT;datatype:time,name:N_ESTENC;datatype:int,name:N_ESTREG;datatype:int" />
+	<infoitem key="UD_DETA" value="name:N_NUMDET;datatype:int,name:N_CANENC;datatype:int,name:N_IDTIEN;datatype:int,name:DES;datatype:string,name:N_PRENCV;datatype:real,name:N_SUBTOT;datatype:real,name:C_DETENC;datatype:string" />
+</info>

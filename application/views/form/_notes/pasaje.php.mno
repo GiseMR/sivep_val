@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_PRECIO" value="name:N_PREPAS;datatype:real" />
+	<infoitem key="UD_DATOS" value="name:N_IDPASA;datatype:int,name:N_IDVIAJ;datatype:int,name:N_IDCLIJ;datatype:int,name:N_DNICLI;datatype:int,name:C_IDRUTA;datatype:string,name:D_FECVIA;datatype:date,name:H_HORVIA;datatype:time,name:N_NUMASI;datatype:int,name:N_PRECIO;datatype:real,name:C_COMPAS;datatype:string,name:N_ESTREG;datatype:int" />
+	<infoitem key="UD_DATA" value="name:N_IDPASA;datatype:int,name:N_IDVIAJ;datatype:int,name:C_IDRUTA;datatype:string,name:N_RUCCLI;datatype:int,name:N_DNICLI;datatype:int,name:D_FECVIA;datatype:date,name:H_HORVIA;datatype:time,name:N_NUMASI;datatype:int,name:N_PRECIO;datatype:real,name:C_COMPAS;datatype:string,name:D_FECREG;datatype:date,name:D_HORREG;datatype:time,name:N_ESTREG;datatype:int" />
+</info>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_chof" value="name:N_IDCHFR;datatype:int,name:N_DNICFR;datatype:int,name:C_NOMCFR;datatype:string,name:C_APPCFR;datatype:string,name:C_APMCFR;datatype:string,name:C_LICCFR;datatype:string,name:C_CATLIC;datatype:string,name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+	<infoitem key="UD_Recordset1" value="name:N_IDABUS;datatype:int,name:C_PLABUS;datatype:string,name:C_MARBUS;datatype:string,name:C_MODBUS;datatype:string,name:N_PASBUS;datatype:int" />
+	<infoitem key="UD_bus" value="name:N_IDABUS;datatype:int,name:C_PLABUS;datatype:string,name:C_MARBUS;datatype:string,name:C_MODBUS;datatype:string,name:N_PASBUS;datatype:int" />
+	<infoitem key="UD_det" value="name:N_IDVIAJ;datatype:int,name:C_IDRUTA;datatype:string,name:IDORIGEN;datatype:string,name:AGEORIGEN;datatype:string,name:IDDESTINO;datatype:string,name:AGEDESTINO;datatype:string,name:D_FECPRG;datatype:date,name:D_HORPRG;datatype:time,name:D_FECLEG;datatype:date,name:D_HORLEG;datatype:time,name:N_IDABUS;datatype:int,name:DETALLEBUS;datatype:string,name:N_IDCHFR;datatype:int,name:DETCHFR;datatype:string,name:TOTALPASAJEROS;datatype:int,name:TOTALENCO;datatype:int,name:C_COMVIA;datatype:blob,name:N_ESTREG;datatype:int,name:ESTADO;datatype:string" />
+</info>

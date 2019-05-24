@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_disponible" value="name:N_IDENCO;datatype:int,name:N_IDVIAJ;datatype:int,name:C_IDRUTA;datatype:string,name:IDORIGEN;datatype:string,name:ORIGEN;datatype:string,name:IDDESTINO;datatype:string,name:DESTINO;datatype:string,name:D_FECREG;datatype:date,name:D_HORREG;datatype:time,name:D_FECENT;datatype:date,name:D_HORENT;datatype:time,name:N_DNIREM;datatype:int,name:REMITE;datatype:string,name:N_DNIDES;datatype:int,name:DESTINA;datatype:string,name:ITEMS;datatype:int,name:TOTAL;datatype:real,name:C_COMENC;datatype:string,name:ENTREGA;datatype:string,name:ESTADO;datatype:string" />
+</info>

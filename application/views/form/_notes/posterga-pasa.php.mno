@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_AGENCIA" value="name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+</info>

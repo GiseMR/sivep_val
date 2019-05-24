@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_data" value="name:N_IDVIAJ;datatype:int,name:N_ESTREG;datatype:int,name:D_FECREG;datatype:date,name:D_HORREG;datatype:time,name:C_LOGUSU;datatype:string,name:C_IDRUTA;datatype:string,name:IDORIG;datatype:string,name:IDDEST;datatype:string,name:NOMORI;datatype:string,name:NOMDES;datatype:string,name:NUMPAR;datatype:int,name:D_FECPRG;datatype:date,name:D_FECLEG;datatype:date,name:D_HORPRG;datatype:time,name:D_HORSAL;datatype:time,name:D_HORLEG;datatype:time,name:C_COMVIA;datatype:string,name:N_IDABUS;datatype:int,name:C_PLABUS;datatype:string,name:C_MARBUS;datatype:string,name:C_MODBUS;datatype:string,name:NUMTRI;datatype:int,name:NUMPAS;datatype:int,name:NUMENC;datatype:int" />
+	<infoitem key="UD_lpas" value="name:N_NUMASI;datatype:int,name:N_DNICLI;datatype:int,name:NOM;datatype:string" />
+</info>

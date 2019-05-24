@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ALLAGEN" value="name:C_IDAGEN;datatype:string,name:C_NOMAGE;datatype:string" />
+	<infoitem key="UD_DATA" value="name:N_IDGIRO;datatype:int,name:C_IDRUTA;datatype:string,name:IDORIG;datatype:string,name:IDDEST;datatype:string,name:NOMORI;datatype:string,name:NOMDES;datatype:string,name:D_FECREG;datatype:date,name:D_HORREG;datatype:time,name:C_LOGUSU;datatype:string,name:D_FECENT;datatype:date,name:D_HORENT;datatype:time,name:NUMPER;datatype:int,name:N_MNTENV;datatype:real,name:N_TIPCOM;datatype:int,name:N_TOTCOM;datatype:real,name:C_COMGIR;datatype:string,name:N_ESTREG;datatype:int" />
+</info>

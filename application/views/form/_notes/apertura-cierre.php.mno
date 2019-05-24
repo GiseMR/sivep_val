@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_DATA" value="name:N_IDAPCI;datatype:int,name:C_TIPOPE;datatype:string,name:C_LOGUSU;datatype:string,name:C_IDAGEN;datatype:string,name:D_FECAPC;datatype:int,name:D_HORAPC;datatype:time,name:N_MNAPSO;datatype:real,name:N_MNAPDO;datatype:real,name:C_NOMAGE;datatype:string" />
+</info>
