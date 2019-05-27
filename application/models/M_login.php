@@ -24,9 +24,9 @@ function PermisosMenu($Id){
           $this->db->order_by("m.ORD_MENU", "asc");
           $query = $this->db->get();
          if ($query->num_rows() > 0) {
-             $data['Permisos'] =  $query->result_array();
+             $data['MenuPermisos'] =  $query->result_array();
          }else{
-             $data['Permisos'] =  Array (0 => Array("ID" =>"Error"));
+             $data['MenuPermisos'] =  Array (0 => Array("ID" =>"Error"));
          }
          $query->free_result();
          return $data;
