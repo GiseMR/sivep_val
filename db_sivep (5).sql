@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2019 at 05:18 PM
+-- Generation Time: May 27, 2019 at 03:47 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -66,6 +66,21 @@ INSERT INTO `contacto` (`ID_CONT`, `DNI_CONT`, `NOM_CONT`, `APP_CONT`, `APM_CONT
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `edificacion`
+--
+
+CREATE TABLE `edificacion` (
+  `idedificacion` int(11) NOT NULL,
+  `nroValuacion` int(11) DEFAULT NULL,
+  `bloque` int(11) DEFAULT NULL,
+  `nivel` varchar(50) DEFAULT NULL,
+  `distribucion` varchar(200) DEFAULT NULL,
+  `area` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Edificaciones en terreno/area';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu`
 --
 
@@ -109,6 +124,23 @@ CREATE TABLE `permisosmenu` (
 INSERT INTO `permisosmenu` (`ID_PERMENU`, `COD_USU`, `ID_MENU`, `ESTATUS`) VALUES
 (1, 'gise', 1, 1),
 (2, 'gise', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `referencia`
+--
+
+CREATE TABLE `referencia` (
+  `idreferencia` int(11) NOT NULL,
+  `idvaluacion` int(11) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
+  `propietario` varchar(200) DEFAULT NULL,
+  `telefono` varchar(200) DEFAULT NULL,
+  `distancia` varchar(100) DEFAULT NULL,
+  `terreno` decimal(10,2) DEFAULT NULL,
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Valores comerciales de referencia';
 
 -- --------------------------------------------------------
 
@@ -2216,6 +2248,159 @@ INSERT INTO `usuario` (`COD_USU`, `PASS_USU`, `NOM_USU`, `APP_USU`, `APM_USU`, `
 ('iouio', '7b3a474b9ee247e23e24cd7a7c49ddb6', 'tut', 'yiyiuy', 'iyuiyu', 'iytityuiyt', '0', 'AN'),
 ('jhghj', 'ea67df9f51046ee0c31d1d1a3f8962a6', 'jfg', 'jfg', 'fghf', 'hgfhdfgdf', '1', 'AD');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `valor`
+--
+
+CREATE TABLE `valor` (
+  `idvalor` int(11) NOT NULL,
+  `idvaluacion` int(11) DEFAULT NULL,
+  `bloque` varchar(50) DEFAULT NULL,
+  `propiedad` varchar(200) DEFAULT NULL,
+  `categoria` varchar(45) DEFAULT NULL,
+  `precio unitario` decimal(20,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Valor de la edificación';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `valorcomplementario`
+--
+
+CREATE TABLE `valorcomplementario` (
+  `idvalorcomplementario` int(11) NOT NULL,
+  `idvaluacion` int(11) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
+  `costo` decimal(20,2) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `depreciacion` int(11) DEFAULT NULL,
+  `total` decimal(20,2) DEFAULT NULL,
+  `totalsindep` decimal(20,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='19.3 Valor de las Obras Complementarias (VOC)';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `valuacion`
+--
+
+CREATE TABLE `valuacion` (
+  `idvaluacion` int(11) NOT NULL,
+  `nroValuacion` varchar(20) DEFAULT NULL,
+  `a101` varchar(500) DEFAULT NULL COMMENT '1.01 Objeto de Valuación',
+  `a102` varchar(500) DEFAULT NULL COMMENT '1.02 Propietarios',
+  `a103` varchar(500) DEFAULT NULL COMMENT '1.03 Solicitante',
+  `a104` varchar(500) DEFAULT NULL COMMENT '1.04 Entidad Financ',
+  `a201` varchar(500) DEFAULT NULL COMMENT 'Registral',
+  `a202` varchar(500) DEFAULT NULL COMMENT 'Autoavaluo',
+  `a203` varchar(50) DEFAULT NULL COMMENT 'Codigo Ubigeo',
+  `a301` varchar(50) DEFAULT NULL COMMENT '3.01  Zonificación',
+  `a302` varchar(50) DEFAULT NULL COMMENT '3.02 Linderos Fuente',
+  `a302a` varchar(500) DEFAULT NULL COMMENT '3.02 Linderos Frente',
+  `a302b` varchar(500) DEFAULT NULL COMMENT '3.02 Linderos Fondo',
+  `a302c` varchar(500) DEFAULT NULL COMMENT '3.02 Linderos Derecha',
+  `a302d` varchar(500) DEFAULT NULL COMMENT '3.02 Linderos Izquierda',
+  `a303a` decimal(20,2) DEFAULT NULL COMMENT '3.03 Terreno Area',
+  `a303b` decimal(20,2) DEFAULT NULL COMMENT '3.03 Terreno Perímetro',
+  `a304a` varchar(100) DEFAULT NULL COMMENT '3.04. Edificación estado',
+  `a304b` int(11) DEFAULT NULL COMMENT '3.04. Edificación años antiguedad',
+  `a305` varchar(500) DEFAULT NULL COMMENT '3.05 Ocupación - Uso',
+  `a306` text COMMENT '3.06 Descripción del Predio',
+  `a307a` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) sistema constructivo',
+  `a307b` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) MUROS',
+  `a307c` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) techos',
+  `a307d` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) puertas',
+  `a307e` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) ventanas',
+  `a307f` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) revestimiento',
+  `a307g` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) pisos',
+  `a307h` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) ss.hh.',
+  `a307i` varchar(200) DEFAULT NULL COMMENT '3.07 Fábrica- Especificaciones técnicas (Bloque Predominante) int. sanitarias',
+  `a308` varchar(500) DEFAULT NULL COMMENT '3.08 Servidumbre',
+  `a309` varchar(100) DEFAULT NULL COMMENT '3.09 Declaratoria de Fabrica',
+  `a309a` decimal(5,2) DEFAULT NULL COMMENT '3.09 Declaratoria de Fabrica porcentaje',
+  `a400` varchar(500) DEFAULT NULL COMMENT '4.00 ANALISIS DEL MEJOR Y MÁS INTENSIVO USOS POSIBLE DEL BIEN',
+  `a500` text COMMENT '5.00 ALCANCES Y LIMITACIONES DEL TRABAJO EFECTUADO',
+  `a600` date DEFAULT NULL COMMENT '6.00 FECHA DE ASIGNACIÓN DEL VALOR',
+  `a700` varchar(100) DEFAULT NULL COMMENT '7.00 POLIZA DE SEGUROS',
+  `b800` date DEFAULT NULL COMMENT '8.00 INSPECCIÓN OCULAR DEL BIEN',
+  `b900a` varchar(500) DEFAULT NULL COMMENT '9.00 CARGAS Y GRAVÁMENES',
+  `b900b` varchar(100) DEFAULT NULL COMMENT '9.00 CARGAS Y GRAVÁMENES fuente',
+  `b1000a` varchar(100) DEFAULT NULL COMMENT '10.00 DATOS LEGALES codigo del predio',
+  `b1000b` varchar(100) DEFAULT NULL COMMENT '10.00 DATOS LEGALES folio',
+  `b1000c` varchar(100) DEFAULT NULL COMMENT '10.00 DATOS LEGALES asiento',
+  `b1100a` varchar(100) DEFAULT NULL COMMENT '11.00 CÓDIGO DE SUMINISTROS energia electrica',
+  `b1100b` varchar(100) DEFAULT NULL COMMENT '11.00 CÓDIGO DE SUMINISTROS. agua',
+  `c1200` text COMMENT '12.00 BASES PARA SU DESARROLLO.',
+  `c1300` text COMMENT '13.00 METODOLOGÍA UTILIZADA.',
+  `c1400` text COMMENT '14.00 INVESTIGACIÓN Y VALORES COMERCIALES DE REFERENCIA.',
+  `c1400a` decimal(10,2) DEFAULT NULL COMMENT '14.00 INVESTIGACIÓN Y VALORES COMERCIALES DE REFERENCIA soles',
+  `c1400b` decimal(10,2) DEFAULT NULL COMMENT '14.00 INVESTIGACIÓN Y VALORES COMERCIALES DE REFERENCIA dolares',
+  `c1500a` int(11) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA caracteristicas',
+  `c1500b` int(11) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA areas',
+  `c1500c` int(11) DEFAULT NULL COMMENT 'ubicacion',
+  `c1500d` int(11) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA servicios\n',
+  `c1500e` int(11) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA puntaje',
+  `c1500f` decimal(5,2) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA porcentaje',
+  `c1500g` varchar(100) DEFAULT NULL COMMENT '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA tipo de garantia\n',
+  `c1600` decimal(5,2) DEFAULT NULL COMMENT ' 16.00 DEDUCCIONES APLICADAS',
+  `c1700` varchar(500) DEFAULT NULL COMMENT '17.00  SUSTENTO',
+  `d1800a` decimal(20,2) DEFAULT NULL COMMENT '18.00 VALOR COMERCIAL DEL PRECIO (VCP) area total',
+  `d1800b` decimal(20,2) DEFAULT NULL COMMENT '18.00 VALOR COMERCIAL DEL PRECIO (VCP) valor comercial unitario',
+  `d1800c` decimal(20,2) DEFAULT NULL COMMENT '18.00 VALOR COMERCIAL DEL PRECIO (VCP) valor comercial del terreno',
+  `d1800d` decimal(20,4) DEFAULT NULL COMMENT '18.00 VALOR COMERCIAL DEL PRECIO (VCP) tipo de cambio',
+  `d1901a` decimal(20,2) DEFAULT NULL COMMENT '19.1 Valor del terreno (VT) area m2',
+  `d1901b` decimal(20,2) DEFAULT NULL COMMENT '19.1 Valor del terreno (VT)  valor $ m2',
+  `d1901c` decimal(20,2) DEFAULT NULL COMMENT '19.1 Valor del terreno (VT)  valor total $',
+  `d1901d` decimal(20,2) DEFAULT NULL COMMENT '19.1 Valor del terreno (VT) valor total S/\n',
+  `d1902` varchar(45) DEFAULT NULL COMMENT '19.2 Valor de la Edificación (VE)',
+  `d1902a` decimal(20,2) DEFAULT NULL COMMENT '19.2 Valor de la Edificación (VE) valor construccion',
+  `d1902b` decimal(20,2) DEFAULT NULL COMMENT '19.2 Valor de la Edificación (VE) depreciacion porcentaje',
+  `d1902c` decimal(20,2) DEFAULT NULL COMMENT '19.2 Valor de la Edificación (VE) depreciacion',
+  `d1902d` decimal(20,2) DEFAULT NULL COMMENT 'subtotal',
+  `d1903a` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) voc final',
+  `d1903b` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) valor terreno $',
+  `d1903c` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vt S/',
+  `d1903d` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) ve $',
+  `d1903e` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vt s/',
+  `d1903f` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) voc $',
+  `d1903g` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) voc S/',
+  `d1903h` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vcp $',
+  `d1903i` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vcp S/',
+  `d1903j` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vnr porcentaje',
+  `d1903k` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vnr $',
+  `d1903l` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) vnr S/',
+  `d1903m` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) ver $',
+  `d1903n` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) ver S/',
+  `d1903o` decimal(20,2) DEFAULT NULL COMMENT '19.3 Valor de las Obras Complementarias (VOC) tipo de cambio',
+  `e2000` text COMMENT '20.00 DECLARACION DE INDEPENDENCIA DE CRITERIO',
+  `e2100` text COMMENT '21.00  RECONOCIMIENTO DE NORMAS APLICABLES',
+  `e2200` text COMMENT '22.00 DECLARACIÓN JURADA',
+  `e2300` text COMMENT '23.00 VIGENCIA DE LA VALUACIÓN',
+  `e2400` text COMMENT '24.00 DE LA POSESIÓN DEL INMUEBLE',
+  `e2500` text COMMENT '25.00 PERSONA QUE ATENDIÓ LA VERIFICACIÓN DEL INMUEBLE',
+  `e2600` text COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN',
+  `e2600a` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN ubicacion',
+  `e2600b` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN accesos',
+  `e2600c` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN  zonificacion',
+  `e2600d` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN inspeccion',
+  `e2600e` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN  caracteristicas',
+  `e2600f` varchar(200) DEFAULT NULL COMMENT '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN influencia',
+  `e2700` varchar(500) DEFAULT NULL COMMENT '27.00 OBSERVACIONES Y/O RECOMENDACIONES',
+  `e2800a` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION titulo',
+  `e2800b` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION certificado',
+  `e2800c` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION autoavaluo',
+  `e2800d` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION planos',
+  `e2800e` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION memoria',
+  `e2800f` varchar(200) DEFAULT NULL COMMENT '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION otros\n',
+  `e2900a` varchar(200) DEFAULT NULL COMMENT '29.00 DEL PERITO VALUADOR nombre',
+  `e2900b` varchar(200) DEFAULT NULL COMMENT '29.00 DEL PERITO VALUADOR profesion',
+  `e2900c` varchar(200) DEFAULT NULL COMMENT '29.00 DEL PERITO VALUADOR cap',
+  `e2900d` varchar(200) DEFAULT NULL COMMENT '29.00 DEL PERITO VALUADOR  habilitacion',
+  `e3000` varchar(500) DEFAULT NULL COMMENT '30.00 PANEL FOTOGRÁFICO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -2233,6 +2418,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`DNI_CONT`);
 
 --
+-- Indexes for table `edificacion`
+--
+ALTER TABLE `edificacion`
+  ADD PRIMARY KEY (`idedificacion`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -2243,6 +2434,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `permisosmenu`
   ADD PRIMARY KEY (`ID_PERMENU`);
+
+--
+-- Indexes for table `referencia`
+--
+ALTER TABLE `referencia`
+  ADD PRIMARY KEY (`idreferencia`);
 
 --
 -- Indexes for table `ubigeo`
@@ -2257,14 +2454,62 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`COD_USU`);
 
 --
+-- Indexes for table `valor`
+--
+ALTER TABLE `valor`
+  ADD PRIMARY KEY (`idvalor`);
+
+--
+-- Indexes for table `valorcomplementario`
+--
+ALTER TABLE `valorcomplementario`
+  ADD PRIMARY KEY (`idvalorcomplementario`);
+
+--
+-- Indexes for table `valuacion`
+--
+ALTER TABLE `valuacion`
+  ADD PRIMARY KEY (`idvaluacion`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `edificacion`
+--
+ALTER TABLE `edificacion`
+  MODIFY `idedificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `referencia`
+--
+ALTER TABLE `referencia`
+  MODIFY `idreferencia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `valor`
+--
+ALTER TABLE `valor`
+  MODIFY `idvalor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `valorcomplementario`
+--
+ALTER TABLE `valorcomplementario`
+  MODIFY `idvalorcomplementario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `valuacion`
+--
+ALTER TABLE `valuacion`
+  MODIFY `idvaluacion` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
