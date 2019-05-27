@@ -3,19 +3,21 @@ class Usuario extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->load->library('grocery_CRUD');
+		$this->load->library('grocery_CRUD');
+		$this->load->model(array('m_usuario'));
     }
 	
 	public function index(){
-		/* ACTIVAR CON SESION
+		
 		if(!$this->verificarUserDataSesion()) {
 			header('Location: ' . base_url());
    			die();
-		}*/
+		}
         $crud = new grocery_CRUD();
         $this->config->load('grocery_crud');
         $crud->set_subject('Usuario');
-        $crud->set_table('usuario');
+		$crud->set_table('usuario');
+		$crud->add_action('Permisos', '', '','el el-key', array($this, 'permisoLink'));
         $crud->columns('COD_USU','PASS_USU','NOM_USU','APP_USU','APM_USU','EMAIL_USU', 'CARGO_USU', 'ESTADO_USU');   
 		
 		$crud->display_as('COD_USU','USUARIO');
@@ -55,7 +57,7 @@ class Usuario extends CI_Controller {
         $data=$crud->render();
         $data->titulo= $titulo;
 		$data->state = $state;
-		$this->load->view('v_crud',$data);
+		$this->load->view('usuario/v_crud',$data);
     }
 	function encrypt_password_callback($post_array, $primary_key = null){
 		if(strlen($post_array['PASS_USU'])<32){
@@ -76,6 +78,37 @@ class Usuario extends CI_Controller {
 		}
 	}
 
+	function permisoLink($primary_key , $row)
+	{
+		return site_url('usuario/permisos/'.$primary_key);
+	}
+
+	function permisos($id)
+	{
+		$permisos = $this->m_usuario->obtenerPermisos($id);
+		$menus = $this->m_usuario->obtenerMenu();
+		$allmenus = [];
+		foreach ($menus  as $menu)
+		{
+			$hasPermission = false;
+			foreach($permisos as $permiso) {
+				if ($menu->ID_MENU == $permiso->ID_MENU) {
+					$hasPermission = true;
+					break;
+				}
+			}
+
+			$dto = array('id' => $menu->ID_MENU,
+						'descripcion'=>$menu->DESC_MENU,
+						'url'=>$menu->URL_MENU,
+						'icono'=>$menu->IMG_MENU,
+						'hasPermission', $hasPermission);
+			array_push($allmenus, $dto);
+		}
+		echo count($allmenus);
+		$data = array('menus' =>$allmenus);
+		$this->load->view('usuario/v_permiso', $data);
+	}
 }
 
 ?>
