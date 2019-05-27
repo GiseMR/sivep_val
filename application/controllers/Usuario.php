@@ -102,10 +102,12 @@ class Usuario extends CI_Controller {
 						'descripcion'=>$menu->DESC_MENU,
 						'url'=>$menu->URL_MENU,
 						'icono'=>$menu->IMG_MENU,
-						'hasPermission', $hasPermission);
+						'hasPermission'=> $hasPermission);
+				
 			array_push($allmenus, $dto);
 		}
-		echo count($allmenus);
+		
+		
 		$data = array('menus' =>$allmenus);
 		$this->load->view('usuario/v_permiso', $data);
 	}
