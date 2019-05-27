@@ -6,8 +6,7 @@ class Valoriza extends CI_Controller {
 	
     public function __construct(){
         parent::__construct();
-		$this->load->library('grocery_CRUD');
-		$this->load->model(array('m_ubigeo'));
+        $this->load->library('grocery_CRUD');
     }
 	
 	public function index(){
@@ -39,8 +38,7 @@ class Valoriza extends CI_Controller {
 		$this->load->view('v_crud',$data);
     }
 	function nuevo(){
-		$data = array('consulta_departamento' => $this->m_ubigeo->obtener_departamentos());
-		$this->load->view('form/valoriza', $data);		
+		$this->load->view('form/valoriza');		
 	}
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){

@@ -15,7 +15,7 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/jquery-3.2.0.min.js"></script>
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -141,16 +141,16 @@
                                             <div class="form-group row">
                                                 <label for="ubiautoavaluo" class="col-sm-2 text-right control-label col-form-label">DEPARTAMENTO</label>
                                                 <div class="col-sm-2">
-                                                    <select id="departamento" name="departamento" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                    <select id="departamento" name="departamento" class="select2 form-control custom-select" style="width: 100%; height:36px;">                                                  
                                                     <?php   
-                                                     if($consulta_departamento)
-                                                    { 
-                                                    foreach ($consulta_departamento as $row):?>    
-                                                    <option value="<?=$row->C_CODDPTO?>"><?=$row->C_NOMUBIGEO?></option>
-                                                    <?php 
-                                                    endforeach;
-                                                    }
-                                                    ?>                                                        
+                                                        if($consulta_departamento)
+                                                            { 
+                                                            foreach ($consulta_departamento as $row):?>    
+                                                                <option value="<?=$row->C_CODDPTO?>"><?=$row->C_NOMUBIGEO?></option>
+                                                                <?php 
+                                                                endforeach;
+                                                                }
+                                                    ?> 
                                                     </select>
                                                 </div>
                                                 <label for="ubiautoavaluo" class="col-sm-2 text-right control-label col-form-label">PROVINCIA</label>
@@ -553,32 +553,6 @@
                                                     <input type="text" class="form-control" id="siscons">
                                                 </div>
                                                 <div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-</div>
-<div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-6">.col-md-6</div>
-  <div class="col-md-6">.col-md-6</div>
-</div>
                                                 <div class="col-sm-12">
                                                     <div class="mapouter">
                                                         <div class="gmap_canvas"><iframe width="800" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=cusco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net">crocothemes.net</a></div>
@@ -964,8 +938,10 @@
     <!-- this page js -->
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/codigos/js/proceso.js"></script>
-    <script>
+    <script src="<?= base_url();?>assets/codigos/js/jquery-3.2.0.min.js"></script>
+    <script src="<?= base_url();?>assets/codigos/js/proceso.js"></script>
+   
+    <script>   
         $(function() {
             $("span.number").hide();
 
