@@ -11,8 +11,7 @@ class Login extends CI_Controller {
      public function index(){ /*VALIDAMOS SI LA SESION ES ACTIVA REDIRIGIMOS AL HOME, SI NO AL LOGIN*/
           //si la sesion esta activa se cargan las vistas del menu , etc
           if($this->verificarUserDataSesion()){
-          	
-            $this->load->view('v_header');
+            $this->headerMenu(null);
 						$this->load->view('index');
 						$this->load->view('v_footer');
           }else{
@@ -33,10 +32,10 @@ class Login extends CI_Controller {
 
 	public function iniciar(){
 		if($this->verificarUserDataSesion()){
-            $this->load->view('v_header');
-			$this->load->view('v_iframe');
-			$this->load->view('v_footer');
-			return;
+						$this->headerMenu(null);
+						$this->load->view('v_iframe');
+						$this->load->view('v_footer');
+						return;
 		  }		  
 
 		if ($this->input->post('iniciar')){
@@ -59,9 +58,9 @@ class Login extends CI_Controller {
 					$this->session->set_userdata($sesion);
 					$this->session->set_userdata($menu);
 
-					if(count($menu['Permisos'])==1){
+					if(count($menu['MenuPermisos'])==1){
 						$row='';
-						foreach ($menu['Permisos'] as $result) {
+						foreach ($menu['MenuPermisos'] as $result) {
 							$row = $result['ID']; 
 							break;
 						}
@@ -70,7 +69,7 @@ class Login extends CI_Controller {
 							return;
 						}
 					}
-					$this->load->view('v_header');
+					$this->headerMenu($menu);
 					$this->load->view('v_iframe');
 					$this->load->view('v_footer');
 
@@ -83,6 +82,14 @@ class Login extends CI_Controller {
 		} else {
 			$this->MuestraLogin('');
 		}
+	}
+
+	private function headerMenu($menu){
+		
+			if(isset($this->session->userdata['logged_in'])){
+					$menu = $this->m_login->PermisosMenu($this->session->userdata['codigo']);
+				}
+		$this->load->view('v_header', $menu);
 	}
 
 	private function verificarUserDataSesion(){
