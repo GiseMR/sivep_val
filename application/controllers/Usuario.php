@@ -91,12 +91,14 @@ class Usuario extends CI_Controller {
 		foreach ($menus  as $menu)
 		{
 			$hasPermission = false;
-			foreach($permisos as $permiso) {
-				if ($menu->ID_MENU == $permiso->ID_MENU) {
-					$hasPermission = true;
-					break;
+			if(isset($permisos)){
+				foreach($permisos as $permiso) {
+					if ($menu->ID_MENU == $permiso->ID_MENU) {
+						$hasPermission = true;
+						break;
+					}
 				}
-			}
+			}		
 
 			$dto = array('id' => $menu->ID_MENU,
 						'descripcion'=>$menu->DESC_MENU,
@@ -108,8 +110,19 @@ class Usuario extends CI_Controller {
 		}
 		
 		
-		$data = array('menus' =>$allmenus);
+		$data = array('menus' =>$allmenus, 'codigoUsuario'=>$id);
 		$this->load->view('usuario/v_permiso', $data);
+	}
+
+	function registarpermiso(){
+
+		$codigoUsuario = $this->input->post('codigoUsuario');
+		$nuevoPermisoMenu= $this->input->post('permissions');
+		$this->m_usuario->eliminarPermisos($codigoUsuario);
+		foreach($nuevoPermisoMenu as $menuId) {
+			$this->m_usuario->registarPermiso($codigoUsuario, $menuId);
+		}
+		$this->permisos($codigoUsuario);
 	}
 }
 

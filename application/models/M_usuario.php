@@ -23,4 +23,13 @@ class M_usuario extends CI_Model {
 		}
 	}
 
+	public function eliminarPermisos($idUser){
+		$this->db->query('DELETE FROM permisosmenu  where COD_USU = "'.$idUser.'"');
+		return true;
+	}
+
+	public function registarPermiso($idUser, $menuId){
+		$this->db->query('INSERT INTO permisosmenu (COD_USU,ID_MENU,ESTATUS) VALUES ("'.$idUser.'",'.$menuId.',1)');
+		return true;
+	}
 }	

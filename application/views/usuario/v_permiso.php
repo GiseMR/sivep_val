@@ -14,11 +14,12 @@
 </head>
 <body>
 <h2>Permisos</h2>
-<form>
+<form method="post", action="<?= base_url() ?>usuario/registarpermiso">
 <?php   
     if($menus)
     { 
         ?>
+        <input name="codigoUsuario" type="hidden" value="<?php echo $codigoUsuario; ?>">
         <table class='table table-sm table-bordered grocery-crud-table table-hover'>
         <thead>
             <tr>
@@ -51,14 +52,10 @@
             <i class="el el-ok"></i>
             Actualizar cambios 
         </button>
-        <button class="btn btn-info b10" type="button" id="save-and-go-back-button">
-            <i class="el el-return-key"></i>
-                Actualizar y volver a la lista                                
-        </button>
-        <button class="btn btn-secondary cancel-button b10" type="button" id="cancel-button">
+        <a class="btn btn-secondary cancel-button b10" href="<?= base_url() ?>usuario">
                 <i class="el el-warning-sign"></i>
                 Cancelar                         
-        </button>
+        </a>
     </div>
 </div>
 </form>
