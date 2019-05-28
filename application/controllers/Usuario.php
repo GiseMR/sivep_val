@@ -59,23 +59,16 @@ class Usuario extends CI_Controller {
         $data->titulo= $titulo;
 		$data->state = $state;
 		$this->load->view('usuario/v_crud',$data);
-    }
+	}
+	
 	function encrypt_password_callback($post_array, $primary_key = null){
-		if(strlen($post_array['PASS_USU'])<32){
+		if(strlen($post_array['PASS_USU'])<32)
+		{
 			$post_array['PASS_USU'] = md5($post_array['PASS_USU']);
 		}
 		return $post_array;
 	}
 	
-	 function passwordLink($primary_key , $row){
-	
-    	return site_url('usuario/password/'.$primary_key);           	 
-	}
-	function password($id=NULL){
-		
-		$this->load->view('usuario/v_password');
-	}	
-
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){
 			return true;
@@ -89,7 +82,7 @@ class Usuario extends CI_Controller {
 		return site_url('usuario/permisos/'.$primary_key);
 	}
 
-	function permisos($id)
+	function permisos($id, $mensaje=null)
 	{
 		$permisos = $this->m_usuario->obtenerPermisos($id);
 		$menus = $this->m_usuario->obtenerMenu();
@@ -116,7 +109,7 @@ class Usuario extends CI_Controller {
 		}
 		
 		
-		$data = array('menus' =>$allmenus, 'codigoUsuario'=>$id);
+		$data = array('menus' =>$allmenus, 'codigoUsuario'=>$id, 'mensaje'=>$mensaje);
 		$this->load->view('usuario/v_permiso', $data);
 	}
 
@@ -128,8 +121,51 @@ class Usuario extends CI_Controller {
 		foreach($nuevoPermisoMenu as $menuId) {
 			$this->m_usuario->registarPermiso($codigoUsuario, $menuId);
 		}
-		$this->permisos($codigoUsuario);
+		$this->permisos($codigoUsuario, 'ok');
 	}
+
+	function cambiarpassword(){
+		$codigoUsuario = $this->input->post('codigoUsuario');
+		$password = $this->input->post('password');
+		$usuario = $this->m_usuario->obtnerUsuario($codigoUsuario);
+		$currentPassord = '';
+		if(isset($usuario)){
+			foreach($usuario as $row){
+				$currentPassord =  $row->PASS_USU;
+				break;
+			}
+		}
+
+		if($currentPassord!=md5($password)){
+			$this->password($codigoUsuario, 'La contraseña actual no es correcta');
+			return;
+		}
+		else{
+			$newpassword = $this->input->post('newpassword');
+			$this->m_usuario->actualizarPassword($codigoUsuario, md5($newpassword));
+			$this->password($codigoUsuario, 'ok');
+		}
+		
+	}
+
+	
+	function passwordLink($primary_key , $row){
+    	return site_url('usuario/password/'.$primary_key);           	 
+	}
+
+	function password($id, $mensaje=null) {
+		
+		$usuario = $this->m_usuario->obtnerUsuario($id);
+		$nombreusuario = '';
+		if(isset($usuario)){
+			foreach($usuario as $row){
+				$nombreusuario =  $row->NOM_USU;
+				break;
+			}
+		}
+		$data = array('codigoUsuario'=> $id, 'nombreusuario'=>$nombreusuario ,'mensaje'=>$mensaje);
+		$this->load->view('usuario/v_password',$data);
+	}	
 }
 
 ?>

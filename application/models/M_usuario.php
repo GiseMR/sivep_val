@@ -32,4 +32,17 @@ class M_usuario extends CI_Model {
 		$this->db->query('INSERT INTO permisosmenu (COD_USU,ID_MENU,ESTATUS) VALUES ("'.$idUser.'",'.$menuId.',1)');
 		return true;
 	}
+
+	public function obtnerUsuario($id){
+		$query = $this->db->query('SELECT PASS_USU, NOM_USU, APP_USU, APM_USU FROM usuario where COD_USU = "'.$id.'"');
+	   
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+	}
+
+	public function actualizarPassword($idUser, $newPassword){
+		$this->db->query('UPDATE usuario set PASS_USU="'.$newPassword.'"  where  COD_USU="'.$idUser.'"');
+		return true;
+	}
 }	

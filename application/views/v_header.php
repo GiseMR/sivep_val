@@ -186,9 +186,9 @@
                   ?></b></h3>
               </a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> Mi perfil</a>
+                <a class="dropdown-item" href="<?php echo base_url();?>usuario/index/read/<?php echo $this->session->userdata['codigo'];?>"  target="content-frame"><i class="ti-user m-r-5 m-l-5"></i> Mi perfil</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>usuario/passwordLink" class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
+                <a href="<?php echo base_url();?>usuario/password/<?php echo $this->session->userdata['codigo'];?>"  target="content-frame" class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
                 <div class="dropdown-divider"></div>
                 <a href="<?php echo base_url();?>index.php/login/salir" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
               </div>
@@ -218,7 +218,8 @@
                   ?>
                   <li class="sidebar-item"> 
                     <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                     href="<?php if($row['URL_MENU']=='#'){ echo 'javascript:void(0)'; } else { echo base_url().''.$row['URL_MENU']; }  ?>" 
+                     href="<?php if($row['URL_MENU']=='#'){ echo 'javascript:void(0)'; } else 
+                     { echo base_url().''.$row['URL_MENU']; }  ?>" 
                     target="content-frame" aria-expanded="false">
                     <i class="<?php echo $row['IMG_MENU'];?>"></i>
                     <span class="hide-menu"><?php echo $row['DESC_MENU']; ?></span>
