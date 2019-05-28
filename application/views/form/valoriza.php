@@ -519,7 +519,7 @@
                                                                     <th class="text-center">PROPIETARIO</th>
                                                                     <th class="text-center">TELEFONO</th>
                                                                     <th class="text-center">DISTANCIA</th>
-                                                                    <th class="text-center">TERRENO $</th>
+                                                                    <th class="text-center">TERRENO$</th>
                                                                     <th class="text-center">FECHA</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
