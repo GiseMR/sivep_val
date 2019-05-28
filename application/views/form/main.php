@@ -84,63 +84,28 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
+                    <?php 
+                    if(isset($MenuPermisos)){
+                        foreach($MenuPermisos as $row) {
+                        ?>
+                            <!-- Column -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card card-hover">
+                                    <div class="box <?php echo $colores[$row['ID']-1]; ?> text-center">
+                                        <h1 class="font-light text-white"><i class="<?php echo $row['IMG_MENU'];?>"></i></h1>
+                                        <a href="<?php if($row['URL_MENU']=='#'){ 
+                                                            if($row['DESC_MENU']=='Valorizaciones') echo base_url().'valoriza';
+                                                            else echo 'javascript:void(0)'; } 
+                                                       else { echo base_url().$row['URL_MENU']; } ?>"  target="content-frame"> 
+                                        <h6 class="text-white"><?php  echo $row['DESC_MENU']; ?></h6> </a>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php } 
                     
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
-                                <h6 class="text-white">Inicio</h6>
-                            </div>
-                        </div>
+                    }?>
                     </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
-                                <h6 class="text-white">Valorizaciones</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div  class="col-md-6 col-lg-3" >
-                        <div class="card card-hover">
-                            <div class="box bg-warning text-center" >
-                                <h1 class="font-light text-white"><i class="mdi  mdi-account-key"></i></h1>
-                                <h6 class="text-white">Usuarios</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-primary text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                                <h6 class="text-white">Contactos</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-chart-bar"></i></h1>
-                                <h6 class="text-white">Reportes</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                           
-                               
-                <!-- ============================================================== -->
-                <!-- End Page Content -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
 
        
 </body>

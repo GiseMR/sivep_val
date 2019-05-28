@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inicio extends CI_Controller {
 
      public function __construct(){
-          parent::__construct();
+		parent::__construct();
+		$this->load->model('m_login');
      }
 	 
 	public function index(){
@@ -17,7 +18,11 @@ class Inicio extends CI_Controller {
 	}
 	
 	public function main(){
-		$this->load->view('form/main');
+		if($this->verificarUserDataSesion()){
+			$menu = $this->m_login->PermisosMenu($this->session->userdata['codigo']);
+			$menu['colores'] = array('bg-cyan', 'bg-success', 'bg-warning', 'bg-primary', 'bg-danger');
+			$this->load->view('form/main', $menu);
+		}
 	}
 
 	private function verificarUserDataSesion(){
