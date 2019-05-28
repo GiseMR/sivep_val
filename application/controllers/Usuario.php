@@ -18,6 +18,7 @@ class Usuario extends CI_Controller {
         $crud->set_subject('Usuario');
 		$crud->set_table('usuario');
 		$crud->add_action('Permisos', '', '','el el-key', array($this, 'permisoLink'));
+		$crud->add_action('Contraseña', '', '','el el-lock',array($this, 'passwordLink'));
         $crud->columns('COD_USU','PASS_USU','NOM_USU','APP_USU','APM_USU','EMAIL_USU', 'CARGO_USU', 'ESTADO_USU');   
 		
 		$crud->display_as('COD_USU','USUARIO');
@@ -65,11 +66,16 @@ class Usuario extends CI_Controller {
 		}
 		return $post_array;
 	}
-	//cambia password al usuario segun el nombre de usuario
-	 function password(){
 	
-    	$this->load->view('usuario/v_password');             	 
+	 function passwordLink($primary_key , $row){
+	
+    	return site_url('usuario/password/'.$primary_key);           	 
 	}
+	function password($id=NULL){
+		
+		$this->load->view('usuario/v_password');
+	}	
+
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){
 			return true;

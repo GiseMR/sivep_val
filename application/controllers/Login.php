@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Login extends CI_Controller {
-
 	public function __construct(){
 		parent::__construct();
 		//cagando modelo login
@@ -29,7 +27,6 @@ class Login extends CI_Controller {
 		header('Location: ' . base_url());
 		die();
      }
-
 	public function iniciar(){
 		if($this->verificarUserDataSesion()){
 						$this->headerMenu(null);
@@ -37,7 +34,6 @@ class Login extends CI_Controller {
 						$this->load->view('v_footer');
 						return;
 		  }		  
-
 		if ($this->input->post('iniciar')){
 			$user = $this->input->post('usuario');
 			$clave = md5($this->input->post('password'));
@@ -57,7 +53,6 @@ class Login extends CI_Controller {
 					$menu = $this->m_login->PermisosMenu($datos->COD_USU);
 					$this->session->set_userdata($sesion);
 					$this->session->set_userdata($menu);
-
 					if(count($menu['MenuPermisos'])==1){
 						$row='';
 						foreach ($menu['MenuPermisos'] as $result) {
@@ -72,7 +67,6 @@ class Login extends CI_Controller {
 					$this->headerMenu($menu);
 					$this->load->view('v_iframe');
 					$this->load->view('v_footer');
-
 				}else{
 					$this->MuestraLogin('* Contraseña incorrecta');
 				}
@@ -83,7 +77,6 @@ class Login extends CI_Controller {
 			$this->MuestraLogin('');
 		}
 	}
-
 	private function headerMenu($menu){
 		
 			if(isset($this->session->userdata['logged_in'])){
@@ -91,7 +84,6 @@ class Login extends CI_Controller {
 				}
 		$this->load->view('v_header', $menu);
 	}
-
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){
 			return true;

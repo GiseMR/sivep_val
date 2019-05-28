@@ -52,6 +52,10 @@
             <i class="el el-ok"></i>
             Actualizar cambios 
         </button>
+        <button class="btn btn-info b10" type="submit" id="save-and-go-back-button">
+            <i class="el el-return-key"></i>
+         Actualizar y volver a la lista 
+        </button>    
         <a class="btn btn-secondary cancel-button b10" href="<?= base_url() ?>usuario">
                 <i class="el el-warning-sign"></i>
                 Cancelar                         

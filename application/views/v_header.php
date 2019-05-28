@@ -188,7 +188,7 @@
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> Mi perfil</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>usuario/password" class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
+                <a href="<?php echo base_url();?>usuario/passwordLink" class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
                 <div class="dropdown-divider"></div>
                 <a href="<?php echo base_url();?>index.php/login/salir" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
               </div>

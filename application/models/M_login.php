@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class M_login extends CI_Model{
-
      function __construct(){
           parent::__construct();
      }
@@ -13,8 +12,6 @@ class M_login extends CI_Model{
 		  $query = $this->db->get();
           return $query->row();
      }
-
-
 function PermisosMenu($Id){
           $this->db->select('m.ID_MENU as ID, m.DESC_MENU, m.IMG_MENU, m.URL_MENU, p.ESTATUS');
           $this->db->from('menu as m');
@@ -31,5 +28,4 @@ function PermisosMenu($Id){
          $query->free_result();
          return $data;
      }
-
 }?>

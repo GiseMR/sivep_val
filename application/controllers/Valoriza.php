@@ -6,7 +6,8 @@ class Valoriza extends CI_Controller {
 	
     public function __construct(){
         parent::__construct();
-        $this->load->library('grocery_CRUD');
+		$this->load->library('grocery_CRUD');
+		$this->load->model(array('m_ubigeo'));
     }
 	
 	public function index(){
@@ -18,17 +19,18 @@ class Valoriza extends CI_Controller {
         $crud = new grocery_CRUD();
         $this->config->load('grocery_crud');
         $crud->set_subject('');
-        $crud->set_table('valoriza');
+        $crud->set_table('valuacion');
        		
 		$crud->unset_export();
+		$crud->unset_add();
 		$crud->unset_print();
 
 		$titulo = "";
 		$state = $crud->getState();
-		if ($state=="list") $titulo = "Gestión de Usuarios del Sistema";
-		else if ($state=="add") $titulo = "Registro de Usuario del Sistema";
-		else if ($state=="edit") $titulo = "Edición de Usuario del Sistema";
-		else if ($state=="read") $titulo = "Revisión de Usuario del Sistema";
+		if ($state=="list") $titulo = "Gestión de Valuaciones";
+		else if ($state=="add") $titulo = "Registro de Valuacion?";
+		else if ($state=="edit") $titulo = "Edición de Valuacion?";
+		else if ($state=="read") $titulo = "Revisión de Valuacion?";
 		
         $data= new stdClass();
         
@@ -38,7 +40,8 @@ class Valoriza extends CI_Controller {
 		$this->load->view('v_crud',$data);
     }
 	function nuevo(){
-		$this->load->view('form/valoriza');		
+		$data = array('consulta_departamento' => $this->m_ubigeo->obtener_departamentos());
+		$this->load->view('form/valoriza', $data);		
 	}
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){
