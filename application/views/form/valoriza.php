@@ -48,7 +48,7 @@
                 <h6 class="card-subtitle"></h6>
                 <form id="valuacion-form" class="m-t-40">
                     <div>
-                        <h3>A) DATOS</h3>
+                        <h3>DATOS</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -406,7 +406,7 @@
                             </div>
                         </section>
 
-                        <h3>B) VERIFICACIONES</h3>
+                        <h3>VERIFICACIONES</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -476,7 +476,7 @@
                             </div>
                         </section>
 
-                        <h3>C) METODOLOGÍA</h3>
+                        <h3>METODOLOGÍA</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -660,7 +660,7 @@
                                 </div>
                         </section>
 
-                        <h3>D) CALCULOS</h3>
+                        <h3>CALCULOS</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
