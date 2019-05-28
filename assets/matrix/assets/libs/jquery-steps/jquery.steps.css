@@ -101,6 +101,7 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    border: 1px solid #000;
 }
 
 .wizard > .steps .disabled a,
@@ -125,7 +126,7 @@
 .wizard > .steps .done a:hover,
 .wizard > .steps .done a:active
 {
-    background: #9dc8e2;
+    background: #fff;
     color: #fff;
 }
 

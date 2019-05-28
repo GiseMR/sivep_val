@@ -15,6 +15,7 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/css/select2.min.css" rel="stylesheet">
     <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -48,7 +49,8 @@
                 <h6 class="card-subtitle"></h6>
                 <form id="valuacion-form" class="m-t-40">
                     <div>
-                        <h3>DATOS</h3>
+                    
+                        <h3>A) DATOS</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -241,15 +243,6 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="true">1</td>
-                                                                    <td class="pt-3-half" contenteditable="true">PRIMERO</td>
-                                                                    <td class="pt-3-half" contenteditable="true">ALMACEN</td>
-                                                                    <td class="pt-3-half" contenteditable="true">100.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">X</button></span>
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                         <span class="table-edificacion-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
@@ -300,47 +293,68 @@
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307a" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307a" name="a307a" >
+                                                    <select class="select2 form-control custom-select" id="a307a" name="a307a" multiple>
+                                                        <option>Concreto Armado</option>
+                                                        <option>Adobe</option>
+                                                        <option>Madera</option>
+                                                        <option>Estructura Metálica</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307b" class="col-sm-3 text-left control-label col-form-label">Muros</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307b" name="a307b">
+                                                    <select class="select2 form-control custom-select" id="a307b" name="a307b">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307c" class="col-sm-3 text-left control-label col-form-label">Techos</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307c" name="a307c">
+                                                    <select class="select2 form-control custom-select" id="a307c" name="a307c">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307d" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307d" name="a307d">
+                                                    <select class="select2 form-control custom-select" id="a307d" name="a307d">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307e" class="col-sm-3 text-left control-label col-form-label">Ventanas</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307e" name="a307e">
+                                                    <select class="select2 form-control custom-select" id="a307e" name="a307e">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307f" class="col-sm-3 text-left control-label col-form-label">Revestimiento</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307f" name="a307f">
+                                                    <select class="select2 form-control custom-select" id="a307f" name="a307f">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307g" class="col-sm-3 text-left control-label col-form-label">Pisos</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307g" name="a307g">
+                                                    <select class="select2 form-control custom-select" id="a307g" name="a307g">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307h" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307h" name="a307h">
+                                                    <select class="select2 form-control custom-select" id="a307h" name="a307h">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="a307i" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="a307i" name="a307i">
+                                                    <select class="select2 form-control custom-select" id="a307i" name="a307i">
+                                                        <option></option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -406,7 +420,7 @@
                             </div>
                         </section>
 
-                        <h3>VERIFICACIONES</h3>
+                        <h3>B) VERIFICACIONES</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -476,7 +490,7 @@
                             </div>
                         </section>
 
-                        <h3>METODOLOGÍA</h3>
+                        <h3>C) METODOLOGÍA</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -488,7 +502,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
-                                                    <textarea rows="2" class="form-control" id="descripredio">Se ha realizado una visita de inspección de campo a la vez el entorno del predio, para determinar valores comerciales de compra y venta de inmuebles con caracerísticas similares.</textarea>
+                                                    <textarea rows="2" class="form-control" id="c1200" name="c1200">Se ha realizado una visita de inspección de campo a la vez el entorno del predio, para determinar valores comerciales de compra y venta de inmuebles con caracerísticas similares.</textarea>
                                                 </div>
                                             </div>
 
@@ -496,7 +510,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
-                                                    <textarea rows="2" class="form-control" id="descripredio">El trabajo que se realiza en concordancia a lo establecido por las normas vigentes del SBS y el ReglamentoNacional de Tazaciones del Perú. </textarea>
+                                                    <textarea rows="2" class="form-control" id="c1300" name="c1300">El trabajo que se realiza en concordancia a lo establecido por las normas vigentes del SBS y el ReglamentoNacional de Tazaciones del Perú. </textarea>
                                                 </div>
                                             </div>
 
@@ -504,7 +518,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
-                                                    <textarea rows="2" class="form-control" id="descripredio">Se consideró una investigación en el entorno del inmueble durante la inspección, revisión de avisos económicos y la base de datos del perito.</textarea>
+                                                    <textarea rows="2" class="form-control" id="c1400" name="c1400">Se consideró una investigación en el entorno del inmueble durante la inspección, revisión de avisos económicos y la base de datos del perito.</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -514,153 +528,153 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                <th class="text-center">REFERENCIA</th>
+                                                                    <th class="text-center">REFERENCIA</th>
                                                                     <th class="text-center">DIRECCION</th>
                                                                     <th class="text-center">PROPIETARIO</th>
                                                                     <th class="text-center">TELEFONO</th>
                                                                     <th class="text-center">DISTANCIA</th>
-                                                                    <th class="text-center">TERRENO$</th>
+                                                                    <th class="text-center">TERRENO $</th>
                                                                     <th class="text-center">FECHA</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                <td class="pt-3-half" contenteditable="true">1</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A una cuadra de la Av. La Cultura (terreno por 1264.28 m2)</td>
-                                                                    <td class="pt-3-half" contenteditable="true">Sra: Rosa Zuñiga</td>
-                                                                    <td class="pt-3-half" contenteditable="true">984794359</td>
-                                                                    <td class="pt-3-half" contenteditable="true">2.5 cuadras</td>
-                                                                    <td class="pt-3-half" contenteditable="true">500.00</td>
-                                                                    <td class="pt-3-half" contenteditable="true">6/04/2019</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">X</button></span>
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                         <span class="table-referencia-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            
 
+                                                <div class="col-sm-6"></div>
+                                                <label for="c1400a" class="col-sm-1 text-left control-label col-form-label">Total</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="c1400a" name="c1400a">
+                                                </div>
+                                                <div class="col-sm-2"></div>
+
+                                                <div class="col-sm-1"></div>
+                                                <label for="c1400b" class="col-sm-6 text-left control-label col-form-label">Valor comercial del terreno investigado (promedio): en soles</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" id="c1400b" name="c1400b">
+                                                </div>
+                                                <div class="col-sm-3"></div>
+
+                                                <div class="col-sm-1"></div>
+                                                <label for="c1400c" class="col-sm-6 text-left control-label col-form-label">Valor comercial del terreno investigado (promedio): en dolares</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" id="c1400c" name="c1400c">
+                                                </div>
+                                                <div class="col-sm-3"></div>
+
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d">Se toma el valor considerando las referencias y predios de características similares, con un criterio conservador y prudente  asi mismo por encontrarse en la misma esquina.</textarea>
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <input type="file" class="form-control" id="c1400e" name="c1400e">
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    Ubicación de las referencias
+                                                </div>
+                                            </div>
+
+                                            <h5 class="card-title">15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA</h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
-                                                <label for="siscons" class="col-sm-3 text-left control-label col-form-label">Total</label>
+                                                <div class="col-sm-11">
+                                                    La factibilidad de realización se realiza según la siguiente ponderación:
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-3 text-center"><strong>Criterios</strong></div>
+                                                <div class="col-sm-4 text-center"><strong>Ponderación (1 a 5 )</strong></div>
+                                                <div class="col-sm-3"></div>
+
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500a" class="col-sm-3 text-left control-label col-form-label">1. Características de Predio</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="siscons" name="siscons">
+                                                    <input type="range" min="1" max="5" value="3" class="form-control" id="c1500a" name="c1500a">
                                                 </div>
-                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-1" id="c1500av">3</div>
+                                                <div class="col-sm-2"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500b" class="col-sm-3 text-left control-label col-form-label">2. Áreas del predio</label>
+                                                <div class="col-sm-4">
+                                                    <input type="range" min="1" max="5" value="3" class="form-control" id="c1500b" name="c1500b">
+                                                </div>
+                                                <div class="col-sm-1" id="c1500bv">3</div>
+                                                <div class="col-sm-2"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500c" class="col-sm-3 text-left control-label col-form-label">3. Ubicación del Predio</label>
+                                                <div class="col-sm-4">
+                                                    <input type="range" min="1" max="5" value="3" class="form-control" id="c1500c" name="c1500c">
+                                                </div>
+                                                <div class="col-sm-1" id="c1500cv">3</div>
+                                                <div class="col-sm-2"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500d" class="col-sm-3 text-left control-label col-form-label">4. Servicios del Predio</label>
+                                                <div class="col-sm-4">
+                                                    <input type="range" min="1" max="5" value="3" class="form-control" id="c1500d" name="c1500d">
+                                                </div>
+                                                <div class="col-sm-1" id="c1500dv">3</div>
+                                                <div class="col-sm-2"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500e" class="col-sm-3 text-left control-label col-form-label">Total Puntaje</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="c1500e" name="c1500e" value="12">
+                                                </div>
+                                                <div class="col-sm-3"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500f" class="col-sm-3 text-left control-label col-form-label">Porcentaje</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="c1500f" name="c1500f" value="60.00%">
+                                                </div>
+                                                <div class="col-sm-3"></div>
+
+                                                <div class="col-sm-2"></div>
+                                                <label for="c1500g" class="col-sm-3 text-left control-label col-form-label"><b>Tipo de Garantía</b></label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="c1500g" name="c1500g">
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                            </div>
+
+                                            <h5 class="card-title">16.00 DEDUCCIONES APLICADAS</h5>
+                                            <div class="form-group row">
                                                 <div class="col-sm-1"></div>
-                                                <label for="siscons" class="col-sm-8 text-left control-label col-form-label">Valor comercial del terreno investigado (promedio): en soles</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="siscons" name="siscons">
+                                                <div class="col-sm-11">
+                                                    Para el caso de la realización del inmueble de acuerdo a lo establecido por la Resolución SBS N° 11356-2008
                                                 </div>
                                                 <div class="col-sm-1"></div>
-                                                <label for="siscons" class="col-sm-8 text-left control-label col-form-label">Valor comercial del terreno investigado (promedio): en dolares</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="siscons" name="siscons">
+                                                <div class="col-sm-11">
+                                                    <input type="text" class="form-control" id="c1600" name="c1600">
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="mapouter">
-                                                            <div class="gmap_canvas"><iframe width="800" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=cusco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net">crocothemes.net</a></div>
-                                                            <style>
-                                                                .mapouter {
-                                                                    position: relative;
-                                                                    text-align: right;
-                                                                    height: 400px;
-                                                                    width: 800px;
-                                                                }
+                                            </div>
 
-                                                                .gmap_canvas {
-                                                                    overflow: hidden;
-                                                                    background: none !important;
-                                                                    height: 400px;
-                                                                    width: 800px;
-                                                                }
-                                                            </style>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <h5 class="card-title">15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA</h5>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-1"></div>
-                                                    <div class="col-sm-11">
-                                                        La factibilidad de realización se realiza según la siguiente ponderación:
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-1"></div>
-                                                    <label class="col-sm-11 text-left control-label col-form-label">REFERENCIA 1 ...</label>
-
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">1. Características de Predio</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">2. Áreas del predio</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">3. Ubicación del Predio</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">4. Servicios del Predio</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">Total Puntaje</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label">Porcentaje</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                    <div class="col-sm-2"></div>
-                                                    <label for="siscons" class="col-sm-3 text-left control-label col-form-label"><b>Tipo de Garantía</b></label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                </div>
-
-                                                <h5 class="card-title">16.00 DEDUCCIONES APLICADAS</h5>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-1"></div>
-                                                    <div class="col-sm-11">
-                                                        Para el caso de la realización del inmueble de acuerdo a lo establecido por la Resolución SBS N° 11356-2008
-                                                    </div>
-                                                    <div class="col-sm-1"></div>
-                                                    <div class="col-sm-11">
-                                                        <input type="text" class="form-control" id="siscons" name="siscons">
-                                                    </div>
-                                                </div>
-
-                                                <h5 class="card-title">17.00 SUSTENTO</h5>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-1"></div>
-                                                    <div class="col-sm-11">
-                                                        <textarea rows="2" class="form-control" id="descripredio"></textarea>
-                                                    </div>
+                                            <h5 class="card-title">17.00 SUSTENTO</h5>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1700" name="c1700"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </section>
 
-                        <h3>CALCULOS</h3>
+                        <h3>D) CALCULOS</h3>
                         <section>
                             <div class="row">
                                 <div class="col-md-12">
@@ -909,8 +923,155 @@
                         </section>
                         <h3>E) OPINIÓN</h3>
                         <section>
-                            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
-                            <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">B) OPINION INTEGRAL DEL PERITO VALUADOR</h4>
+
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">20.00 DECLARACION DE INDEPENDENCIA DE CRITERIO</h5>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"> La presente  valuación se ha efectuado con total independencia, aplicada un criterio prudente y conservador en la determinación del valor.</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">21.00 RECONOCIMIENTO DE NORMAS APLICABLES</h5>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"> En la determinación del valor se aplicaron las normas vigentes reconocidas por la S.B.S y el Reglamento Nacional de Tasaciones del Perú. Rs. S.B.S. N° 11356-2008, R.M.  Nº 172-2016-VIVIENDA.</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">22.00 DECLARACIÓN JURADA</h5>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"> Declaro bajo juramento, no tener ningún tipo de vinculación familiar, económico, relación laboral entre el propietario, cliente y/o solicitante en la presente valorización.</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">23.00 VIGENCIA DE LA VALUACIÓN</h5>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"> Si no varían las edificaciones del mercado, así como no se surgir imponderables la valuación tiene una vigencia de: 90 días.</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">24.00 DE LA POSESIÓN DEL INMUEBLE</h5>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-2 text-left control-label col-form-label">El bien inmueble se encuentra en posesion de:</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="a102b" name="a102b" placeholder="Propietarios">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-7">25.00 PERSONA QUE ATENDIÓ LA VERIFICACIÓN DEL INMUEBLE</h5>
+                                            </div>                                          
+                                            
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-2 text-left control-label col-form-label">La persona que atendió la verificación es: </label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="a102b" name="a102b" placeholder="Solicitante">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">26.00 CONSIDERACIONES PARA LA VALORIZACIÓN</h5>
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-7 text-left control-label col-form-label"> Para la valuación se toma en cuenta lo siguiente:</label>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"> </textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">27.00 OBSERVACIONES Y/O RECOMENDACIONES</h5>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="2" class="form-control" id="c1400d" name="c1400d"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">28.00 DOCUMENTACION UTILIZADA EN LA VALUACION</h5>                                                
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label>Con la siguiente documentación proporcionada por el cliente, el perito que suscribe elaboro el  presente informe.</label>
+                                                
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302a" class="col-sm-3 text-left control-label col-form-label">Título de propiedad o derechos</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302a" name="a302a"></textarea>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302b" class="col-sm-3 text-left control-label col-form-label">Certificado de dominio, gravámenes</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302b" name="a302b"></textarea>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302c" class="col-sm-3 text-left control-label col-form-label">Autoavalúo</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302c" name="a302c"></textarea>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302d" class="col-sm-3 text-left control-label col-form-label">Planos de ubicación, distribución</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302d" name="a302d"></textarea>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302d" class="col-sm-3 text-left control-label col-form-label">Memoria descriptiva</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302d" name="a302d"></textarea>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="a302d" class="col-sm-3 text-left control-label col-form-label">Otros </label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="1" class="form-control" id="a302d" name="a302d"></textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">29.00 DEL PERITO VALUADOR </h5>
+                                             </div>
+                                                <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-2 text-left control-label col-form-label">Nombre:</label>
+                                                <div class="col-sm-3">
+                                                    <textarea rows="1" class="form-control" id="a302c" name="a302c">Cyntia Flor Ochoa Pino</textarea>
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-2 text-left control-label col-form-label">Profesión:</label>
+                                                <div class="col-sm-2">
+                                                    <textarea rows="1" class="form-control" id="a302c" name="a302c">Arquitecto</textarea>
+                                                </div> 
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-1 text-right control-label col-form-label">CAP:</label>
+                                                <div class="col-sm-2">
+                                                    <textarea rows="1" class="form-control" id="a302c" name="a302c">12452</textarea>
+                                                </div>                                        
+                                                </div>
+                                                <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a102a" class="col-sm-2 text-left control-label col-form-label">Habilitación:</label>
+                                                <div class="col-sm-3">
+                                                    <textarea rows="1" class="form-control" id="a302c" name="a302c">Vigente</textarea>
+                                                </div>
+                                                </div>
+                                            <div class="form-group row">
+                                                <h5 class="card-title col-sm-6">30.00 PANEL FOTOGRÁFICO </h5>                                                
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <input type="file" class="form-control" id="c1400e" name="c1400e">
+                                                </div>                                         
+                                                                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
                         <h3>HOJA RESUMEN</h3>
                         <section>
@@ -948,6 +1109,7 @@
     <!-- this page js -->
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
     <script src="<?= base_url(); ?>assets/codigos/js/proceso.js"></script>
 
     <script>
@@ -998,19 +1160,83 @@
                     }
                 });
             });
+
+            $("div.steps").find("li.disabled").removeClass("disabled").addClass("done");
+
+            $("#c1500a").on('input', function() {
+                $("#c1500av").text($(this).val());
+                calcula1500();
+            });
+            $("#c1500b").on('input', function() {
+                $("#c1500bv").text($(this).val());
+                calcula1500();
+            });
+            $("#c1500c").on('input', function() {
+                $("#c1500cv").text($(this).val());
+                calcula1500();
+            });
+            $("#c1500d").on('input', function() {
+                $("#c1500dv").text($(this).val());
+                calcula1500();
+            });
+
+            //selecciones multiples
+            $("#a307a").select2({
+                tags: true,
+                createTag: function(params) {
+                    var term = $.trim(params.term);
+                    var count = 0
+                    var existsVar = false;
+                    //check if there is any option already
+                    if ($('#keywords option').length > 0) {
+                        $('#keywords option').each(function() {
+                            if ($(this).text().toUpperCase() == term.toUpperCase()) {
+                                existsVar = true
+                                return false;
+                            } else {
+                                existsVar = false
+                            }
+                        });
+                        if (existsVar) {
+                            return null;
+                        }
+                        return {
+                            id: params.term,
+                            text: params.term,
+                            newTag: true
+                        }
+                    }
+                    //since select has 0 options, add new without comparing
+                    else {
+                        return {
+                            id: params.term,
+                            text: params.term,
+                            newTag: true
+                        }
+                    }
+                },
+                maximumInputLength: 20, // only allow terms up to 20 characters long
+                closeOnSelect: true
+            });
+
         });
+
+        function calcula1500() {
+            var p1 = parseInt($("#c1500a").val());
+            var p2 = parseInt($("#c1500b").val());
+            var p3 = parseInt($("#c1500c").val());
+            var p4 = parseInt($("#c1500d").val());
+
+            var total = p1 + p2 + p3 + p4;
+            $("#c1500e").val(total);
+            var porcentaje = (total * 100 / 20);
+            $("#c1500f").val(porcentaje);
+
+        }
+
+
         // Basic Example with form
         var form = $("#valuacion-form");
-        form.validate({
-            errorPlacement: function errorPlacement(error, element) {
-                element.before(error);
-            },
-            rules: {
-                confirm: {
-                    equalTo: "#password"
-                }
-            }
-        });
         form.children("div").steps({
             headerTag: "h3",
             bodyTag: "section",
@@ -1024,7 +1250,7 @@
                 return form.valid();
             },
             onFinished: function(event, currentIndex) {
-                alert("Submitted!");
+                alert("Enviado!");
             }
         });
 
@@ -1037,7 +1263,7 @@
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">X</button></span>
+                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
                             </td>
                         </tr>`;
 
@@ -1048,10 +1274,10 @@
         $tableEdificacion.on('click', '.table-remove', function() {
             $(this).parents('tr').detach();
         });
-         //FIN FUNCIONES TABLA EDITABLE EDIFICACION
+        //FIN FUNCIONES TABLA EDITABLE EDIFICACION
 
-         //FUNCIONES TABLA EDITABLE REFERENCIA
-         const $tableReferencia = $('#table-referencia');
+        //FUNCIONES TABLA EDITABLE REFERENCIA
+        const $tableReferencia = $('#table-referencia');
 
         const newReTr = `<tr>
                             <td class="pt-3-half" contenteditable="true"></td>
@@ -1062,7 +1288,7 @@
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">X</button></span>
+                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
                             </td>
                         </tr>`;
 

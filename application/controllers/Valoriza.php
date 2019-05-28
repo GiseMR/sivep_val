@@ -19,7 +19,23 @@ class Valoriza extends CI_Controller {
         $crud = new grocery_CRUD();
         $this->config->load('grocery_crud');
         $crud->set_subject('');
-        $crud->set_table('valuacion');
+		$crud->set_table('valuacion');
+
+		$crud->display_as('nroValuacion','N° VALUACION');
+		$crud->display_as('a101','ZONA');
+		$crud->display_as('a102','PROPIETARIOS');
+		$crud->display_as('a103','SOLICITANTE');
+		$crud->display_as('a104','ENTIDAD_FINANCIERA');
+		$crud->display_as('a201','UBICACION');
+		$crud->display_as('a202','COD_UBIGEO');
+		$crud->display_as('a203','CROQUIS_UBICACION');
+		$crud->display_as('a301','VALOR_TERRENO');
+		$crud->display_as('a302','VALOR_EDIFICACIONES');
+		$crud->display_as('a301','VALOR_OBRAS_COMPLEMETARIAS');
+		$crud->display_as('a302a','VCI');
+		$crud->display_as('a302b','VNR');
+		$crud->display_as('a302c','G.H DEL VCI');
+		$crud->display_as('a302d','VALOR_RECONSTRUCCION');
        		
 		$crud->unset_export();
 		$crud->unset_add();
