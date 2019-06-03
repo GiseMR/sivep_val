@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 28, 2019 at 02:14 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Host: localhost:3306
+-- Generation Time: Jun 03, 2019 at 06:17 PM
+-- Server version: 5.6.23-cll-lve
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -78,6 +78,19 @@ CREATE TABLE `edificacion` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lindero`
+--
+
+CREATE TABLE `lindero` (
+  `idlindero` int(11) NOT NULL,
+  `idvaluacion` int(11) DEFAULT NULL,
+  `ubicacion` varchar(100) DEFAULT NULL,
+  `detalle` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Lideros/límites de un terreno';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu`
 --
 
@@ -119,18 +132,33 @@ CREATE TABLE `permisosmenu` (
 --
 
 INSERT INTO `permisosmenu` (`ID_PERMENU`, `COD_USU`, `ID_MENU`, `ESTATUS`) VALUES
-(17, 'gise', 1, 1),
-(18, 'gise', 2, 1),
-(19, 'gise', 3, 1),
-(20, 'gise', 4, 1),
-(21, 'gise', 5, 1),
-(57, 'Admin', 1, 1),
-(58, 'Admin', 2, 1),
-(59, 'Admin', 3, 1),
 (78, 'mpercy', 1, 1),
 (79, 'mpercy', 2, 1),
 (80, 'mpercy', 3, 1),
-(81, 'mpercy', 4, 1);
+(81, 'mpercy', 4, 1),
+(82, 'Admin', 1, 1),
+(83, 'Admin', 2, 1),
+(84, 'Admin', 3, 1),
+(85, 'Admin', 4, 1),
+(86, 'Admin', 5, 1),
+(87, 'gise', 1, 1),
+(88, 'gise', 2, 1),
+(89, 'gise', 3, 1),
+(90, 'gise', 4, 1),
+(91, 'gise', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `propietario`
+--
+
+CREATE TABLE `propietario` (
+  `idpropietario` int(11) NOT NULL,
+  `idvalaucion` int(11) DEFAULT NULL,
+  `dni` varchar(8) DEFAULT NULL,
+  `nombres` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Propietarios terreno';
 
 -- --------------------------------------------------------
 
@@ -148,6 +176,20 @@ CREATE TABLE `referencia` (
   `terreno` decimal(10,2) DEFAULT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Valores comerciales de referencia';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sintesis`
+--
+
+CREATE TABLE `sintesis` (
+  `idsintesis` int(11) NOT NULL,
+  `idvaluacion` int(11) DEFAULT NULL,
+  `detalle` varchar(200) DEFAULT NULL,
+  `montod` decimal(20,2) DEFAULT NULL,
+  `montos` decimal(20,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sistesis de la valuacion		';
 
 -- --------------------------------------------------------
 
@@ -2249,7 +2291,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`COD_USU`, `PASS_USU`, `NOM_USU`, `APP_USU`, `APM_USU`, `EMAIL_USU`, `ESTADO_USU`, `CARGO_USU`) VALUES
-('Admin', '21232f297a57a5a743894a0e4a801fc3', 'Rocio Pilar ', 'Vilchez', 'Palomino', 'rociopilar@gmail.com', 'A', 'AD'),
+('Admin', '0192023a7bbd73250516f069df18b500', 'Rocio Pilar ', 'Vilchez', 'Palomino', 'rociopilar@gmail.com', 'A', 'AD'),
 ('gise', '21232f297a57a5a743894a0e4a801fc3', 'Gisela', 'merino', 'Rivera', 'gise.gmr@gmail.com', 'A', 'AD'),
 ('mpercy', '13aef0865dcae54b2e4db0067e3fd5c6', 'Percy', 'Miranda', 'Moreano', 'percymiranda@gmail.com', 'A', 'AN');
 
@@ -2429,6 +2471,12 @@ ALTER TABLE `edificacion`
   ADD PRIMARY KEY (`idedificacion`);
 
 --
+-- Indexes for table `lindero`
+--
+ALTER TABLE `lindero`
+  ADD PRIMARY KEY (`idlindero`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -2441,10 +2489,22 @@ ALTER TABLE `permisosmenu`
   ADD PRIMARY KEY (`ID_PERMENU`);
 
 --
+-- Indexes for table `propietario`
+--
+ALTER TABLE `propietario`
+  ADD PRIMARY KEY (`idpropietario`);
+
+--
 -- Indexes for table `referencia`
 --
 ALTER TABLE `referencia`
   ADD PRIMARY KEY (`idreferencia`);
+
+--
+-- Indexes for table `sintesis`
+--
+ALTER TABLE `sintesis`
+  ADD PRIMARY KEY (`idsintesis`);
 
 --
 -- Indexes for table `ubigeo`
@@ -2487,22 +2547,40 @@ ALTER TABLE `edificacion`
   MODIFY `idedificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `lindero`
+--
+ALTER TABLE `lindero`
+  MODIFY `idlindero` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `permisosmenu`
 --
 ALTER TABLE `permisosmenu`
-  MODIFY `ID_PERMENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `ID_PERMENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+
+--
+-- AUTO_INCREMENT for table `propietario`
+--
+ALTER TABLE `propietario`
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `referencia`
 --
 ALTER TABLE `referencia`
   MODIFY `idreferencia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sintesis`
+--
+ALTER TABLE `sintesis`
+  MODIFY `idsintesis` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `valor`

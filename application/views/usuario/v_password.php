@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-    <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
     <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2>Cambiar Contraseña</h2>
+<h2>Cambiar Contrasenia</h2>
 
 <form method="post" action="<?= base_url() ?>usuario/cambiarpassword">
 <input name="codigoUsuario" type="hidden" value="<?php echo $codigoUsuario; ?>" />
@@ -22,11 +22,11 @@
     <h5>Nombre usuario: <?php echo $nombreusuario; ?></h5>    
     </div>
     <div class="col-sm-offset-3 col-sm-3">
-        <label for="password">Contraseña actual</label>
+        <label for="password">Contrasenia actual</label>
         <input type="password" name="password" class="form-control" required/>
     </div>
     <div class="col-sm-offset-3 col-sm-3">
-        <label for="password">Nueva contraseña </label>
+        <label for="password">Nueva contrasenia </label>
         <input type="password" name="newpassword" class="form-control" required/>
     </div>
 </div>

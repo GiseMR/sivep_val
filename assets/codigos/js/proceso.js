@@ -1,21 +1,17 @@
 $(document).ready(function(){
 
 	//RUTA DE NUESTRO PROYECTO... IMPORTANTE!!!! CAMBIARLO CUANDO SE CAMBIA DE CARPETA O SE PONE EN UN SERVIDOR ****
-   
-  	var base_url ='http://localhost/sivep/index.php/';
-    
-  
-
-
+       var base_url ='http://localhost/sivep/';
+       
   	//Funcion que captura cuando se cambia la seleccion del combo DEPARTAMENTO
-	$("#departamento").change(function(event){ 
+	$("#a203a").change(function(event){  //Departamento
 
         
 		//Capturamos ID del departamento seleccionado
-       	var valor = $("#departamento option:selected").val();
+       	var valor = $("#a203a option:selected").val();
 
-        $("#provincia").find('option').remove(); //Limpiamos los combos para que no se sobrecargen los datos
-        $("#distrito").find('option').remove();//Limpiamos los combos para que no se sobrecargen los datos
+        $("#a203b").html("<option>Seleccione...</option>"); //Limpiamos los combos para que no se sobrecargen los datos
+        $("#a203c").html("<option>Seleccione...</option>");//Limpiamos los combos para que no se sobrecargen los datos
 
         //Consultamos a la BD via AJAX
         $.ajax({
@@ -27,7 +23,7 @@ $(document).ready(function(){
                     
                     var datos = data.consulta_provincia;
                     for(i in datos){
-                        $("#provincia").append("<option value="+datos[i].C_CODPROV+">"+datos[i].C_NOMUBIGEO+"</option>")
+                        $("#a203b").append("<option value="+datos[i].C_CODPROV+">"+datos[i].C_NOMUBIGEO+"</option>")
                     }
                 }, 
                 error:function (error) {
@@ -39,13 +35,13 @@ $(document).ready(function(){
 
 
     //Funcion que captura cuando se cambia la seleccion del combo PROVINCIA
-    $("#provincia").change(function(event){ 
+    $("#a203b").change(function(event){ //provincia
 
         //Capturamos ID del departamento seleccionado
-        var id_dep = $("#departamento option:selected").val();
-        var id_prov = $("#provincia option:selected").val();
+        var id_dep = $("#a203a option:selected").val();
+        var id_prov = $("#a203b option:selected").val();
 
-        $("#distrito").find('option').remove();//Limpiamos los combos para que no se sobrecargen los datos
+        $("#a203c").html("<option>Seleccione...</option>");//Limpiamos los combos para que no se sobrecargen los datos
 
         $.ajax({
                 url: base_url+'ubigeo/cargar_distrito',
@@ -56,7 +52,7 @@ $(document).ready(function(){
                     
                     var datos = data.consulta_distrito;
                     for(i in datos){
-                        $("#distrito").append("<option value="+datos[i].C_CODDIST+">"+datos[i].C_NOMUBIGEO+"</option>")
+                        $("#a203c").append("<option value="+datos[i].C_CODDIST+">"+datos[i].C_NOMUBIGEO+"</option>")
                     }
                 }, 
                 error:function (error) {

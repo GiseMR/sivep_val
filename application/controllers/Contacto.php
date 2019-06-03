@@ -22,7 +22,7 @@ class Contacto extends CI_Controller {
 		$crud->display_as('FENAC_CONT','FECH_NAC.');
 		$crud->display_as('TEL_CONT','TELEFONO');
 		$crud->display_as('EMAIL_CONT','CORREO');
-		$crud->display_as('PAGO_CONT','PAGO_S/.');
+		$crud->display_as('PAGO_CONT','PAGO');
 		$crud->display_as('OBS_CONT','OBSERVACION');
 		$crud->field_type('EMAIL_CONT','email');	
 			

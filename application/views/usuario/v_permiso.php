@@ -45,23 +45,17 @@
        </table>
        <?php
     }
-
-    if(isset($mensaje)){
-        ?>
-            <div class="alert alert-success" role="alert">
-            <p>Sus datos han sido actualizados correctamente. <a href="<?= base_url() ?>usuario" class="alert-link">Volver a la lista</a> </p>
-            </div>        
-        <?php
-    }
 ?>
-
-
 <div class="form-group gcrud-form-group">
     <div class="col-sm-offset-3 col-sm-7">
         <button class="btn btn-secondary btn-success b10" type="submit" id="form-button-save">
             <i class="el el-ok"></i>
             Actualizar cambios 
         </button>
+        <button class="btn btn-info b10" type="submit" id="save-and-go-back-button">
+            <i class="el el-return-key"></i>
+         Actualizar y volver a la lista 
+        </button>    
         <a class="btn btn-secondary cancel-button b10" href="<?= base_url() ?>usuario">
                 <i class="el el-warning-sign"></i>
                 Cancelar                         

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+  
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -186,11 +186,17 @@
                   ?></b></h3>
               </a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="<?php echo base_url();?>usuario/index/read/<?php echo $this->session->userdata['codigo'];?>"  target="content-frame"><i class="ti-user m-r-5 m-l-5"></i> Mi perfil</a>
+                <a class="dropdown-item" href="<?php echo base_url();?>usuario/index/read/<?php 
+                  if (isset($this->session->userdata['logged_in']) )
+                    { echo $this->session->userdata['codigo']; }
+                  ?>"  target="content-frame"><i class="ti-user m-r-5 m-l-5" ></i> Mi perfil</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>usuario/password/<?php echo $this->session->userdata['codigo'];?>"  target="content-frame" class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
+                <a href="<?php echo base_url();?>usuario/password/<?php 
+                  if (isset($this->session->userdata['logged_in']) )
+                    { echo $this->session->userdata['codigo']; }
+                  ?>" class="dropdown-item" target="content-frame"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>index.php/login/salir" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
+                <a href="<?php echo base_url();?>index.php/login/salir" class="dropdown-item" ><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -212,33 +218,17 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
           <ul id="sidebarnav" class="p-t-30">
-            <?php 
-              if(isset($MenuPermisos)){
-                foreach($MenuPermisos as $row) {
-                  ?>
-                  <li class="sidebar-item"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                     href="<?php if($row['URL_MENU']=='#'){ echo 'javascript:void(0)'; } else 
-                     { echo base_url().''.$row['URL_MENU']; }  ?>" 
-                    target="content-frame" aria-expanded="false">
-                    <i class="<?php echo $row['IMG_MENU'];?>"></i>
-                    <span class="hide-menu"><?php echo $row['DESC_MENU']; ?></span>
-                    </a>
-
-                    <?php
-                      if($row['DESC_MENU']=='Valorizaciones'){
-                        ?>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                              <li class="sidebar-item"><a href="<?= base_url() ?>valoriza" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-library-books"></i><span class="hide-menu"> Gestión </span></a></li>
-                              <li class="sidebar-item"><a href="<?= base_url() ?>valoriza/nuevo" target="content-frame" class="sidebar-link"><i class="mdi mdi-library-plus"></i><span class="hide-menu"> Nuevo </span></a></li>
-                            </ul>
-                    </li>               
-                    <?php
-                  }
-                }
-              }
-            ?>
-
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>inicio/main" target="content-frame" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Inicio</span></a></li>
+            
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu"> Valorizaciones </span></a>
+            <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item"><a href="<?= base_url() ?>valoriza" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-library-books"></i><span class="hide-menu"> Gestión </span></a></li>
+                <li class="sidebar-item"><a href="<?= base_url() ?>valoriza/nuevo" target="content-frame" class="sidebar-link"><i class="mdi mdi-library-plus"></i><span class="hide-menu"> Nuevo </span></a></li>
+              </ul>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>usuario" target="content-frame" aria-expanded="false"><i class="mdi mdi-account-key"></i><span class="hide-menu">Usuarios </span></a>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contacto" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>reporte" target="content-frame" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Reportes</span></a></li>
+            </li>
           </ul>
         </nav>
         <!-- End Sidebar navigation -->

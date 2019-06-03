@@ -25,7 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/sivep/';
-/*$config['base_url'] = 'http://8386000d.ngrok.io/sivep';*/
 
 /*
 |--------------------------------------------------------------------------
