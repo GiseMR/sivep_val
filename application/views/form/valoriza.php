@@ -1394,7 +1394,151 @@
                         </section>
                         <h3>HOJA RESUMEN</h3>
                         <section>
-                            PENDIENTE...
+                        
+                        <div class="row">
+                        
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <h3 class="card text-center">HOJA RESUMEN</h3>
+                                        <h3 class="card text-center">VALUACION DEL INMUEBLE</h3>
+                                            <div class="form-group row">
+                                                <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="Val.N° 001-2019" readonly>
+                                                </div>
+                                                <label for="tipoinmueble" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="tipoinmueble" name="tipoinmueble" value="URBANO" readonly>
+                                                </div>
+                                            </div>
+
+                                            <h5 class="card-title">REFERENCIA:</h5>                                            
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="for" class="col-sm-2 text-left control-label col-form-label">PROPIETARIOS</label>
+                                                <div class="col-sm-7">
+
+                                                    <div id="table-propietario" class="table-editable">
+                                                        <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                            <thead>
+                                                                 <tr>
+                                                                    <th class="text-center">NOMBRES</th>                                                                    
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="pt-5-half" contenteditable="true"></td>                                                                 
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                                        
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="soli" class="col-sm-2 text-left control-label col-form-label">SOLICITANTE</label>
+                                                
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="soli" name="soli">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="entifinan" class="col-sm-2 text-left control-label col-form-label">ENTIDAD FINANCIERA</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="entifinan" name="entifinan">
+                                                </div>
+                                            </div>
+
+                                            <h5 class="card-title">UBICACIÓN</h5>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="regis" class="col-sm-2 text-left control-label col-form-label">REGISTRAL</label>
+                                                <div class="col-sm-7">
+                                                    <textarea rows="2" class="form-control" id="regis" name="regis"></textarea>
+                                                </div>
+                                            </div>                                        
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="depa" class="col-sm-2 text-left control-label col-form-label">DEPARTAMENTO</label>
+                                                <div class="col-sm-2">
+                                                <input type="text" class="form-control" id="depa" name="depa">
+                                                </div>
+                                                <label for="a203b" class="col-sm-1 text-right control-label col-form-label">PROVINCIA</label>
+                                                <div class="col-sm-2">
+                                                <input type="text" class="form-control" id="provi" name="provi">
+                                                </div>
+                                                <label for="a203c" class="col-sm-1 text-right control-label col-form-label">DISTRITO</label>
+                                                <div class="col-sm-2">
+                                                <input type="text" class="form-control" id="distri" name="distri">
+                                                </div>
+                                            </div>
+                                            <h5 class="card-title">CROQUIS DE UBICACION</h5>                                    
+                                            <div class="form-group row">
+                                               
+                                            </div>
+                                            <h4 class="card-title">RESUMEN DE VALUACIÓN</h4>                                    
+                                            <div class="form-group row">
+                                                
+                                            </div>
+                                            <h5 class="card-title">OBSERVACIONES</h5>  
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">DECLARATORIA DE FABRICA</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="decfabri" name="decfabri" value="No se encuentra inscrita">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">CARGAS Y GRAVAMENES A FAVOR DE:</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="entifinac" name="entifinac">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">USO/OCUPACIÓN</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="uso" name="uso">
+                                                </div>
+                                            </div>
+
+                                         
+                                            <h5 class="card-title">TIPO DE GARANTIA</h5> 
+                                            <div class="form-group row">                                             
+                                            <div class="col-sm-1"></div>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="tiga" name="tiga" value="">
+                                                </div>
+                                            </div>  
+                                            <h5 class="card-title">PERITO RESPONSABLE</h5>                              
+                                            <div class="form-group row"> 
+                                            <div class="col-sm-1"></div>                                              
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="e2900a" name="e2900a" value="Cyntia Flor Ochoa Pino">
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <label for="e2900c" class="col-sm-1 text-right control-label col-form-label">CAP:</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" id="e2900c" name="e2900c" value="12452">
+                                                </div> 
+                                                </div>
+
+                                            <h5 class="card-title">FECHA:</h5> 
+                                            <div class="form-group row"> 
+                                            <div class="col-sm-1"></div>  
+                                            <label for="fechavaluacion" class="col-sm-4 text-right control-label col-form-label"><h5>San Jerónimo - CUSCO</h5></label>
+                                            <div class="col-sm-2">
+                                                    <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
+                                                </div>
+                                            </div>                                             
+
+
                         </section>
                     </div>
                 </form>
