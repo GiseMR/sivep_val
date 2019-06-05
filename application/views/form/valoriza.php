@@ -103,7 +103,9 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <span class="table-propietario-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                        <span class="table-propietario-add float-right mb-3 mr-2">
+                                                            <a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a>
+                                                        </span>
                                                     </div>
                                                 </div>
 
@@ -1419,7 +1421,7 @@
                                                 <label for="for" class="col-sm-2 text-left control-label col-form-label">PROPIETARIOS</label>
                                                 <div class="col-sm-7">
 
-                                                    <div id="table-propietario" class="table-editable">
+                                                    <div id="table-propietario-resumen" class="table-editable">
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                  <tr>
@@ -1427,9 +1429,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="pt-5-half" contenteditable="true"></td>                                                                 
-                                                                </tr>
+
                                                             </tbody>
                                                         </table>                                                        
                                                     </div>
@@ -1576,6 +1576,7 @@
 
     <script>
         $(function() {
+            
             //serializar form como json
             $.fn.serializeFormJSON = function() {
                 var o = {};
@@ -1721,12 +1722,45 @@
             $("#c1600").val((100 - porcentaje).toFixed(2));
         }
 
+        function cargarDatosResumen(){
+                const $tablePropietarioResumen = $('#table-propietario-resumen');
+                $tablePropietarioResumen.find("tr:gt(0)").remove();
+                $('#table-propietario tbody tr').each(function(index, value) {
+                                    const nombres = $(value).find("td:eq(1)").html();
+                                    $tablePropietarioResumen.find('table').append(getRow(nombres));
+                                });
+
+                $("#soli").val($("#a103b").val());
+                $("#entifinan").val($("#a104b").val());
+                $("#regis").val($("#a201").val());
+
+                $("#depa").val($("#a203a option:selected").text());
+                $("#provi").val($("#a203b option:selected").text());
+                $("#distri").val($("#a203c option:selected").text());
+                
+                $("#entifinac").val($("#a104b").val());
+                $("#uso").val($("#a305").val().toString());
+                $("#tiga").val($("#c1500g option:selected").text());
+            }
+            
+            function getRow(nombres){
+                return `<tr>
+                        <td class="pt-1-half" contenteditable="true">`+nombres+`</td>
+                        </tr>`;
+            }
+            
         // Basic Example with form
         var form = $("#valuacion-form");
         form.children("div").steps({
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: "fade",
+            onStepChanging: function (event, currentIndex, newIndex) {     
+                if(newIndex===5) {
+                    cargarDatosResumen();
+                }
+                return true; 
+            },
             onFinished: function(event, currentIndex) {
                 alert("Terminado");
                 var formData = $("#valuacion-form").serializeFormJSON();
