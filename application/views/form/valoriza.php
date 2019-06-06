@@ -27,6 +27,12 @@
 </head>
 
 <body>
+
+    <form id="image-form" name="image-form">
+    </form>
+    <form id="temp-form" name="temp-form">
+    </form>
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -58,7 +64,7 @@
                                             <div class="form-group row">
                                                 <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="Val.N° 001-2019" readonly>
+                                                    <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="<?= $codigo ?>" readonly>
                                                 </div>
                                                 <label for="tipoinmueble" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
                                                 <div class="col-sm-3">
@@ -88,8 +94,8 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">DNI</th>
-                                                                    <th class="text-center">NOMBRES</th>
+                                                                    <th class="text-center" head="dni">DNI</th>
+                                                                    <th class="text-center" head="nombres">NOMBRES</th>
                                                                     <th class="text-center" style="width:10px"></th>
                                                                 </tr>
                                                             </thead>
@@ -103,9 +109,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <span class="table-propietario-add float-right mb-3 mr-2">
-                                                            <a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a>
-                                                        </span>
+                                                        <span class="table-propietario-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
                                                     </div>
                                                 </div>
 
@@ -179,8 +183,6 @@
                                                 </div>
                                             </div>
 
-
-
                                             <h5 class="card-title">3.0 DESCRIPCION DETALLADA</h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
@@ -208,6 +210,13 @@
 
                                                     <div id="table-lindero" class="table-editable">
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                            <thead style="display:none">
+                                                                <tr>
+                                                                    <th head="ubicacion"></th>
+                                                                    <th head="detalle"></th>
+                                                                    <th></th>
+                                                                </tr>
+                                                            </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <td style="width:200px" class="pt-1-half" contenteditable="true">POR EL FRENTE</td>
@@ -275,10 +284,10 @@
                                                     <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                         <thead>
                                                             <tr>
-                                                                <th class="text-center">BLOQUE</th>
-                                                                <th class="text-center">NIVEL</th>
-                                                                <th class="text-center">DISTRIBUCION DE AMBIENTES</th>
-                                                                <th class="text-center">AREA CONST. (m<sup>2</sup>)</th>
+                                                                <th class="text-center" head="bloque">BLOQUE</th>
+                                                                <th class="text-center" head="nivel">NIVEL</th>
+                                                                <th class="text-center" head="distribucion">DISTRIBUCION DE AMBIENTES</th>
+                                                                <th class="text-center" head="area">AREA CONST. (m<sup>2</sup>)</th>
                                                                 <th class="text-center"></th>
                                                             </tr>
                                                         </thead>
@@ -624,17 +633,27 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">REFERENCIA</th>
-                                                                    <th class="text-center">DIRECCION</th>
-                                                                    <th class="text-center">PROPIETARIO</th>
-                                                                    <th class="text-center">TELEFONO</th>
-                                                                    <th class="text-center">DISTANCIA</th>
-                                                                    <th class="text-center">TERRENO $</th>
-                                                                    <th class="text-center">FECHA</th>
+                                                                    <th class="text-center" head="direccion">DIRECCION</th>
+                                                                    <th class="text-center" head="propietario">PROPIETARIO</th>
+                                                                    <th class="text-center" head="telefono">TELEFONO</th>
+                                                                    <th class="text-center" head="distancia">DISTANCIA</th>
+                                                                    <th class="text-center" head="terreno">TERRENO $</th>
+                                                                    <th class="text-center" head="fecha">FECHA</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                <tr>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td>
+                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                    </td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                         <span class="table-referencia-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
@@ -673,9 +692,14 @@
                                                 <div class="col-sm-11">
                                                     <textarea rows="2" class="form-control" id="c1400e" name="c1400e">Se toma el valor considerando las referencias y predios de características similares, con un criterio conservador y prudente  asi mismo por encontrarse en la misma esquina.</textarea>
                                                 </div>
+
+                                                <div class="col-sm-12 text-center" style="height: 400px; display:none;">
+                                                    <img id="c1400f-prev" src="#" style="height: 100%">
+                                                </div>
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
-                                                    <input type="file" class="form-control" id="c1400f" name="c1400f">
+                                                    <input type="hidden" id="c1400f" name="c1400f" value="">
+                                                    <input type="file" class="form-control" id="c1400f-temp" name="c1400f-temp" form="image-form" accept=".jpeg, .jpg, .png">
                                                 </div>
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
@@ -931,10 +955,10 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">BLOQUE</th>
-                                                                    <th class="text-center">(*)Prop. Exclusiva</th>
-                                                                    <th class="text-center">Categoria</th>
-                                                                    <th class="text-center">Precio Unit S/.</th>
+                                                                    <th class="text-center" head="bloque">BLOQUE</th>
+                                                                    <th class="text-center" head="propiedad">(*)Prop. Exclusiva</th>
+                                                                    <th class="text-center" head="categoria">Categoria</th>
+                                                                    <th class="text-center" head="precio">Precio Unit S/.</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
@@ -1060,12 +1084,12 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">DESCRIPCION</th>
-                                                                    <th class="text-center">COSTO S/ M<sup>2</sup></th>
-                                                                    <th class="text-center">CANTIDAD M<sup>2</sup>, M<sup>3</sup>, Und.</th>
-                                                                    <th class="text-center">% DEPRECIACION</th>
-                                                                    <th class="text-center">TOTAL</th>
-                                                                    <th class="text-center">TOTAL SIN DEPRECIACION</th>
+                                                                    <th class="text-center" head="descripcion">DESCRIPCION</th>
+                                                                    <th class="text-center" head="costo">COSTO S/ M<sup>2</sup></th>
+                                                                    <th class="text-center" head="cantidad">CANTIDAD M<sup>2</sup>, M<sup>3</sup>, Und.</th>
+                                                                    <th class="text-center" head="depreciacion">% DEPRECIACION</th>
+                                                                    <th class="text-center" head="total">TOTAL</th>
+                                                                    <th class="text-center" head="totalsindep">TOTAL SIN DEPRECIACION</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
@@ -1132,9 +1156,9 @@
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">VCP = VT + VE + VOC</th>
-                                                                    <th class="text-center">US$</th>
-                                                                    <th class="text-center">S/</th>
+                                                                    <th class="text-center" head="detalle">VCP = VT + VE + VOC</th>
+                                                                    <th class="text-center" head="montod">US$</th>
+                                                                    <th class="text-center" head="montos">S/</th>
                                                                     <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
@@ -1386,9 +1410,91 @@
                                             </div>
                                             <div class="col-sm-1"></div>
                                             <div class="col-sm-11">
-                                                <input type="file" class="form-control" id="c1400e" name="c1400e">
+                                                <div id="table-foto" class="table-editable">
+                                                    <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center" head="ruta" style="display:none"></th>
+                                                                <th class="text-center" head="leyenda">LEYENDA</th>
+                                                                <th class="text-center">SELECCIÓN</th>
+                                                                <th class="text-center">VISTA PREVIA</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="pt-3-half" style="display:none"></td>
+                                                                <td class="pt-3-half" contenteditable="true"></td>
+                                                                <td class="pt-3-half"><input type="file" class="form-control" form="temp-form" accept=".jpeg, .jpg, .png"></td>
+                                                                <td class="pt-3-half"><img src="#" style="height: 200px"></td>
+                                                                <td>
+                                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <span class="table-foto-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                </div>
+
                                             </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <h3>FOTOS COMP.</h3>
+                        <section>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">FOTOS COMPLEMENTARIAS</h4>
+                                            <hr>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <h4>CROQUIS DE UBICACION</h4>
+                                                </div>
+                                                <div class="col-sm-12 text-center" style="height: 400px; display:none;">
+                                                    <img id="e3000a-prev" src="#" style="height: 100%">
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <input type="hidden" id="e3000a" name="e3000a" value="">
+                                                    <input type="file" class="form-control" id="e3000a-temp" name="e3000a-temp" form="image-form" accept=".jpeg, .jpg, .png">
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <h4>FRENTE/FACHADA PRINCIPAL</h4>
+                                                </div>
+                                                <div class="col-sm-12 text-center" style="height: 400px; display:none;">
+                                                    <img id="e3000b-prev" src="#" style="height: 100%">
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <input type="hidden" id="e3000b" name="e3000b" value="">
+                                                    <input type="file" class="form-control" id="e3000b-temp" name="e3000b-temp" form="image-form" accept=".jpeg, .jpg, .png">
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <h4>PLANO GENERAL</h4>
+                                                </div>
+                                                <div class="col-sm-12 text-center" style="height: 500px; display:none;">
+                                                    <img id="e3000c-prev" src="#" style="height: 100%">
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <input type="hidden" id="e3000c" name="e3000c" value="">
+                                                    <input type="file" class="form-control" id="e3000c-temp" name="e3000c-temp" form="image-form" accept=".jpeg, .jpg, .png">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1421,7 +1527,7 @@
                                                 <label for="for" class="col-sm-2 text-left control-label col-form-label">PROPIETARIOS</label>
                                                 <div class="col-sm-7">
 
-                                                    <div id="table-propietario-resumen" class="table-editable">
+                                                    <div id="table-propietario" class="table-editable">
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                  <tr>
@@ -1429,7 +1535,9 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-
+                                                                <tr>
+                                                                    <td class="pt-5-half" contenteditable="true"></td>                                                                 
+                                                                </tr>
                                                             </tbody>
                                                         </table>                                                        
                                                     </div>
@@ -1576,7 +1684,6 @@
 
     <script>
         $(function() {
-            
             //serializar form como json
             $.fn.serializeFormJSON = function() {
                 var o = {};
@@ -1619,6 +1726,111 @@
             });
 
             $("div.steps").find("li.disabled").removeClass("disabled").addClass("done");
+
+            $("#c1400f-temp").change(function() {
+                setIMG(this, "c1400f-prev");
+                var formData = new FormData($("form")[0]);
+                $.ajax({
+                    url: "<?= base_url() ?>valoriza/subeImagen/c1400f-temp", // Url to which the request is send
+                    type: "POST", // Type of request to be send, called as method
+                    data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                    contentType: false, // The content type used when sending data to the server.
+                    cache: false, // To unable request pages to be cached
+                    processData: false, // To send DOMDocument or non processed data file it is set to false
+                    success: function(data) // A function to be called if request succeeds
+                    {
+                        var result = JSON.parse(data);
+                        console.log(result);
+                        if (result.status == "error") {
+                            alert(result.message);
+                        } else if (result.status == "warning") {
+                            alert(result.message);
+                            $('#c1400f-prev').attr('src', "<?= base_url() ?>" + result.file);
+                            $('#c1400f').val(result.file);
+                        } else if (result.status = "ok") {
+                            $('#c1400f').val(result.file);
+                        }
+                    }
+                });
+            });
+            $("#e3000a-temp").change(function() {
+                setIMG(this, "e3000a-prev");
+                var formData = new FormData($("form")[0]);
+                $.ajax({
+                    url: "<?= base_url() ?>valoriza/subeImagen/e3000a-temp", // Url to which the request is send
+                    type: "POST", // Type of request to be send, called as method
+                    data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                    contentType: false, // The content type used when sending data to the server.
+                    cache: false, // To unable request pages to be cached
+                    processData: false, // To send DOMDocument or non processed data file it is set to false
+                    success: function(data) // A function to be called if request succeeds
+                    {
+                        var result = JSON.parse(data);
+                        console.log(result);
+                        if (result.status == "error") {
+                            alert(result.message);
+                        } else if (result.status == "warning") {
+                            alert(result.message);
+                            $('#e3000a-prev').attr('src', "<?= base_url() ?>" + result.file);
+                            $('#e3000a').val(result.file);
+                        } else if (result.status = "ok") {
+                            $('#e3000a').val(result.file);
+                        }
+                    }
+                });
+            });
+            $("#e3000b-temp").change(function() {
+                setIMG(this, "e3000b-prev");
+                var formData = new FormData($("form")[0]);
+                $.ajax({
+                    url: "<?= base_url() ?>valoriza/subeImagen/e3000b-temp", // Url to which the request is send
+                    type: "POST", // Type of request to be send, called as method
+                    data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                    contentType: false, // The content type used when sending data to the server.
+                    cache: false, // To unable request pages to be cached
+                    processData: false, // To send DOMDocument or non processed data file it is set to false
+                    success: function(data) // A function to be called if request succeeds
+                    {
+                        var result = JSON.parse(data);
+                        console.log(result);
+                        if (result.status == "error") {
+                            alert(result.message);
+                        } else if (result.status == "warning") {
+                            alert(result.message);
+                            $('#e3000b-prev').attr('src', "<?= base_url() ?>" + result.file);
+                            $('#e3000b').val(result.file);
+                        } else if (result.status = "ok") {
+                            $('#e3000b').val(result.file);
+                        }
+                    }
+                });
+            });
+            $("#e3000c-temp").change(function() {
+                setIMG(this, "e3000c-prev");
+                var formData = new FormData($("form")[0]);
+                $.ajax({
+                    url: "<?= base_url() ?>valoriza/subeImagen/e3000c-temp", // Url to which the request is send
+                    type: "POST", // Type of request to be send, called as method
+                    data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                    contentType: false, // The content type used when sending data to the server.
+                    cache: false, // To unable request pages to be cached
+                    processData: false, // To send DOMDocument or non processed data file it is set to false
+                    success: function(data) // A function to be called if request succeeds
+                    {
+                        var result = JSON.parse(data);
+                        console.log(result);
+                        if (result.status == "error") {
+                            alert(result.message);
+                        } else if (result.status == "warning") {
+                            alert(result.message);
+                            $('#e3000c-prev').attr('src', "<?= base_url() ?>" + result.file);
+                            $('#e3000c').val(result.file);
+                        } else if (result.status = "ok") {
+                            $('#e3000c').val(result.file);
+                        }
+                    }
+                });
+            });
 
             $("#c1500a").on('input', function() {
                 $("#c1500av").text($(this).val());
@@ -1691,6 +1903,31 @@
 
         });
 
+        function getTable(tableName, addHead, headValue) {
+            var o = "[";
+            var head = [];
+
+            $("#" + tableName + " thead th").each(function(i, e) {
+                if ($(this).attr("head") != undefined && $(this).attr("head") != "") {
+                    head[i] = $(this).attr("head");
+                }
+            });
+
+            $("#" + tableName + " tbody tr").each(function(i, e) {
+                var item = "{";
+                $(this).find("td").each(function(n, v) {
+                    if (head[n] != undefined) {
+                        item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                    }
+                });
+                item += '"' + addHead + '": "' + headValue + '"},';
+                o += item;
+            });
+            o = o.slice(0, -1);
+            console.log(o + "]");
+            return o + "]";
+        }
+
         function consultarDni(dni, mostrarResultado) {
             $.ajax({
                 type: "post",
@@ -1721,7 +1958,6 @@
             $("#c1500f").val(porcentaje.toFixed(2));
             $("#c1600").val((100 - porcentaje).toFixed(2));
         }
-
         function cargarDatosResumen(){
                 const $tablePropietarioResumen = $('#table-propietario-resumen');
                 $tablePropietarioResumen.find("tr:gt(0)").remove();
@@ -1729,11 +1965,9 @@
                                     const nombres = $(value).find("td:eq(1)").html();
                                     $tablePropietarioResumen.find('table').append(getRow(nombres));
                                 });
-
                 $("#soli").val($("#a103b").val());
                 $("#entifinan").val($("#a104b").val());
                 $("#regis").val($("#a201").val());
-
                 $("#depa").val($("#a203a option:selected").text());
                 $("#provi").val($("#a203b option:selected").text());
                 $("#distri").val($("#a203c option:selected").text());
@@ -1748,7 +1982,9 @@
                         <td class="pt-1-half" contenteditable="true">`+nombres+`</td>
                         </tr>`;
             }
-            
+
+
+        // 
         // Basic Example with form
         var form = $("#valuacion-form");
         form.children("div").steps({
@@ -1756,29 +1992,64 @@
             bodyTag: "section",
             transitionEffect: "fade",
             onStepChanging: function (event, currentIndex, newIndex) {     
-                if(newIndex===5) {
+                if(newIndex===6) {
                     cargarDatosResumen();
                 }
                 return true; 
             },
+
             onFinished: function(event, currentIndex) {
-                alert("Terminado");
+                // FIN DE FORMULARIO
+                //alert("Terminado");
                 var formData = $("#valuacion-form").serializeFormJSON();
                 console.log(formData);
-                
+
+                //ENVIAR CABECERA CON AJAX
                 $.ajax({
                     type: "post",
                     url: " <?php echo base_url(); ?>valoriza/grabar",
                     data: formData,
                     success: function(response) {
                         console.log(response);
+                        if (response != "ERROR") {
+                            registryid = response;
+                        }
                     },
                     error: function() {
                         alert("Error al grabar");
                     }
+                }).done(function() {
+                    if (registryid != 0) {
+                        grabaDetalle("table-propietario", "propietario");
+                        grabaDetalle("table-edificacion", "edificacion");
+                        grabaDetalle("table-lindero", "lindero");
+                        grabaDetalle("table-referencia", "referencia");
+                        grabaDetalle("table-sintesis", "sintesis");
+                        grabaDetalle("table-valor", "valor");
+                        grabaDetalle("table-valor-comp", "valorcomplementario");
+                        grabaDetalle("table-foto", "foto");
+                    }
                 });
             }
         });
+
+        function grabaDetalle(tabla, destiny) {
+            var posturl = "<?= base_url() ?>valoriza/grabardetalle/" + destiny;
+            var postdata = JSON.parse('{ "' + destiny + '" : ' + getTable(tabla, 'idvaluacion', registryid) + '}');
+
+            $.ajax({
+                type: "post",
+                url: posturl,
+                data: postdata,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function() {
+                    console.log("Error al grabar detalle " + tabla);
+                }
+            });
+
+        }
 
         //FUNCIONES TABLA EDITABLE PROPIETARIO
         const $tablePropietario = $('#table-propietario');
@@ -1913,7 +2184,6 @@
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true"></td>
-                            <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true">0.00</td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td>
@@ -1934,7 +2204,7 @@
         });
 
         $("#table-referencia").on('keyup', 'td', function(e) {
-            if (this.cellIndex == 5) {
+            if (this.cellIndex == 4) {
                 var precioTerreno = parseFloat($(this).html());
                 if (!isNaN(precioTerreno)) {
                     calcula1400a();
@@ -2355,8 +2625,91 @@
             $("#d1903g").val(vnrDol.toFixed(2));
             $("#d1903h").val(vnrSol.toFixed(2));
         }
+       
 
         //FIN FUNCIONES TABLA EDITABLE SINTESIS DE LA VALUACION
+
+
+        //FUNCIONES TABLA EDITABLE FOTO
+        const $tableFoto = $('#table-foto');
+
+        const newFoTr = `<tr>
+                            <td class="pt-3-half" style="display:none"></td>
+                            <td class="pt-3-half" contenteditable="true"></td>
+                            <td class="pt-3-half"><input type="file" class="form-control" form="form-temp" accept=".jpeg, .jpg, .png"></td>
+                            <td class="pt-3-half"><img src="#" style="height: 200px"></td>
+                            <td>
+                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                            </td>
+                        </tr>`;
+
+        $('.table-foto-add').on('click', 'a', () => {
+            $tableFoto.find('table').append(newFoTr);
+        });
+
+        $tableFoto.on('click', '.table-remove', function() {
+            $(this).parents('tr').detach();
+        });
+
+        $("#table-foto").on('change', 'input', function(e) {
+            var row = $(this).closest("tr");
+            var img = row.find("img");
+            setIMGTable(this, img);
+            var formData = new FormData();
+            formData.append("img-temp", this.files[0]);
+            $.ajax({
+                url: "<?= base_url() ?>valoriza/subeImagen/img-temp", // Url to which the request is send
+                type: "POST", // Type of request to be send, called as method
+                data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                contentType: false, // The content type used when sending data to the server.
+                cache: false, // To unable request pages to be cached
+                processData: false, // To send DOMDocument or non processed data file it is set to false
+                success: function(data) // A function to be called if request succeeds
+                {
+                    var result = JSON.parse(data);
+                    console.log(result);
+                    if (result.status == "error") {
+                        alert(result.message);
+                    } else if (result.status == "warning") {
+                        alert(result.message);
+                        img.attr('src', "<?= base_url() ?>" + result.file);
+                        row.find("td:eq(0)").html(result.file);
+                    } else if (result.status = "ok") {
+                        row.find("td:eq(0)").html(result.file);
+                    }
+                }
+            });
+        });
+
+
+        //FIN FUNCIONES TABLA EDITABLE FOTO
+
+        function setIMG(input, target) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#' + target).attr('src', e.target.result);
+                    $('#' + target).closest("div").show();
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function setIMGTable(input, img) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    img.attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 </body>
 
