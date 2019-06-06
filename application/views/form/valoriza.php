@@ -1456,6 +1456,7 @@
                                                 <div class="col-sm-11">
                                                     <h4>CROQUIS DE UBICACION</h4>
                                                 </div>
+
                                                 <div class="col-sm-12 text-center" style="height: 400px; display:none;">
                                                     <img id="e3000a-prev" src="#" style="height: 100%">
                                                 </div>
@@ -1511,13 +1512,13 @@
                                         <h3 class="card text-center">HOJA RESUMEN</h3>
                                         <h3 class="card text-center">VALUACION DEL INMUEBLE</h3>
                                             <div class="form-group row">
-                                                <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
+                                                <label for="nroValuacionResumen" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="Val.N° 001-2019" readonly>
+                                                    <input type="text" class="form-control" id="nroValuacionResumen" name="nroValuacionResumen" value="Val.N° 001-2019" readonly>
                                                 </div>
-                                                <label for="tipoinmueble" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
+                                                <label for="tipoinmuebleresumen" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="tipoinmueble" name="tipoinmueble" value="URBANO" readonly>
+                                                    <input type="text" class="form-control" id="tipoinmuebleresumen" name="tipoinmuebleresumen" value="URBANO" readonly>
                                                 </div>
                                             </div>
 
@@ -1527,7 +1528,7 @@
                                                 <label for="for" class="col-sm-2 text-left control-label col-form-label">PROPIETARIOS</label>
                                                 <div class="col-sm-7">
 
-                                                    <div id="table-propietario" class="table-editable">
+                                                    <div id="table-propietario-resumen" class="table-editable">
                                                         <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
                                                             <thead>
                                                                  <tr>
@@ -1586,7 +1587,12 @@
                                             </div>
                                             <h5 class="card-title">CROQUIS DE UBICACION</h5>                                    
                                             <div class="form-group row">
-                                               
+                                                <div class="col-sm-6">
+                                                    <img id="croquisresumen"  alt="Croquis" src="#" style="height: 100%">    
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <img id="fachadaresumen" alt="Fachada" src="#" style="height: 100%">    
+                                                </div>
                                             </div>
                                             <h4 class="card-title">RESUMEN DE VALUACIÓN</h4>                                    
                                             <div class="form-group row">
@@ -1959,6 +1965,8 @@
             $("#c1600").val((100 - porcentaje).toFixed(2));
         }
         function cargarDatosResumen(){
+                $("#nroValuacionResumen").val($("#nroValuacion").val());
+                $("#tipoinmuebleresumen").val($("#tipoinmueble").val());
                 const $tablePropietarioResumen = $('#table-propietario-resumen');
                 $tablePropietarioResumen.find("tr:gt(0)").remove();
                 $('#table-propietario tbody tr').each(function(index, value) {
@@ -1972,6 +1980,8 @@
                 $("#provi").val($("#a203b option:selected").text());
                 $("#distri").val($("#a203c option:selected").text());
                 
+                $('#croquisresumen').attr('src', $("#e3000a-prev").attr('src'));
+                $('#fachadaresumen').attr('src', $("#e3000b-prev").attr('src'));
                 $("#entifinac").val($("#a104b").val());
                 $("#uso").val($("#a305").val().toString());
                 $("#tiga").val($("#c1500g option:selected").text());
