@@ -107,7 +107,18 @@ class M_valoriza extends CI_Model
 	public function get_detail($table, $id)
 	{
 		$this->db->where('idvaluacion', $id);
+		if($table == "edificacion" || $table == "valor"){
+			$this->db->order_by("orden", "asc");
+		}
 		$query = $this->db->get($table);
 		return $query->result();
 	}
 }
+
+
+
+
+
+
+
+
