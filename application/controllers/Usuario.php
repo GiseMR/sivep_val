@@ -4,6 +4,7 @@ class Usuario extends CI_Controller {
     public function __construct(){
         parent::__construct();
 		$this->load->library('grocery_CRUD');
+		$this->load->library('form_validation');
 		$this->load->model(array('m_usuario'));
     }
 	
@@ -32,7 +33,7 @@ class Usuario extends CI_Controller {
         		
 		$crud->required_fields('COD_USU','PASS_USU','NOM_USU','APP_USU','APM_USU','EMAIL_USU', 'CARGO_USU', 'ESTADO_USU');
 		$crud->change_field_type('PASS_USU','password');
-		/*$crud->set_rules('EMAIL_USU','CORREO','email');*/
+		$crud->set_rules('EMAIL_USU','CORREO','required|email');
 	
 	
         $crud->callback_before_insert(array($this,'encrypt_password_callback'));

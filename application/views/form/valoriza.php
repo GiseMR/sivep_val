@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/matrix/assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Nueva valuacion</title>
     <!-- Custom CSS -->
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
@@ -32,6 +32,8 @@
     </form>
     <form id="temp-form" name="temp-form">
     </form>
+    <form id="null-form" name="null-form">
+    </form>
 
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -45,31 +47,31 @@
 
     <div class="modal" id="contactoModalLong" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content">
+        <div class="modal-header">
                 <h5 class="modal-title">CONTACTO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+         </div>
             <div class="modal-body">
                 <?php include_once 'contacto.php';?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" onclick="guardarContacto()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="guardarContacto()"><i class="mdi mdi-check"></i>Guardar</button>
             </div>
             </div>
         </div>
         </div>
 
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#contactoModalLong">
-        REGISTRAR CONTACTO
-    </button>
+        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#contactoModalLong">
+        <i class="mdi mdi-account-plus"></i> REGISTRAR CONTACTO
+        </button>
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
-    <div class="container-fluid">
+    <div>
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
@@ -89,7 +91,6 @@
                                                 <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="<?= $codigo ?>" readonly>
-                                                    <input type="hidden" class="form-control" id="idContacto" name="idContacto">
                                                 </div>
                                                 <label for="tipoinmueble" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
                                                 <div class="col-sm-3">
@@ -297,7 +298,7 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <span class="table-lindero-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                        <span class="table-lindero-add float-right mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
                                                     </div>
 
                                                 </div>
@@ -322,38 +323,80 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-1"></div>
-                                            <label for="edificacion" class="col-sm-3 text-left control-label col-form-label">3.04 Edificación</label>
-                                            <div class="col-sm-3">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
+                                            <label for="edificacion" class="col-sm-11 text-left control-label col-form-label">3.04 Edificación</label>
+
                                             <div class="col-sm-1"></div>
                                             <div class="col-sm-11">
-                                                <div id="table-edificacion" class="table-editable">
-                                                    <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center" head="bloque">BLOQUE</th>
-                                                                <th class="text-center" head="nivel">NIVEL</th>
-                                                                <th class="text-center" head="distribucion">DISTRIBUCION DE AMBIENTES</th>
-                                                                <th class="text-center" head="area">AREA CONST. (m<sup>2</sup>)</th>
-                                                                <th class="text-center"></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="pt-3-half" contenteditable="true">1</td>
-                                                                <td class="pt-3-half" contenteditable="true">PRIMER</td>
-                                                                <td class="pt-3-half" contenteditable="true"></td>
-                                                                <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                <td>
-                                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <span class="table-edificacion-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                <span class="table-edificacion-add-bloque float-left mr-2">
+                                                    <a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo bloque</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="grupo-edificacion">
+                                            <div class="form-group row" bloque-id="1">
+
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11"><b>BLOQUE 1</b></div>
+
+                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-11">
+                                                    <div id="table-edificacion-1" class="table-editable table-edificacion">
+                                                        <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="display:none" head="bloque">BLOQUE</th>
+                                                                    <th class="text-center" head="nivel">NIVEL</th>
+                                                                    <th class="text-center" head="distribucion">DISTRIBUCION DE AMBIENTES</th>
+                                                                    <th class="text-center" head="area">AREA CONST. (m<sup>2</sup>)</th>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="display:none">1</td>
+                                                                    <td class="pt-3-half" contenteditable="true">PRIMER</td>
+                                                                    <td class="pt-3-half" contenteditable="true"></td>
+                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                    <td>
+                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <span class="float-right mb-3 mr-2"><a href="#!" class="text-success table-edificacion-add"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                    </div>
                                                 </div>
+
+                                                <div class="col-sm-6"></div>
+                                                <label for="total-edificacion-1" class="col-sm-3 text-right control-label col-form-label">Total:</label>
+                                                <div class="col-sm-3">
+                                                    <input type="number" class="form-control" id="total-edificacion-1" name="total-edificacion-1" form="form-null" value="0.00" readonly>
+                                                </div>
+
+                                                <div class="col-sm-1"></div>
+                                                <label for="estado-edificacion-1" class="col-sm-3 text-left control-label col-form-label">Estado de Conservación </label>
+                                                <div class="col-sm-3">
+                                                    <select class="select2 form-control custom-select" id="estado-edificacion-1" name="estado-edificacion-1" form="form-null" style="width: 100%; height:36px;">
+                                                        <option>Seleccione...</option>
+                                                        <option>Muy Buena</option>
+                                                        <option>Buena</option>
+                                                        <option>Regular</option>
+                                                        <option>Malo</option>
+                                                        <option>Muy Malo</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-1"></div>
+                                                <label for="antiguedad-edificacion-1" class="col-sm-2 text-left control-label col-form-label">Antiguedad (años)</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control" id="antiguedad-edificacion-1" name="antiguedad-edificacion-1" value="0" form="form-null" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-6"></div>
+                                            <div class="col-sm-6">
+                                                <hr>
                                             </div>
 
                                             <div class="col-sm-6"></div>
@@ -361,27 +404,7 @@
                                             <div class="col-sm-3">
                                                 <input type="number" class="form-control" id="a304" name="a304" value="0.00" readonly>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-1"></div>
-                                            <label for="a304a" class="col-sm-3 text-left control-label col-form-label">Estado de Conservación </label>
-                                            <div class="col-sm-3">
-                                                <select class="select2 form-control custom-select" id="a304a" name="a304a" style="width: 100%; height:36px;">
-                                                    <option>Seleccione...</option>
-                                                    <option>Muy Buena</option>
-                                                    <option>Buena</option>
-                                                    <option>Regular</option>
-                                                    <option>Malo</option>
-                                                    <option>Muy Malo</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-1"></div>
-                                            <label for="a304b" class="col-sm-2 text-left control-label col-form-label">Antiguedad (años)</label>
-                                            <div class="col-sm-2">
-                                                <input type="number" class="form-control" id="a304b" name="a304b" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
+
                                             <div class="col-sm-1"></div>
                                             <label for="a305" class="col-sm-3 text-left control-label col-form-label">3.05 Ocupación - Uso</label>
                                             <div class="col-sm-8">
@@ -1007,126 +1030,146 @@
 
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-11">
-                                                    <div id="table-valor" class="table-editable">
-                                                        <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center" head="bloque">BLOQUE</th>
-                                                                    <th class="text-center" head="propiedad">(*)Prop. Exclusiva</th>
-                                                                    <th class="text-center" head="categoria">Categoria</th>
-                                                                    <th class="text-center" head="precio">Precio Unit S/.</th>
-                                                                    <th class="text-center"></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="1">Muros y columnas</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="2">Techos</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="3">Pisos</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="4">Puertas y ventanas</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="5">Revestimiento</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="6">Baños</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="pt-3-half" contenteditable="false">1</td>
-                                                                    <td class="pt-3-half" contenteditable="false" colid="7">Instalaciones Electricas y Sanitarias</td>
-                                                                    <td class="pt-3-half" contenteditable="true">A</td>
-                                                                    <td class="pt-3-half" contenteditable="true">0.00</td>
-                                                                    <td>
-                                                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <span class="table-valor-add-blq float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo bloque</a></span>
-                                                    </div>
+                                                    <span class="table-valor-add-bloque float-left mr-2">
+                                                        <a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo bloque</a></span>
                                                 </div>
+                                            </div>
+                                            <div class="grupo-valor">
+                                                <div class="form-group row" bloque-id="1">
 
+                                                    <div class="col-sm-1"></div>
+                                                    <div class="col-sm-11"><b>BLOQUE 1</b></div>
 
-                                                <div class="col-sm-6"></div>
-                                                <label for="d1902a" class="col-sm-2 text-left control-label col-form-label">Valor/m<sup>2</sup></label>
+                                                    <div class="col-sm-1"></div>
+                                                    <div class="col-sm-11">
+                                                        <div id="table-valor-1" class="table-editable table-valor">
+                                                            <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="display:none" head="bloque">BLOQUE</th>
+                                                                        <th class="text-center" head="propiedad">(*)Prop. Exclusiva</th>
+                                                                        <th class="text-center" head="categoria">Categoria</th>
+                                                                        <th class="text-center" head="precio">Precio Unit S/.</th>
+                                                                        <th class="text-center"></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="1">Muros y columnas</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="2">Techos</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="3">Pisos</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="4">Puertas y ventanas</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="5">Revestimiento</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="6">Baños</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="display:none">1</td>
+                                                                        <td class="pt-3-half" contenteditable="false" colid="7">Instalaciones Electricas y Sanitarias</td>
+                                                                        <td class="pt-3-half" contenteditable="true">A</td>
+                                                                        <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                                        <td>
+                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6"></div>
+                                                    <label for="total-valor-1" class="col-sm-2 text-left control-label col-form-label">Valor/m<sup>2</sup></label>
+                                                    <div class="col-sm-3">
+                                                        <input type="number" class="form-control text-right" id="total-valor-1" name="total-valor-1" form="form-null" value="0.00" readonly>
+                                                    </div>
+                                                    <div class="col-sm-1"></div>
+
+                                                    <div class="col-sm-1"></div>
+                                                    <label for="valor-construccion-1" class="col-sm-3 text-left control-label col-form-label">Valor de la construcción</label>
+                                                    <div class="col-sm-1">
+                                                        VC S/
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="number" class="form-control text-right" id="valor-construccion-1" name="valor-construccion-1" form="form-null" value="0.00" readonly>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
+
+                                                    <div class="col-sm-1"></div>
+                                                    <label for="depreciacion-valor-1" class="col-sm-3 text-left control-label col-form-label">Depreciación (DP%)</label>
+                                                    <div class="col-sm-1">
+                                                        <input type="number" class="form-control text-right depreciacion-valor" id="depreciacion-valor-1" name="depreciacion-valor-1" form="form-null" value="0">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="number" class="form-control text-right" id="depreciacion-monto-1" name="depreciacion-monto-1" form="form-null" value="0.00" readonly>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
+
+                                                    <div class="col-sm-1"></div>
+                                                    <label for="valor-sub-total-1" class="col-sm-3 text-left control-label col-form-label">Sub total</label>
+                                                    <div class="col-sm-1">
+                                                        VE S/ =
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="number" class="form-control text-right" id="valor-sub-total-1" name="valor-sub-total-1" form="form-null" value="0.00" readonly>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-7"></div>
+                                                <div class="col-sm-2">
+                                                    <b>TOTAL VE S/ =</b>
+                                                </div>
                                                 <div class="col-sm-3">
                                                     <input type="number" class="form-control text-right" id="d1902a" name="d1902a" value="0.00" readonly>
                                                 </div>
-                                                <div class="col-sm-1"></div>
-
-                                                <div class="col-sm-1"></div>
-                                                <label for="d1902b" class="col-sm-3 text-left control-label col-form-label">Valor de la construcción</label>
-                                                <div class="col-sm-1">
-                                                    VC S/
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="number" class="form-control text-right" id="d1902b" name="d1902b" value="0.00" readonly>
-                                                </div>
-                                                <div class="col-sm-4"></div>
-
-                                                <div class="col-sm-1"></div>
-                                                <label for="d1902c" class="col-sm-3 text-left control-label col-form-label">Depreciación (DP%)</label>
-                                                <div class="col-sm-1">
-                                                    <input type="number" class="form-control text-right" id="d1902c" name="d1902c" value="3">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="number" class="form-control text-right" id="d1902d" name="d1902d" value="0.00" readonly>
-                                                </div>
-                                                <div class="col-sm-4"></div>
-
-                                                <div class="col-sm-1"></div>
-                                                <label for="d1902e" class="col-sm-3 text-left control-label col-form-label">Sub total</label>
-                                                <div class="col-sm-1">
-                                                    VE S/ =
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="number" class="form-control text-right" id="d1902e" name="d1902e" value="0.00" readonly>
-                                                </div>
-                                                <div class="col-sm-4"></div>
                                             </div>
-
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label class="col-sm-11 text-left control-label col-form-label">19.3 Valor de las Obras Complementarias (VOC)</label>
@@ -1775,7 +1818,7 @@
                     var term = $.trim(params.term);
                     var count = 0
                     var existsVar = false;
-                    //check if there is any option already
+
                     if ($('#keywords option').length > 0) {
                         $('#keywords option').each(function() {
                             if ($(this).text().toUpperCase() == term.toUpperCase()) {
@@ -1812,14 +1855,6 @@
                 $("#tipoinmueble").val($("#a301").val());
             });
 
-            $("#a304a").change(function() {
-                $("#d1903b").val($("#a304a").val());
-            });
-
-            $("#a304b").keyup(function() {
-                $("#d1903c").val($("#a304b").val());
-            });
-
         });
 
         function getTable(tableName, addHead, headValue) {
@@ -1846,6 +1881,94 @@
             console.log(o + "]");
             return o + "]";
         }
+
+        function getTableEdificacion(tableName, addHead, headValue) {
+            var o = "[";
+            var head = [];
+
+            var chead = 0;
+            $("#" + tableName + "-1 thead th").each(function(i, e) {
+                if ($(this).attr("head") != undefined && $(this).attr("head") != "") {
+                    head[i] = $(this).attr("head");
+                    chead++;
+                }
+            });
+
+            var num = 0;
+            var orden = 0;
+            $(".table-edificacion").each(function() {
+                num++;
+                orden++;
+
+                var group = $(this).closest(".form-group");
+                var subTotal = parseFloat(group.find("#total-edificacion-" + num).val());
+                var estado = group.find("#estado-edificacion-" + num).val();
+                var antiguedad = group.find("#antiguedad-edificacion-" + num).val();
+
+                var item_e = '{ "bloque" : "' + num + '", "nivel": "RESUMEN", "distribucion" :"' + subTotal + '---' + estado + '---' + antiguedad + '" , "area" : "",  "orden" : "'+orden+'", "' + addHead + '": "' + headValue + '"},';
+                o += item_e;
+                $("#" + tableName + "-" + num + " tbody tr").each(function(i, e) {
+                    var item = "{";
+                    $(this).find("td").each(function(n, v) {
+                        if (head[n] != undefined) {
+                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                        }
+                    });
+                    orden++;
+                    item += '"orden": "' + orden + '",';
+                    item += '"' + addHead + '": "' + headValue + '"},';
+                    o += item;
+                });
+            });
+
+            o = o.slice(0, -1);
+            console.log(o + "]");
+            return o + "]";
+        }
+
+
+        function getTableValor(tableName, addHead, headValue) {
+            var o = "[";
+            var head = [];
+
+            var chead = 0;
+            $("#" + tableName + "-1 thead th").each(function(i, e) {
+                if ($(this).attr("head") != undefined && $(this).attr("head") != "") {
+                    head[i] = $(this).attr("head");
+                    chead++;
+                }
+            });
+
+            var num = 0;
+            $(".table-valor").each(function() {
+                num++;
+
+                var group = $(this).closest(".form-group");
+                var valorm2 = parseFloat(group.find("#total-valor-" + num).val());
+                var valorconst = parseFloat(group.find("#valor-construccion-" + num).val());
+                var porcdep = parseFloat(group.find("#depreciacion-valor-" + num).val());
+                var montodep = parseFloat(group.find("#depreciacion-monto-" + num).val());
+                var subTotal = parseFloat(group.find("#valor-sub-total-" + num).val());
+                //here ENVIAR TODOS LOS CAMPOS
+                var item_e = '{ "bloque" : "' + num + '", "categoria": "RESUMEN", "propiedad" :"' + valorm2 + '---' + valorconst + '---' + porcdep + '---' + montodep + '---' + subTotal + '" , "precio" : "", "' + addHead + '": "' + headValue + '"},';
+                o += item_e;
+                $("#" + tableName + "-" + num + " tbody tr").each(function(i, e) {
+                    var item = "{";
+                    $(this).find("td").each(function(n, v) {
+                        if (head[n] != undefined) {
+                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                        }
+                    });
+                    item += '"' + addHead + '": "' + headValue + '"},';
+                    o += item;
+                });
+            });
+
+            o = o.slice(0, -1);
+            console.log(o + "]");
+            return o + "]";
+        }
+
 
         function consultarDni(dni, mostrarResultado) {
             $.ajax({
@@ -1914,9 +2037,13 @@
             bodyTag: "section",
             transitionEffect: "fade",
             onStepChanging: function(event, currentIndex, newIndex) {
-                
                 if (newIndex === 6) {
                     cargarDatosResumen();
+                }
+                try {
+                    parent.resizeFromIframe();
+                } catch (ex) {
+                    //nothing
                 }
                 return true;
             },
@@ -1925,7 +2052,7 @@
                 // FIN DE FORMULARIO
                 //alert("Terminado");
                 var formData = $("#valuacion-form").serializeFormJSON();
-                console.log(formData);
+                //console.log(formData);
 
                 //ENVIAR CABECERA CON AJAX
                 $.ajax({
@@ -1944,16 +2071,16 @@
                 }).done(function() {
                     if (registryid != 0) {
                         grabaDetalle("table-propietario", "propietario");
-                        grabaDetalle("table-edificacion", "edificacion");
+                        grabaDetalleEdificacion("table-edificacion", "edificacion");
                         grabaDetalle("table-lindero", "lindero");
                         grabaDetalle("table-referencia", "referencia");
                         grabaDetalle("table-sintesis", "sintesis");
-                        grabaDetalle("table-valor", "valor");
+                        grabaDetalleValor("table-valor", "valor");
                         grabaDetalle("table-valor-comp", "valorcomplementario");
                         grabaDetalle("table-foto", "foto");
 
                         alert("LOS DATOS SE GUARDARON CORRECTAMENTE");
-                        window.location.replace("<?= base_url() ?>/valoriza");
+                        window.location.replace("<?= base_url() ?>valoriza");
                     }
                 });
             }
@@ -1974,7 +2101,42 @@
                     console.log("Error al grabar detalle " + tabla);
                 }
             });
+        }
 
+        function grabaDetalleEdificacion(tabla, destiny) {
+            var posturl = "<?= base_url() ?>valoriza/grabardetalle/" + destiny;
+            var result = getTableEdificacion(tabla, 'idvaluacion', registryid);
+            var postdata = JSON.parse('{ "' + destiny + '" : ' + result + '}');
+
+            $.ajax({
+                type: "post",
+                url: posturl,
+                data: postdata,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function() {
+                    console.log("Error al grabar detalle " + tabla);
+                }
+            });
+        }
+
+        function grabaDetalleValor(tabla, destiny) {
+            var posturl = "<?= base_url() ?>valoriza/grabardetalle/" + destiny;
+            var result = getTableValor(tabla, 'idvaluacion', registryid);
+            var postdata = JSON.parse('{ "' + destiny + '" : ' + result + '}');
+
+            $.ajax({
+                type: "post",
+                url: posturl,
+                data: postdata,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function() {
+                    console.log("Error al grabar detalle " + tabla);
+                }
+            });
         }
 
         //FUNCIONES TABLA EDITABLE PROPIETARIO
@@ -2055,15 +2217,77 @@
             $(this).parents('tr').detach();
             calcula304();
         });
-
-
         //FIN FUNCIONES TABLA EDITABLE PROPIETARIO
 
-        //FUNCIONES TABLA EDITABLE EDIFICACION
-        const $tableEdificacion = $('#table-edificacion');
+        //FUNCIONES GRUPO TABLA EDITABLE EDIFICACION
+
+        const newEdBlq = `<div class="form-group row" bloque-id="{num}">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                                <hr>
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                                <b>BLOQUE {num}</b>
+                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 block-remove">x</button>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                                <div id="table-edificacion-{num}" class="table-editable table-edificacion">
+                                    <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                        <thead>
+                                            <tr>
+                                                <th style="display:none" head="bloque">BLOQUE</th>
+                                                <th class="text-center" head="nivel">NIVEL</th>
+                                                <th class="text-center" head="distribucion">DISTRIBUCION DE AMBIENTES</th>
+                                                <th class="text-center" head="area">AREA CONST. (m<sup>2</sup>)</th>
+                                                <th class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="true">PRIMER</td>
+                                                <td class="pt-3-half" contenteditable="true"></td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <span class="float-right mr-2"><a href="#!" class="text-success table-edificacion-add"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6"></div>
+                            <label for="total-edificacion-{num}" class="col-sm-3 text-right control-label col-form-label">Total:</label>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control" id="total-edificacion-{num}" name="total-edificacion-{num}" form="form-null" value="0.00" readonly>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+                            <label for="estado-edificacion-{num}" class="col-sm-3 text-left control-label col-form-label">Estado de Conservación </label>
+                            <div class="col-sm-3">
+                                <select class="select2 form-control custom-select" id="estado-edificacion-{num}" name="estado-edificacion-{num}" form="form-null" style="width: 100%; height:36px;">
+                                    <option>Seleccione...</option>
+                                    <option>Muy Buena</option>
+                                    <option>Buena</option>
+                                    <option>Regular</option>
+                                    <option>Malo</option>
+                                    <option>Muy Malo</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <label for="antiguedad-edificacion-{num}" class="col-sm-2 text-left control-label col-form-label">Antiguedad (años)</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="antiguedad-edificacion-{num}" name="antiguedad-edificacion-{num}" value="0" form="form-null" placeholder="">
+                            </div>
+                            </div>`;
 
         const newEdTr = `<tr>
-                            <td class="pt-3-half" contenteditable="true"></td>
+                            <td style="display:none">{num}</td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true"></td>
                             <td class="pt-3-half" contenteditable="true">0.00</td>
@@ -2072,35 +2296,67 @@
                             </td>
                         </tr>`;
 
-        $('.table-edificacion-add').on('click', 'a', () => {
-            $tableEdificacion.find('table').append(newEdTr);
+        var numblq = 1;
+        $('.table-edificacion-add-bloque').on('click', 'a', () => {
+            numblq++;
+            var newBlq = newEdBlq.replace(/{num}/g, numblq);
+            $(".grupo-edificacion").append(newBlq);
         });
 
-        $tableEdificacion.on('click', '.table-remove', function() {
-            $(this).parents('tr').detach();
+        $('.grupo-edificacion').on('click', '.block-remove', function() {
+            numblq--;
+            $(this).closest("div.form-group").remove();
             calcula304();
         });
 
-        $("#table-edificacion").on('keyup', 'td', function(e) {
+        $('.grupo-edificacion').on('click', 'a.table-edificacion-add', function() {
+            var num = $(this).closest("div.form-group").attr("bloque-id");
+            var table = $("#table-edificacion-" + num).find("table");
+
+            var newTr = newEdTr.replace(/{num}/g, num);
+            table.append(newTr);
+        });
+
+        $('.grupo-edificacion').on('click', '.table-remove', function() {
+            var group = $(this).closest(".form-group");
+            $(this).parents('tr').detach();
+            calculaSumaEdificacion(group);
+        });
+
+        $(".grupo-edificacion").on('keyup', 'td', function(e) {
             if (this.cellIndex == 3) {
                 var areaConst = parseFloat($(this).html());
                 if (!isNaN(areaConst)) {
-                    calcula304();
+                    var group = $(this).closest(".form-group");
+                    calculaSumaEdificacion(group);
                 }
             }
         });
 
-        function calcula304() { //total area construida
-            var total = 0;
-            $('#table-edificacion tbody tr').each(function(index, value) {
+        function calculaSumaEdificacion(group) { //total area construida por bloque
+            var subTotal = 0;
+            var num = group.attr("bloque-id");
+            $('#table-edificacion-' + num + ' tbody tr').each(function(index, value) {
                 var valor = parseFloat($(value).find("td:eq(3)").html());
                 if (!isNaN(valor)) {
-                    total += valor;
+                    subTotal += valor;
                 }
+            });
+            group.find("#total-edificacion-" + num).val(subTotal.toFixed(2));
+            calcula304();
+        }
+
+        function calcula304() {
+            var total = 0;
+            $(".table-edificacion").each(function() {
+                var group = $(this).closest(".form-group");
+                var num = group.attr("bloque-id");
+                var subTotal = parseFloat(group.find("#total-edificacion-" + num).val());
+                total += subTotal;
             });
             $("#a304").val(total.toFixed(2));
         }
-        //FIN FUNCIONES TABLA EDITABLE EDIFICACION
+        //FIN FUNCIONES GRUPO TABLA EDITABLE EDIFICACION
 
         //FUNCIONES TABLA EDITABLE REFERENCIA
         const $tableReferencia = $('#table-referencia');
@@ -2193,84 +2449,155 @@
 
         //FIN CALCULOS 1800
 
-
         //FUNCIONES TABLA EDITABLE VALOR
-        const $tableValor = $('#table-valor');
-        const newBlqTr = `<tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="1">Muros y columnas</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="2">Techos</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="3">Pisos</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="4">Puertas y ventanas</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="5">Revestimiento</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="6">Baños</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pt-3-half" contenteditable="false">{num}</td>
-                            <td class="pt-3-half" contenteditable="false" colid="7">Instalaciones Electricas y Sanitarias</td>
-                            <td class="pt-3-half" contenteditable="true">A</td>
-                            <td class="pt-3-half" contenteditable="true">0.00</td>
-                            <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                            </td>
-                        </tr>`;
+        const newValBlq = `<div class="form-group row" bloque-id="{num}">
 
-        var curBlq = 1;
-        $('.table-valor-add-blq').on('click', 'a', () => {
-            curBlq++;
-            $tableValor.find('table').append(newBlqTr.replace(/{num}/g, curBlq));
-            $("#d1902").change();
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                                <b>BLOQUE {num}</b>
+                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 block-remove">x</button>
+                            </div>
+
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-11">
+                                <div id="table-valor-{num}" class="table-editable table-valor">
+                                    <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                        <thead>
+                                            <tr>
+                                                <th style="display:none" head="bloque">BLOQUE</th>
+                                                <th class="text-center" head="propiedad">(*)Prop. Exclusiva</th>
+                                                <th class="text-center" head="categoria">Categoria</th>
+                                                <th class="text-center" head="precio">Precio Unit S/.</th>
+                                                <th class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="1">Muros y columnas</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="2">Techos</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="3">Pisos</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="4">Puertas y ventanas</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="5">Revestimiento</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="6">Baños</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display:none">{num}</td>
+                                                <td class="pt-3-half" contenteditable="false" colid="7">Instalaciones Electricas y Sanitarias</td>
+                                                <td class="pt-3-half" contenteditable="true">A</td>
+                                                <td class="pt-3-half" contenteditable="true">0.00</td>
+                                                <td>
+                                                    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6"></div>
+                            <label for="total-valor-{num}" class="col-sm-2 text-left control-label col-form-label">Valor/m<sup>2</sup></label>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control text-right" id="total-valor-{num}" name="total-valor-{num}" form="form-null" value="0.00" readonly>
+                            </div>
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-1"></div>
+                            <label for="valor-construccion-1" class="col-sm-3 text-left control-label col-form-label">Valor de la construcción</label>
+                            <div class="col-sm-1">
+                                VC S/
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control text-right" id="valor-construccion-{num}" name="valor-construccion-{num}" form="form-null" value="0.00" readonly>
+                            </div>
+                            <div class="col-sm-4"></div>
+
+                            <div class="col-sm-1"></div>
+                            <label for="depreciacion-valor-{num}" class="col-sm-3 text-left control-label col-form-label">Depreciación (DP%)</label>
+                            <div class="col-sm-1">
+                                <input type="number" class="form-control text-right depreciacion-valor" id="depreciacion-valor-{num}" name="depreciacion-valor-{num}" form="form-null" value="0">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control text-right" id="depreciacion-monto-{num}" name="depreciacion-monto-{num}" form="form-null" value="0.00" readonly>
+                            </div>
+                            <div class="col-sm-4"></div>
+
+                            <div class="col-sm-1"></div>
+                            <label for="valor-sub-total-{num}" class="col-sm-3 text-left control-label col-form-label">Sub total</label>
+                            <div class="col-sm-1">
+                                VE S/ =
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control text-right" id="valor-sub-total-{num}" name="valor-sub-total-{num}" form="form-null" value="0.00" readonly>
+                            </div>
+                            <div class="col-sm-4"></div>
+                            </div>`;
+
+        var numblqval = 1;
+
+        $('.table-valor-add-bloque').on('click', 'a', () => {
+            numblqval++;
+            var newBlq = newValBlq.replace(/{num}/g, numblqval);
+            $(".grupo-valor").append(newBlq);
+            calculaTableValor(numblqval);
         });
 
-        $tableValor.on('click', '.table-remove', function() {
+        $('.grupo-valor').on('click', '.block-remove', function() {
+            numblqval--;
+            $(this).closest("div.form-group").remove();
+        });
+
+        $('.grupo-valor').on('click', '.table-remove', function() {
+            var group = $(this).closest(".form-group");
             $(this).parents('tr').detach();
-            calcula1902a();
+            calculaValorM2(group);
         });
+
         var costa = [
             [494.88, 300.57, 265.44, 268.57, 289.48, 97.68, 281.89],
             [319.06, 196.10, 159.10, 141.56, 219.32, 74.27, 204.42],
@@ -2293,7 +2620,6 @@
             [0.00, 0.00, 24.56, 14.34, 20.46, 0.00, 0.00],
             [0.00, 0.00, 5.40, 0.00, 0.00, 0.00, 0.00]
         ];
-
         var selva = [
             [577.43, 295.72, 360.46, 244.61, 290.05, 105.83, 357.74],
             [393.97, 208.90, 172.75, 194.03, 199.92, 75.21, 214.31],
@@ -2310,12 +2636,19 @@
         var rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
         $("#d1902").change(function() {
-            $('#table-valor tbody tr').each(function(index, value) {
+            for (aux = 1; aux <= numblqval; aux++) {
+                calculaTableValor(aux);
+            }
+        });
+
+        function calculaTableValor(num) {
+            $('#table-valor-' + num + ' tbody tr').each(function(index, value) {
                 var letra = $(value).find("td:eq(2)").html().toUpperCase();
                 var rowNum = rows.indexOf(letra);
                 if ($("#d1902").val() != "SELVA" && rowNum > 8) {
                     rowNum = -1;
                 }
+                var monto = "0.00";
                 if (rowNum > -1) {
                     var colNum = parseInt($(value).find("td:eq(1)").attr("colid")) - 1;
                     if ($("#d1902").val() == "COSTA") {
@@ -2328,14 +2661,16 @@
                 }
                 $(this).closest("tr").find("td:eq(3)").html(monto);
             });
-            calcula1902a();
-        });
+            var group = $('#table-valor-' + num).closest(".form-group");
+            calculaValorM2(group);
+        }
 
-        $("#table-valor").on('keyup', 'td', function(e) {
+        $(".grupo-valor").on('keyup', 'td', function(e) {
             if (this.cellIndex == 3) {
                 var precioUnit = parseFloat($(this).html());
                 if (!isNaN(precioUnit)) {
-                    calcula1902a();
+                    var group = $(this).closest(".form-group");
+                    calculaValorM2(group);
                 }
             }
             if (this.cellIndex == 2) {
@@ -2367,44 +2702,65 @@
                 }
 
                 $(this).closest("tr").find("td:eq(3)").html(monto);
-                calcula1902a();
+                var group = $(this).closest(".form-group");
+                calculaValorM2(group);
             }
         });
 
-        function calcula1902a() { //total valor m2
-            var total = 0;
-            $('#table-valor tbody tr').each(function(index, value) {
+        function calculaValorM2(group) { //total valor m2 y construccion vc s/
+            var subTotal = 0;
+            var num = group.attr("bloque-id");
+
+            $('#table-valor-' + num + ' tbody tr').each(function(index, value) {
                 var valor = parseFloat($(value).find("td:eq(3)").html());
                 if (!isNaN(valor)) {
-                    total += valor;
+                    subTotal += valor;
                 }
             });
-            $("#d1902a").val(total.toFixed(2));
-            calcula1902b();
+            $("#total-valor-" + num).val(subTotal.toFixed(2));
+            var totalEdificacion = parseFloat($("#total-edificacion-" + num).val());
+            if (totalEdificacion == undefined || isNaN(totalEdificacion)) {
+                alert("NO SE HA INGRESADO BLOQUE " + num + " DE EDIFICACION");
+                totalEdificacion = 0;
+            }
+
+            var valorCon = subTotal * totalEdificacion;
+            $("#valor-construccion-" + num).val(valorCon.toFixed(2));
+
+            calculaDepreciacionTotal(group);
         }
 
-        function calcula1902b() { //valor construccion
-            var valorCon = parseFloat($("#d1902a").val()) * parseFloat($("#a304").val());
-            $("#d1902b").val(valorCon.toFixed(2));
-            calcula1902d();
-
-            $("#d1903k").val(valorCon.toFixed(2));
-            var verDol = valorCon / parseFloat($("#c1400c").val());
-            $("#d1903j").val(verDol.toFixed(2));
-        }
-
-        $("#d1902c").keyup(function() { //porcentaje depreciacion
+        $(".grupo-valor").on('keyup', '.depreciacion-valor', function() { //porcentaje depreciacion
             var porc = parseFloat($(this).val());
             if (!isNaN(porc)) {
-                calcula1902d();
+                var group = $(this).closest(".form-group");
+                calculaDepreciacionTotal(group);
             }
         });
 
-        function calcula1902d() { //monto depreciacion y subtotal
-            var valorCon = parseFloat($("#d1902b").val()) * parseFloat($("#d1902c").val()) / 100;
-            $("#d1902d").val(valorCon.toFixed(2));
-            var subTotal = parseFloat($("#d1902b").val()) - valorCon;
-            $("#d1902e").val(subTotal.toFixed(2));
+        function calculaDepreciacionTotal(group) { //monto depreciacion y subtotal
+
+            var num = group.attr("bloque-id");
+            var porDep = parseFloat(group.find("#depreciacion-valor-" + num).val());
+            var valCon = parseFloat(group.find("#valor-construccion-" + num).val());
+
+            var valDep = valCon * porDep / 100;
+            $("#depreciacion-monto-" + num).val(valDep.toFixed(2));
+            var subTotal = valCon - valDep;
+            $("#valor-sub-total-" + num).val(subTotal.toFixed(2));
+
+            calculaVETotal();
+        }
+
+        function calculaVETotal() { //calcula d1902a y agrega a tabla resumen
+
+            var subTotal = 0;
+
+            for (aux = 1; aux <= numblqval; aux++) {
+                subTotal += parseFloat($("#valor-sub-total-" + aux).val());
+            }
+
+            $("#d1902a").val(subTotal.toFixed(2));
 
             $("#table-sintesis tbody").find("tr:eq(1)").find("td:eq(2)").html(subTotal.toFixed(2));
             var veDolar = subTotal / parseFloat($("#c1400c").val());
@@ -2412,10 +2768,25 @@
 
             //sumar sintesis
             calcula1903e();
+            calculaVer();
         }
 
-        //FIN FUNCIONES TABLA EDITABLE VALOR EDIFICACION
+        function calculaVer() {
+            var valorCon = 0;
 
+            for (aux = 1; aux <= numblqval; aux++) {
+                valorCon += parseFloat($("#valor-construccion-" + aux).val());
+            }
+
+            var valVoc = parseFloat($("#d1903a").val());
+            valorCon+=valVoc;
+
+            $("#d1903k").val(valorCon.toFixed(2));
+            var verDol = valorCon / parseFloat($("#c1400c").val());
+            $("#d1903j").val(verDol.toFixed(2));
+
+        }
+        //FIN FUNCIONES TABLA EDITABLE VALOR EDIFICACION
 
         //FUNCIONES TABLA EDITABLE VALOR COMPLEMENTARIOS
         const $tableValorComp = $('#table-valor-comp');
@@ -2438,6 +2809,7 @@
 
         $tableValorComp.on('click', '.table-remove', function() {
             $(this).parents('tr').detach();
+            
             calcula1903a();
         });
 
@@ -2475,6 +2847,7 @@
 
             //calcular sintesis
             calcula1903e();
+            calculaVer();
         }
 
         //FIN FUNCIONES TABLA EDITABLE VALOR COMPLEMENTARIOS
@@ -2646,49 +3019,6 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }
-
-        function guardarContacto(){
-
-            const dni = $('#dni').val();
-            const nombre = $('#nombre').val();
-            const app = $('#app').val();
-            const apm = $('#apm').val();
-            const fenac = $('#fenac').val();
-            const telefono = $('#telefono').val();
-            const email = $('#email').val();
-            const pago = $('#pago').val();		
-            const obs = $('#obs').val();
-        
-            $.ajax({
-                        type: "post",
-                        url: " <?php echo base_url(); ?>contacto/registrar",
-                        data: {
-                            dni: dni,
-                            nombre: nombre,
-                            app: app,
-                            apm: apm,
-                            fenac: fenac,
-                            telefono: telefono,
-                            email: email,
-                            pago: pago,
-                            obs: obs
-                        },
-                        success: function(response) {
-                            let data = JSON.parse(response);
-                            if(data){
-                                $('#idContacto').val(data[0].ID_CONT);
-                            }
-                            alert('Se registro correcto');
-                            $('#contactoModalLong').modal('hide');
-                            
-                            
-                        },
-                        error: function() {
-                            alert("Error al registrar el contacto");
-                        }
-                    });
-
         }
     </script>
 </body>
