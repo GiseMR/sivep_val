@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/matrix/assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>HOJA DE RESUMEN - VALUACIÓN DEL INMUEBLE</title>
     <!-- Custom CSS -->
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
@@ -59,8 +59,8 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h3 class="card text-center">HOJA RESUMEN</h3>
-                                            <h3 class="card text-center">VALUACION DEL INMUEBLE</h3>
+                                            <h3 class="card text-center">HOJA DE RESUMEN</h3>
+                                            <h3 class="card text-center">VALUACIÓN DEL INMUEBLE</h3>
                                             <div class="form-group row">
                                                 <label for="nroValuacionResumen" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
@@ -71,8 +71,13 @@
                                                     <input type="text" class="form-control" id="tipoinmuebleresumen" name="tipoinmuebleresumen" value="<?php  echo $valoriza->tipoinmueble;?>" readonly>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-1"><h6 class="card-title">REFERENCIA:</h6></div>
+                                                <div class="col-sm-7">
+                                                Valuación Comercial de inmueble   
+                                                </div>
+                                            </div>
 
-                                            <h5 class="card-title">REFERENCIA:</h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="for" class="col-sm-2 text-left control-label col-form-label">PROPIETARIOS</label>
@@ -95,8 +100,8 @@
                                                         </table>
                                                     </div>
                                                 </div>
-
                                             </div>
+
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="soli" class="col-sm-2 text-left control-label col-form-label">SOLICITANTE</label>
@@ -113,7 +118,7 @@
                                                 </div>
                                             </div>
 
-                                            <h5 class="card-title">UBICACIÓN</h5>
+                                            <h6 class="card-title">UBICACIÓN</h6>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="regis" class="col-sm-2 text-left control-label col-form-label">REGISTRAL</label>
@@ -137,7 +142,7 @@
                                                     <input type="text" class="form-control" id="distri" name="distri" value="<?php echo $valoriza->a203c; ?>">
                                                 </div>
                                             </div>
-                                            <h5 class="card-title">CROQUIS DE UBICACION</h5>
+                                            <h6 class="card-title">CROQUIS DE UBICACION</h6>
                                             <div class="form-group row">
                                                 <div class="col-sm-6">
                                                     <img id="croquisresumen" alt="Croquis" src="<?php echo base_url().$valoriza->e3000a;?>" style="height: 100%">
@@ -146,45 +151,126 @@
                                                     <img id="fachadaresumen" alt="Fachada" src="<?php echo base_url().$valoriza->e3000c;?>" style="height: 100%">
                                                 </div>
                                             </div>
-                                            <h4 class="card-title">RESUMEN DE VALUACIÓN</h4>
-                                            <div class="form-group row">
+                                            <h5 class="card-title">RESUMEN DE VALUACIÓN</h5>
+                                              <div class="form-group row">
+                                                <div class="col-sm-12">
 
+                                                    <div id="table-propietario-resumen" class="table-editable">
+                                                        <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center">DESCRIPCIÓN</th>
+                                                                    <th class="text-center">AREA (m2)</th>
+                                                                    <th class="text-center">VALOR EN US$</th>
+                                                                    <th class="text-center">VALOR EN S/.</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> Valor del Terreno </td>
+                                                                    <td class="text-center" contenteditable="false"> (VT)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> Valor de edificaciones </td>
+                                                                    <td class="text-center" contenteditable="false"> (VE)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> Obras complementarias </td>
+                                                                    <td class="text-center" contenteditable="false"> (VOC)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR COMERCIAL  DEL INMUEBLE</strong> </td>
+                                                                    <td class="text-center" contenteditable="false"> (VCI)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR NETO DE REALIZACION </strong> </td>
+                                                                    <td class="text-center" contenteditable="false"> (VNR)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> <strong>CONSTITUYE GARANTIA HIPOTECARIA 80% DEL</strong> </td>
+                                                                    <td class="text-center" contenteditable="false"> (VCI)</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR DE RECONSTRUCCION DE LA EDIFICACION</strong> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> VALOR ESTIMADO DE RECONSTRUCCIÓN </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h5 class="card-title">OBSERVACIONES</h5>
+                                            
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
-                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">DECLARATORIA DE FABRICA</label>
-                                                <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="decfabri" value="<?php echo $valoriza->a309; ?>" name="decfabri" value="No se encuentra inscrita">
+                                                <div class="col-sm-12">
+                                                    <div id="table-propietario-resumen" class="table-editable">
+                                                        <table class="table table-sm table-bordered table-responsive-sm table-striped text-center">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th colspan="2" class="text-left"> <h6>OBSERVACIONES</h6> </th>
+                                                                    <th class="text-left" > <span>TIPO DE CAMBIO S/.<span> </th>
+                                                                    <th class="text-center">  </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> DECLARATORIA DE FABRICA</td>
+                                                                    <td class="text-left" contenteditable="false"> <?php echo $valoriza->a309; ?></td>
+                                                                    <td class="text-left" contenteditable="false"> PORCENTAJE</td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> CARGAS Y GRAVAMENES </td>
+                                                                    <td class="text-left" contenteditable="false"> <?php echo $valoriza->b900a; ?></td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" contenteditable="false"> USO/OCUPACIÓN </td>
+                                                                    <td class="text-left" contenteditable="false"> <?php echo $valoriza->a305; ?></td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
-                                                <div class="col-sm-1"></div>
-                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">CARGAS Y GRAVAMENES A FAVOR DE:</label>
-                                                <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="entifinac" value="<?php echo $valoriza->b900a; ?>"  name="entifinac">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-1"></div>
-                                                <label for="a103a" class="col-sm-2 text-left control-label col-form-label">USO/OCUPACIÓN</label>
-                                                <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="uso"  value="<?php echo $valoriza->a305; ?>"  name="uso">
-                                                </div>
-                                            </div>
 
-
-                                            <h5 class="card-title">TIPO DE GARANTIA</h5>
+                                            
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-2"><h6 class="card-title">TIPO DE GARANTIA</h6></div>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" value="<?php echo $valoriza->c1500g; ?>"   id="tiga" name="tiga" value="">
                                                 </div>
                                             </div>
-                                            <h5 class="card-title">PERITO RESPONSABLE</h5>
+                                            
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-2"><h6 class="card-title">PERITO RESPONSABLE</h6></div>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="e2900a" name="e2900a" value="Cyntia Flor Ochoa Pino">
                                                 </div>
@@ -195,11 +281,11 @@
                                                 </div>
                                             </div>
 
-                                            <h5 class="card-title">FECHA EVALUACIÓN: <?php echo $valoriza->fechavaluacion; ?></h5>
+                                           
                                             <div class="form-group row">
-                                                <div class="col-sm-1"></div>
+                                                <div class="col-sm-2">  <h6 class="card-title">FECHA:</div>
                                                 <label for="fechavaluacion" class="col-sm-4 text-right control-label col-form-label">
-                                                    <h5>San Jerónimo - CUSCO</h5>
+                                                    <h6>San Jerónimo - CUSCO</h6>
                                                 </label>
                                                 <div class="col-sm-2">
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
@@ -213,7 +299,7 @@
                                             <i class="el el-return-key"></i>
                                             Volver a la lista                 
                                     </a>      
-                                    <a class="btn btn-success b10" href="#">
+                                    <a class="btn btn-success b10" href="#" onclick="imprimirResumen()">
                                             <i class="el el-print"></i>
                                             Imprimir             
                                     </a>
@@ -243,7 +329,10 @@
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
     <script src="<?= base_url(); ?>assets/codigos/js/proceso.js"></script>
-
-    <script>
+<script>
+    function imprimirResumen() {
+        window.print();
+    }
+</script>
 </body>
 </html>
