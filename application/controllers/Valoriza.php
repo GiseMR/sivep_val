@@ -329,12 +329,26 @@ class Valoriza extends CI_Controller
 		$obj_numero_a_letra = new Numero_a_letra();
 		echo strtoupper($obj_numero_a_letra->valor_en_letras($numero, ''));
 	}
-	function resumenLink()
+	function resumenLink($primary_key , $row)
 	{
-		return site_url('valoriza/resumen');
+		return site_url('valoriza/resumen/'.$primary_key);
 	}
-	function resumen(){
 
-		$this->load->view('form/valoriza_resumen');
+	function resumen($id) {
+
+		$valoriza= $this->m_valoriza->get_header($id);
+		$fistValoriza = $valoriza[0];
+		
+		$dpto = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a)[0]->C_NOMUBIGEO;
+		$prov = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a, $fistValoriza->a203b)[0]->C_NOMUBIGEO;
+		$dist = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a, $fistValoriza->a203b, $fistValoriza->a203c)[0]->C_NOMUBIGEO;
+
+		$fistValoriza->a203a = $dpto;
+		$fistValoriza->a203b = $prov;
+		$fistValoriza->a203c = $dist;
+		$propietarios = $this->m_valoriza->get_detail('propietario', $id);
+		$data = array('valoriza'=>$fistValoriza, 'propietarios'=>$propietarios);
+
+		$this->load->view('form/valoriza_resumen', $data);
 	} 
 }

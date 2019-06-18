@@ -17,7 +17,9 @@
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/css/select2.min.css" rel="stylesheet">
     <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
-
+    <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/elusive-icons/css/elusive-icons.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,16 +48,12 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
-        <div class="card">
+       
             <div class="card-body wizard-content">
-                <h4 class="card-title">NUEVO INFORME DE EVALUACIÓN</h4>
                 <h6 class="card-subtitle"></h6>
                 <form id="valuacion-form" class="m-t-40">
                     <div>
                     <body>
-                    <h3>HOJA RESUMEN</h3>
-                       
-
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -66,11 +64,11 @@
                                             <div class="form-group row">
                                                 <label for="nroValuacionResumen" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="nroValuacionResumen" name="nroValuacionResumen" value="Val.N° 001-2019" readonly>
+                                                    <input type="text" class="form-control" id="nroValuacionResumen" name="nroValuacionResumen" value="<?php  echo $valoriza->nroValuacion;?>" readonly>
                                                 </div>
                                                 <label for="tipoinmuebleresumen" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="tipoinmuebleresumen" name="tipoinmuebleresumen" value="URBANO" readonly>
+                                                    <input type="text" class="form-control" id="tipoinmuebleresumen" name="tipoinmuebleresumen" value="<?php  echo $valoriza->tipoinmueble;?>" readonly>
                                                 </div>
                                             </div>
 
@@ -88,9 +86,11 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                            <?php foreach($propietarios as $item) {?>
                                                                 <tr>
-                                                                    <td class="pt-5-half" contenteditable="true"></td>
+                                                                    <td class="pt-5-half" contenteditable="false"> <?php echo $item->nombres; ?></td>
                                                                 </tr>
+                                                            <?php } ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -102,14 +102,14 @@
                                                 <label for="soli" class="col-sm-2 text-left control-label col-form-label">SOLICITANTE</label>
 
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="soli" name="soli">
+                                                    <input type="text" class="form-control" id="soli" name="soli" value="<?php echo $valoriza->a103b; ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="entifinan" class="col-sm-2 text-left control-label col-form-label">ENTIDAD FINANCIERA</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="entifinan" name="entifinan">
+                                                    <input type="text" class="form-control" id="entifinan" name="entifinan" value="<?php echo $valoriza->a104b; ?>">
                                                 </div>
                                             </div>
 
@@ -118,7 +118,7 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="regis" class="col-sm-2 text-left control-label col-form-label">REGISTRAL</label>
                                                 <div class="col-sm-7">
-                                                    <textarea rows="2" class="form-control" id="regis" name="regis"></textarea>
+                                                    <textarea rows="2" class="form-control" id="regis" name="regis"><?php echo $valoriza->a201; ?></textarea>
                                                 </div>
                                             </div>
 
@@ -126,24 +126,24 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="depa" class="col-sm-2 text-left control-label col-form-label">DEPARTAMENTO</label>
                                                 <div class="col-sm-2">
-                                                    <input type="text" class="form-control" id="depa" name="depa">
+                                                    <input type="text" class="form-control" id="depa" name="depa" value="<?php echo $valoriza->a203a; ?>">
                                                 </div>
                                                 <label for="a203b" class="col-sm-1 text-right control-label col-form-label">PROVINCIA</label>
                                                 <div class="col-sm-2">
-                                                    <input type="text" class="form-control" id="provi" name="provi">
+                                                    <input type="text" class="form-control" id="provi" name="provi" value="<?php echo $valoriza->a203b; ?>">
                                                 </div>
                                                 <label for="a203c" class="col-sm-1 text-right control-label col-form-label">DISTRITO</label>
                                                 <div class="col-sm-2">
-                                                    <input type="text" class="form-control" id="distri" name="distri">
+                                                    <input type="text" class="form-control" id="distri" name="distri" value="<?php echo $valoriza->a203c; ?>">
                                                 </div>
                                             </div>
                                             <h5 class="card-title">CROQUIS DE UBICACION</h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-6">
-                                                    <img id="croquisresumen" alt="Croquis" src="#" style="height: 100%">
+                                                    <img id="croquisresumen" alt="Croquis" src="<?php echo base_url().$valoriza->e3000a;?>" style="height: 100%">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <img id="fachadaresumen" alt="Fachada" src="#" style="height: 100%">
+                                                    <img id="fachadaresumen" alt="Fachada" src="<?php echo base_url().$valoriza->e3000c;?>" style="height: 100%">
                                                 </div>
                                             </div>
                                             <h4 class="card-title">RESUMEN DE VALUACIÓN</h4>
@@ -155,7 +155,7 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="a103a" class="col-sm-2 text-left control-label col-form-label">DECLARATORIA DE FABRICA</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="decfabri" name="decfabri" value="No se encuentra inscrita">
+                                                    <input type="text" class="form-control" id="decfabri" value="<?php echo $valoriza->a309; ?>" name="decfabri" value="No se encuentra inscrita">
                                                 </div>
                                             </div>
 
@@ -163,14 +163,14 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="a103a" class="col-sm-2 text-left control-label col-form-label">CARGAS Y GRAVAMENES A FAVOR DE:</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="entifinac" name="entifinac">
+                                                    <input type="text" class="form-control" id="entifinac" value="<?php echo $valoriza->b900a; ?>"  name="entifinac">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="a103a" class="col-sm-2 text-left control-label col-form-label">USO/OCUPACIÓN</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="uso" name="uso">
+                                                    <input type="text" class="form-control" id="uso"  value="<?php echo $valoriza->a305; ?>"  name="uso">
                                                 </div>
                                             </div>
 
@@ -179,7 +179,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="tiga" name="tiga" value="">
+                                                    <input type="text" class="form-control" value="<?php echo $valoriza->c1500g; ?>"   id="tiga" name="tiga" value="">
                                                 </div>
                                             </div>
                                             <h5 class="card-title">PERITO RESPONSABLE</h5>
@@ -195,7 +195,7 @@
                                                 </div>
                                             </div>
 
-                                            <h5 class="card-title">FECHA:</h5>
+                                            <h5 class="card-title">FECHA EVALUACIÓN: <?php echo $valoriza->fechavaluacion; ?></h5>
                                             <div class="form-group row">
                                                 <div class="col-sm-1"></div>
                                                 <label for="fechavaluacion" class="col-sm-4 text-right control-label col-form-label">
@@ -205,11 +205,26 @@
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
                                                 </div>
                                             </div>
+
+                                                     
+                                <div class="form-group gcrud-form-group">
+                                <div class="col-sm-offset-3 col-sm-7">        
+                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza">
+                                            <i class="el el-return-key"></i>
+                                            Volver a la lista                 
+                                    </a>      
+                                    <a class="btn btn-success b10" href="#">
+                                            <i class="el el-print"></i>
+                                            Imprimir             
+                                    </a>
+                                </div>
+                                </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                   
+          
+
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>assets/matrix/assets/libs/popper.js/dist/umd/popper.min.js"></script>

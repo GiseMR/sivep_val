@@ -7,10 +7,21 @@ class M_ubigeo extends CI_Model {
 
 	}
 
+
 	public function obtener_departamentos(){
 
 		//CONSULTAMOS LOS NOMBRES, ID ...DE LOS DEPARTAMENTOS 
 		$query = $this->db->query('SELECT C_CODUBIGEO, C_CODDPTO, C_NOMUBIGEO FROM ubigeo WHERE C_CODPROV=0 AND C_CODDIST=0');
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+	}	
+
+	public function obtener_departamento($id){
+
+		//CONSULTAMOS LOS NOMBRES, ID ...DE LOS DEPARTAMENTOS 
+		$query = $this->db->query('SELECT C_CODUBIGEO, C_CODDPTO, C_NOMUBIGEO FROM ubigeo WHERE C_CODDPTO="'.$id.'" AND C_CODPROV=0 AND C_CODDIST=0');
 
 		if ($query->num_rows() > 0) {
 			return $query->result();
@@ -31,6 +42,16 @@ class M_ubigeo extends CI_Model {
 	public function obtener_distrito($id_dep, $id_prov){
 
 		$query = $this->db->query('SELECT C_CODUBIGEO, C_CODDIST, C_NOMUBIGEO FROM ubigeo WHERE C_CODDPTO = "'.$id_dep.'" AND C_CODPROV="'.$id_prov.'"  AND C_CODDIST<>0');
+	   
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+	}
+
+	public function get_ubigeo($iddpto, $idprov='00', $iddist='00'){
+		
+		$stringQuery='SELECT C_CODUBIGEO, C_NOMUBIGEO FROM ubigeo WHERE C_CODDPTO="'.$iddpto.'" AND C_CODPROV="'.$idprov.'" AND C_CODDIST="'.$iddist.'"';
+		$query = $this->db->query($stringQuery);
 	   
 		if ($query->num_rows() > 0) {
 			return $query->result();

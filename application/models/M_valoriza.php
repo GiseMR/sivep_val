@@ -103,6 +103,7 @@ class M_valoriza extends CI_Model
 		$query = $this->db->get('valuacion');
 		return $query->result();
 	}
+
 	public function get_detail($table, $id)
 	{
 		$this->db->where('idvaluacion', $id);
