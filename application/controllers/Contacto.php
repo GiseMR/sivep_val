@@ -3,7 +3,8 @@ class Contacto extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->load->library('grocery_CRUD');
+		$this->load->library('grocery_CRUD');
+		$this->load->model(array('m_contacto'));
     }
 	
 	public function index(){
@@ -46,6 +47,28 @@ class Contacto extends CI_Controller {
 		$this->load->view('v_crud',$data);
     }
 	
+	public function registrar()
+	{
+		$dni = $this->input->post('dni');
+		$nombre = $this->input->post('nombre');
+		$app = $this->input->post('app');
+		$apm = $this->input->post('apm');
+		$fenac = $this->input->post('fenac');
+		$telefono = $this->input->post('telefono');
+		$email = $this->input->post('email');
+		$pago = $this->input->post('pago');		
+		$obs = $this->input->post('obs');
+
+		$resultado = $this->m_contacto->consultarpordni($dni);
+
+		if(count($resultado)==0){
+			$this->m_contacto->registrar($dni, $nombre, $app, $apm, $fenac, $telefono, $email, $pago, $obs);
+			$resultado = $this->m_contacto->consultarpordni($dni);
+		}
+		
+		echo json_encode($resultado);
+	}
+
 
 }
 

@@ -49,7 +49,7 @@
             <?php if ($buttons_counter === 0) {?>class="hidden"<?php }?>>
                 <div class="only-desktops"  style="white-space: nowrap">
                     <?php if(!$unset_edit){?>
-                        <a class="btn btn-default btn-sm btn-outline-dark" href="<?php echo $row->edit_url?>"><i class="el el-pencil"></i> <?php echo $this->l('list_edit'); ?></a>
+                        <a class="btn btn-default btn-sm btn-outline-dark edit" href="<?php echo $row->edit_url?>"><i class="el el-pencil"></i> <?php echo $this->l('list_edit'); ?></a>
                     <?php } ?>
                     <?php if (!empty($row->action_urls) || !$unset_read || !$unset_delete || !$unset_clone) { ?>
 
@@ -73,7 +73,7 @@
                                     }
                                     ?>
                                     <?php if (!$unset_read) { ?>
-                                        <a href="<?php echo $row->read_url?>" class="dropdown-item">
+                                        <a href="<?php echo $row->read_url?>" class="dropdown-item read">
                                             <i class="el el-eye-open"></i> <?php echo $this->l('list_view')?>
                                         </a>
                                     <?php } ?>

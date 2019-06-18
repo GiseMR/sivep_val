@@ -12,8 +12,8 @@ class Inicio extends CI_Controller {
 		if($this->verificarUserDataSesion()){
 			$this->load->view('v_header');
 			$this->load->view('v_iframe');
-		}else{
-			$this->load->view('v_login');
+		}else{			
+			header('Location: ' . base_url());
 		}
 	}
 	
@@ -24,6 +24,9 @@ class Inicio extends CI_Controller {
 			$this->load->view('form/main', $menu);
 		}
 	}
+	public function logo(){
+		$this->load->view('v_logo');
+	}
 
 	private function verificarUserDataSesion(){
 		if(isset($this->session->userdata['logged_in'])){
@@ -32,4 +35,6 @@ class Inicio extends CI_Controller {
 			return false;
 		}
 	}
+	
+	
 }

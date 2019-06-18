@@ -8,10 +8,8 @@ class Login extends CI_Controller {
 	 
      public function index(){ /*VALIDAMOS SI LA SESION ES ACTIVA REDIRIGIMOS AL HOME, SI NO AL LOGIN*/
           //si la sesion esta activa se cargan las vistas del menu , etc
-          if($this->verificarUserDataSesion()){
-            $this->headerMenu(null);
-						$this->load->view('index');
-						$this->load->view('v_footer');
+          if($this->verificarUserDataSesion()){            
+			header('Location: ' . base_url('inicio'));
           }else{
             $this->MuestraLogin('');
           }

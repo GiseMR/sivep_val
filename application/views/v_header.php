@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/matrix/assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="<?= base_url() ?>assets/matrix/assets/images/logo.png">
   <title>SIVEP</title>
   <!-- Custom CSS -->
   <link href="<?= base_url() ?>assets/matrix/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
