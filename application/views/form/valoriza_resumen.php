@@ -328,7 +328,6 @@
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="<?= base_url(); ?>assets/codigos/js/proceso.js"></script>
 <script>
     function imprimirResumen() {
         window.print();
