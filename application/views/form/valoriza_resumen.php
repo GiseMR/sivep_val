@@ -223,7 +223,7 @@
                                                                     <td class="text-left" contenteditable="false"> DECLARATORIA DE FABRICA</td>
                                                                     <td class="text-left" contenteditable="false"> <?php echo $valoriza->a309; ?></td>
                                                                     <td class="text-left" contenteditable="false"> PORCENTAJE</td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $valoriza->a309a; ?>% </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text-left" contenteditable="false"> CARGAS Y GRAVAMENES </td>
