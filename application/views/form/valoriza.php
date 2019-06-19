@@ -3020,6 +3020,49 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+        function guardarContacto(){
+
+const dni = $('#dni').val();
+const nombre = $('#nombre').val();
+const app = $('#app').val();
+const apm = $('#apm').val();
+const fenac = $('#fenac').val();
+const telefono = $('#telefono').val();
+const email = $('#email').val();
+const pago = $('#pago').val();		
+const obs = $('#obs').val();
+
+$.ajax({
+            type: "post",
+            url: " <?php echo base_url(); ?>contacto/registrar",
+            data: {
+                dni: dni,
+                nombre: nombre,
+                app: app,
+                apm: apm,
+                fenac: fenac,
+                telefono: telefono,
+                email: email,
+                pago: pago,
+                obs: obs
+            },
+            success: function(response) {
+                let data = JSON.parse(response);
+                if(data){
+                    $('#idContacto').val(data[0].ID_CONT);
+                }
+                alert('Se registro correcto');
+                $('#contactoModalLong').modal('hide');
+                
+                
+            },
+            error: function() {
+                alert("Error al registrar el contacto");
+            }
+        });
+
+}
     </script>
 </body>
 
