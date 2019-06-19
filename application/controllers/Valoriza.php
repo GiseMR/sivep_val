@@ -347,7 +347,8 @@ class Valoriza extends CI_Controller
 		$fistValoriza->a203b = $prov;
 		$fistValoriza->a203c = $dist;
 		$propietarios = $this->m_valoriza->get_detail('propietario', $id);
-		$data = array('valoriza'=>$fistValoriza, 'propietarios'=>$propietarios);
+		$sintesis = $this->m_valoriza->get_detail('sintesis', $id);
+		$data = array('valoriza'=>$fistValoriza, 'propietarios'=>$propietarios, 'sintesis'=>$sintesis);
 
 		$this->load->view('form/valoriza_resumen', $data);
 	} 

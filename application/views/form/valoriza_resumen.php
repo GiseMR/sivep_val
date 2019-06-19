@@ -20,21 +20,14 @@
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/elusive-icons/css/elusive-icons.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    
 </head>
 <form id="image-form" name="image-form">
     </form>
     <form id="temp-form" name="temp-form">
     </form>
 
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
+    
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
@@ -133,7 +126,7 @@
                                                 <div class="col-sm-2">
                                                     <input type="text" class="form-control" id="depa" name="depa" value="<?php echo $valoriza->a203a; ?>">
                                                 </div>
-                                                <label for="a203b" class="col-sm-1 text-right control-label col-form-label">PROVINCIA</label>
+                                                <label for="a203b" class="col-sm-2 text-right control-label col-form-label">PROVINCIA</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" class="form-control" id="provi" name="provi" value="<?php echo $valoriza->a203b; ?>">
                                                 </div>
@@ -145,10 +138,10 @@
                                             <h6 class="card-title">CROQUIS DE UBICACION</h6>
                                             <div class="form-group row">
                                                 <div class="col-sm-6">
-                                                    <img id="croquisresumen" alt="Croquis" src="<?php echo base_url().$valoriza->e3000a;?>" style="height: 100%">
+                                                    <img id="croquisresumen" alt="Croquis" style="height: 300px;width: 300px;" src="<?php echo base_url().$valoriza->e3000a;?>" style="height: 100%">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <img id="fachadaresumen" alt="Fachada" src="<?php echo base_url().$valoriza->e3000c;?>" style="height: 100%">
+                                                    <img id="fachadaresumen" alt="Fachada" style="height: 300px;width: 300px;" src="<?php echo base_url().$valoriza->e3000c;?>" style="height: 100%">
                                                 </div>
                                             </div>
                                             <h5 class="card-title">RESUMEN DE VALUACIÓN</h5>
@@ -166,25 +159,15 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                            
+                                                                <?php foreach($sintesis as $item){?>
                                                                 <tr>
-                                                                    <td class="text-left" contenteditable="false"> Valor del Terreno </td>
-                                                                    <td class="text-center" contenteditable="false"> (VT)</td>
+                                                                    <td class="text-left" contenteditable="false"> <?php echo $item->detalle; ?> </td>
                                                                     <td class="text-center" contenteditable="false"> </td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montod; ?></td>                                                                    
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montos; ?></td>
+                                                                    
                                                                 </tr>
-                                                                <tr>
-                                                                    <td class="text-left" contenteditable="false"> Valor de edificaciones </td>
-                                                                    <td class="text-center" contenteditable="false"> (VE)</td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-left" contenteditable="false"> Obras complementarias </td>
-                                                                    <td class="text-center" contenteditable="false"> (VOC)</td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
-                                                                </tr>
+                                                                <?php } ?>
                                                                 <tr>
                                                                     <td class="text-left" contenteditable="false"> <strong>VALOR COMERCIAL  DEL INMUEBLE</strong> </td>
                                                                     <td class="text-center" contenteditable="false"> (VCI)</td>
@@ -231,7 +214,7 @@
                                                                 <tr>
                                                                     <th colspan="2" class="text-left"> <h6>OBSERVACIONES</h6> </th>
                                                                     <th class="text-left" > <span>TIPO DE CAMBIO S/.<span> </th>
-                                                                    <th class="text-center">  </th>
+                                                                    <th class="text-center"> <?php echo $valoriza->d1903l; ?> </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
