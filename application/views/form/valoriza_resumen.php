@@ -159,31 +159,34 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <?php foreach($sintesis as $item){?>
+                                                                <?php $i=0; 
+                                                                $vcid=0;
+                                                                $vcis=0;
+                                                                foreach($sintesis as $item){?>
                                                                 <tr>
                                                                     <td class="text-left" contenteditable="false"> <?php echo $item->detalle; ?> </td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
-                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montod; ?></td>                                                                    
-                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montos; ?></td>
+                                                                    <td class="text-center" contenteditable="false"> <?php if($i==0) { echo $valoriza->d1901a; $i++; }  ?></td>
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montod; $vcid= $vcid+  $item->montod;?></td>                                                                    
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $item->montos; $vcis= $vcis+  $item->montos;?></td>
                                                                     
                                                                 </tr>
                                                                 <?php } ?>
                                                                 <tr>
-                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR COMERCIAL  DEL INMUEBLE</strong> </td>
-                                                                    <td class="text-center" contenteditable="false"> (VCI)</td>
+                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR COMERCIAL  DEL INMUEBLE (VCI)</strong> </td>
                                                                     <td class="text-center" contenteditable="false"> </td>
-                                                                    <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $vcid; ?> </td>
+                                                                    <td class="text-center" contenteditable="false"> <?php echo $vcis; ?></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR NETO DE REALIZACION </strong> </td>
-                                                                    <td class="text-center" contenteditable="false"> (VNR)</td>
+                                                                    <td class="text-left" contenteditable="false"> <strong>VALOR NETO DE REALIZACION (VNR) </strong> </td>
                                                                     <td class="text-center" contenteditable="false"> </td>
+                                                                    <td class="text-center" contenteditable="false"> <?php $valoriza->d1903f; ?></td>
                                                                     <td class="text-center" contenteditable="false"> </td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td class="text-left" contenteditable="false"> <strong>CONSTITUYE GARANTIA HIPOTECARIA 80% DEL</strong> </td>
-                                                                    <td class="text-center" contenteditable="false"> (VCI)</td>
+                                                                    <td class="text-left" contenteditable="false"> <strong>CONSTITUYE GARANTIA HIPOTECARIA 80% DEL (VCI)</strong> </td>
+                                                                    <td class="text-center" contenteditable="false"> </td>
                                                                     <td class="text-center" contenteditable="false"> </td>
                                                                     <td class="text-center" contenteditable="false"> </td>
                                                                 </tr>
