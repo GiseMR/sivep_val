@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 require_once(__DIR__ . '/src/autoload.php');
-
+require_once APPPATH.'third_party/phpexcel/PHPExcel.php';
 class Valoriza extends CI_Controller
 {
 
@@ -363,7 +363,7 @@ class Valoriza extends CI_Controller
 		$propietarios = $data["propietarios"];
 		$sintesis = $data["sintesis"];
 
-        require_once APPPATH.'third_party/phpexcel/PHPExcel.php';
+        
 		$object_excel = new PHPExcel();
 		$sheet = $object_excel->getActiveSheet();
 		$styleArray = array(
@@ -434,14 +434,26 @@ class Valoriza extends CI_Controller
 		$row = $row+2;
 		$sheet->setCellValueByColumnAndRow(1, $row, 'CROQUIS DE UBICACIÓN');
 
-		/*$objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
+		$gdImageE3000a = $this->createImageFromFile(base_url().$valoriza->e3000a);
+		$objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
 		$objDrawing->setName('UBICACIÓN');
 		$objDrawing->setDescription('UBICACIÓN');
-		$objDrawing->setPath(base_url().$valoriza->e3000a);
-		$objDrawing->setHeight(100);
+		$objDrawing->setImageResource($gdImageE3000a);
+		$objDrawing->setHeight(120);
 		$objDrawing->setCoordinates("B17");
-		$objDrawing->setOffsetX(100);
-		$objDrawing->setWorksheet($sheet);*/
+		$objDrawing->setOffsetX(130);
+		$objDrawing->setWorksheet($sheet);
+
+		$gdImageE3000c = $this->createImageFromFile(base_url().$valoriza->e3000c);
+		$objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
+		$objDrawing->setName('UBICACIÓN');
+		$objDrawing->setDescription('UBICACIÓN');
+		$objDrawing->setImageResource($gdImageE3000c);
+		$objDrawing->setHeight(180);
+		$objDrawing->setCoordinates("D17");
+		$objDrawing->setOffsetX(130);
+		$objDrawing->setWorksheet($sheet);
+
 		$sheet->getStyle('B31:G39')->applyFromArray($styleArray);
 		$row= $row+14;
 		$sheet->setCellValueByColumnAndRow(1, $row, 'RESUMEN DE VALUACION');
@@ -533,4 +545,19 @@ class Valoriza extends CI_Controller
 		header('Content-Disposition: attachment;filename="resumen.xls"');
 		$object_excel_writer->save('php://output'); 
 	}
+
+	function createImageFromFile($filename, $use_include_path = false, $context = null, &$info = null)
+    {      
+      $info = array("image"=>getimagesize($filename));
+      $info["image"] = getimagesize($filename);
+	  if($info["image"] === false) 
+	  	throw new InvalidArgumentException("\"".$filename."\" is not readable or no php supported format");
+      else
+      {
+        $imageRes = imagecreatefromstring(file_get_contents($filename, $use_include_path, $context));
+		if(isset($http_response_header)) 
+			$info["http"] = $http_response_header;
+        return $imageRes;
+      }
+    }
 }
