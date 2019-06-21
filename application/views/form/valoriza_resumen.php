@@ -258,7 +258,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-2"><h6 class="card-title">PERITO RESPONSABLE</h6></div>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="e2900a" name="e2900a" value="Cyntia Flor Ochoa Pino">
+                                                    <input type="text" class="form-control" id="e2900a" name="e2900a" value="ARQ. CYNTHIA FLOR OCHOA PINO">
                                                 </div>
                                                 <div class="col-sm-1"></div>
                                                 <label for="e2900c" class="col-sm-1 text-right control-label col-form-label">CAP:</label>
@@ -289,6 +289,10 @@
                                             <i class="el el-print"></i>
                                             Imprimir             
                                     </a>
+                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza/verresumen/<?=$valoriza->idvaluacion;?>">
+                                            <i class="el el-export"></i>
+                                            Exportar Excel
+                                    </a>      
                                 </div>
                                 </div>
                                         </div>
