@@ -39,6 +39,11 @@
 			var id = url.split("/").pop();
 			window.location.replace("<?=base_url()?>valoriza/edita/"+id);
  		});
-
+		 $(".grocery-crud-table").on('click', 'a.read', function(e) {
+ 			e.preventDefault();
+			var url = $(this).attr("href");
+			var id = url.split("/").pop();
+			window.location.replace("<?=base_url()?>valoriza/leer/"+id);
+ 		});
  	});
  </script>

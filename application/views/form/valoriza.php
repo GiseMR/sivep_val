@@ -68,6 +68,7 @@
         <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#contactoModalLong">
         <i class="mdi mdi-account-plus"></i> REGISTRAR CONTACTO
         </button>
+
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -428,106 +429,118 @@
                                                 <textarea rows="5" class="form-control" id="a306" name="a306"></textarea>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <div class="col-sm-1"></div>
-                                            <label class="col-sm-11 text-left control-label col-form-label">3.07 Fábrica - Especificaciones técnicas (Bloque predominante)</label>
+                                            <label class="col-sm-11 text-left control-label col-form-label">3.07 Fábrica - Especificaciones técnicas</label>
+
                                             <div class="col-sm-1"></div>
-                                            <label class="col-sm-11 text-left control-label col-form-label">BLOQUE 1</label>
+                                            <div class="col-sm-11">
+                                                <span class="table-fabrica-add-bloque float-left mr-2">
+                                                    <a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo bloque</a></span>
+                                            </div>
+                                        </div>
 
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307a" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307a" name="a307a" multiple>
-                                                    <option>Concreto Armado</option>
-                                                    <option>Adobe</option>
-                                                    <option>Madera</option>
-                                                    <option>Estructura Metálica</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307b" class="col-sm-3 text-left control-label col-form-label">Muros</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307b" name="a307b" multiple>
-                                                    <option>Ladrillo de Arcilla</option>
-                                                    <option>Drywall</option>
-                                                    <option>Madera</option>
-                                                    <option>Adobe</option>
-                                                    <option>Muro de ladrillos de concreto</option>
-                                                    <option>Techos de losa aligerado horizontal</option>
-                                                    <option>Piso porcelanato</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307c" class="col-sm-3 text-left control-label col-form-label">Techos</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307c" name="a307c" multiple>
-                                                    <option>Calamina</option>
-                                                    <option>Teja Andina</option>
-                                                    <option>Termo acustico</option>
-                                                    <option>Fibrocemento</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307d" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307d" name="a307d" multiple>
-                                                    <option>Metalicas</option>
-                                                    <option>Madera Contraplacada</option>
-                                                    <option>Madera Tablero Rajado</option>
-                                                    <option>Fibrocemento</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307e" class="col-sm-3 text-left control-label col-form-label">Ventanas</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307e" name="a307e" multiple>
-                                                    <option>Vidrio Semi Doble</option>
-                                                    <option>Estructura de Aluminio</option>
-                                                    <option>Estructura de Madera</option>
-                                                    <option>Otros</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307f" class="col-sm-3 text-left control-label col-form-label">Revestimiento</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307f" name="a307f" multiple>
-                                                    <option>Enchapado con cerámico</option>
-                                                    <option>Enchapado con piedra</option>
-                                                    <option>Estucado con yeso</option>
-                                                    <option>otros</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307g" class="col-sm-3 text-left control-label col-form-label">Pisos</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307g" name="a307g" multiple>
-                                                    <option>Sin Piso</option>
-                                                    <option>Tierra Compactada</option>
-                                                    <option>Cemento Pulido</option>
-                                                    <option>Cerámico Nacional</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307h" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307h" name="a307h" multiple>
-                                                    <option>Completo con mayolica nacional de color</option>
-                                                    <option>Completo con ceramico importado</option>
-                                                    <option>Básico de granito</option>
-                                                    <option>otros</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                            <label for="a307i" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
-                                            <div class="col-sm-7">
-                                                <select class="select2 form-control custom-select" id="a307i" name="a307i" multiple>
+                                        <div class="grupo-fabrica">
+                                            <div class="form-group row" bloque-id="1">
+                                                <div class="col-sm-1"></div>
+                                                <label class="col-sm-11 text-left control-label col-form-label">BLOQUE 1</label>
 
-                                                    <option>Agua fría, corriente monofasica</option>
-                                                    <option>Agua fría y caliente, corriente monofasica</option>
-                                                    <option>Agua fría, caliente, corriene monofásica teléfono</option>
-                                                    <option>Agua fría, caliente, corriente trifásica</option>
-                                                    <option>otros</option>
-                                                </select>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-sistema-1" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-sistema-1" name="fabrica-sistema-1" form="form-null" multiple>
+                                                        <option>Concreto Armado</option>
+                                                        <option>Adobe</option>
+                                                        <option>Madera</option>
+                                                        <option>Estructura Metálica</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-muro-1" class="col-sm-3 text-left control-label col-form-label">Muros</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-muro-1" name="fabrica-muro-1" form="form-null" multiple>
+                                                        <option>Ladrillo de Arcilla</option>
+                                                        <option>Drywall</option>
+                                                        <option>Madera</option>
+                                                        <option>Adobe</option>
+                                                        <option>Muro de ladrillos de concreto</option>
+                                                        <option>Techos de losa aligerado horizontal</option>
+                                                        <option>Piso porcelanato</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-techo-1" class="col-sm-3 text-left control-label col-form-label">Techos</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-techo-1" name="fabrica-techo-1" form="form-null" multiple>
+                                                        <option>Calamina</option>
+                                                        <option>Teja Andina</option>
+                                                        <option>Termo acustico</option>
+                                                        <option>Fibrocemento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-puerta-1" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-puerta-1" name="fabrica-puerta-1" form="form-null" multiple>
+                                                        <option>Metalicas</option>
+                                                        <option>Madera Contraplacada</option>
+                                                        <option>Madera Tablero Rajado</option>
+                                                        <option>Fibrocemento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-ventana-1" class="col-sm-3 text-left control-label col-form-label">Ventanas</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-ventana-1" name="fabrica-ventana-1" form="form-null" multiple>
+                                                        <option>Vidrio Semi Doble</option>
+                                                        <option>Estructura de Aluminio</option>
+                                                        <option>Estructura de Madera</option>
+                                                        <option>Otros</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-revestimiento-1" class="col-sm-3 text-left control-label col-form-label">Revestimiento</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-revestimiento-1" name="fabrica-revestimiento-1" form="form-null" multiple>
+                                                        <option>Enchapado con cerámico</option>
+                                                        <option>Enchapado con piedra</option>
+                                                        <option>Estucado con yeso</option>
+                                                        <option>otros</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-piso-1" class="col-sm-3 text-left control-label col-form-label">Pisos</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-piso-1" name="fabrica-piso-1" form="form-null" multiple>
+                                                        <option>Sin Piso</option>
+                                                        <option>Tierra Compactada</option>
+                                                        <option>Cemento Pulido</option>
+                                                        <option>Cerámico Nacional</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-sshh-1" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-sshh-1" name="fabrica-sshh-1" form="form-null" multiple>
+                                                        <option>Completo con mayolica nacional de color</option>
+                                                        <option>Completo con ceramico importado</option>
+                                                        <option>Básico de granito</option>
+                                                        <option>otros</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <label for="fabrica-sanitaria-1" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                                                <div class="col-sm-7">
+                                                    <select class="select2 form-control custom-select" id="fabrica-sanitaria-1" name="fabrica-sanitaria-1" form="form-null" multiple>
+                                                        <option>Agua fría</option>
+                                                        <option>Agua caliente</option>
+                                                        <option>Corriente monofasica</option>
+                                                        <option>Corriente trifásica</option>
+                                                        <option>Teléfono</option>
+                                                        <option>otros</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1812,7 +1825,8 @@
             });
 
             //selecciones multiples
-            $("#a305, #a307a, #a307b, #a307c, #a307d, #a307e, #a307f, #a307g, #a307h, #a307i, #a400").select2({
+
+            $("#a305, #fabrica-sistema-1, #fabrica-muro-1, #fabrica-techo-1, #fabrica-puerta-1, #fabrica-ventana-1, #fabrica-revestimiento-1, #fabrica-piso-1, #fabrica-sshh-1, #fabrica-sanitaria-1, #a400").select2({
                 tags: true,
                 createTag: function(params) {
                     var term = $.trim(params.term);
@@ -1905,7 +1919,7 @@
                 var estado = group.find("#estado-edificacion-" + num).val();
                 var antiguedad = group.find("#antiguedad-edificacion-" + num).val();
 
-                var item_e = '{ "bloque" : "' + num + '", "nivel": "RESUMEN", "distribucion" :"' + subTotal + '---' + estado + '---' + antiguedad + '" , "area" : "",  "orden" : "'+orden+'", "' + addHead + '": "' + headValue + '"},';
+                var item_e = '{ "bloque" : "' + num + '", "nivel": "RESUMEN", "distribucion" :"' + subTotal + '---' + estado + '---' + antiguedad + '" , "area" : "",  "orden" : "' + orden + '", "' + addHead + '": "' + headValue + '"},';
                 o += item_e;
                 $("#" + tableName + "-" + num + " tbody tr").each(function(i, e) {
                     var item = "{";
@@ -1919,6 +1933,28 @@
                     item += '"' + addHead + '": "' + headValue + '"},';
                     o += item;
                 });
+            });
+
+            o = o.slice(0, -1);
+            console.log(o + "]");
+            return o + "]";
+        }
+
+        function getTableFabrica(tableName, addHead, headValue) {
+            var o = "[";
+            var head = ["sistema", "muro", "techo", "puerta", "ventana", "revestimiento", "piso", "sshh", "sanitaria"];
+
+            var chead = 0;
+            $(".grupo-fabrica .form-group").each(function() {
+                var item = "{";
+                $(this).find("select").each(function() {
+                    if ($(this) != undefined) {
+                        var param = $(this).attr("id").split("-");
+                        item += '"' + param[1] + '" : "' + $(this).val() + '",';
+                    }
+                });
+                item += '"' + addHead + '": "' + headValue + '"},';
+                o += item;
             });
 
             o = o.slice(0, -1);
@@ -1949,7 +1985,7 @@
                 var porcdep = parseFloat(group.find("#depreciacion-valor-" + num).val());
                 var montodep = parseFloat(group.find("#depreciacion-monto-" + num).val());
                 var subTotal = parseFloat(group.find("#valor-sub-total-" + num).val());
-                //here ENVIAR TODOS LOS CAMPOS
+
                 var item_e = '{ "bloque" : "' + num + '", "categoria": "RESUMEN", "propiedad" :"' + valorm2 + '---' + valorconst + '---' + porcdep + '---' + montodep + '---' + subTotal + '" , "precio" : "", "' + addHead + '": "' + headValue + '"},';
                 o += item_e;
                 $("#" + tableName + "-" + num + " tbody tr").each(function(i, e) {
@@ -2049,7 +2085,7 @@
             },
 
             onFinished: function(event, currentIndex) {
-                // FIN DE FORMULARIO
+                // FIN DE FORMULARIO //here
                 //alert("Terminado");
                 var formData = $("#valuacion-form").serializeFormJSON();
                 //console.log(formData);
@@ -2072,6 +2108,7 @@
                     if (registryid != 0) {
                         grabaDetalle("table-propietario", "propietario");
                         grabaDetalleEdificacion("table-edificacion", "edificacion");
+                        grabaDetalleFabrica("table-fabrica", "fabrica");
                         grabaDetalle("table-lindero", "lindero");
                         grabaDetalle("table-referencia", "referencia");
                         grabaDetalle("table-sintesis", "sintesis");
@@ -2106,6 +2143,24 @@
         function grabaDetalleEdificacion(tabla, destiny) {
             var posturl = "<?= base_url() ?>valoriza/grabardetalle/" + destiny;
             var result = getTableEdificacion(tabla, 'idvaluacion', registryid);
+            var postdata = JSON.parse('{ "' + destiny + '" : ' + result + '}');
+
+            $.ajax({
+                type: "post",
+                url: posturl,
+                data: postdata,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function() {
+                    console.log("Error al grabar detalle " + tabla);
+                }
+            });
+        }
+
+        function grabaDetalleFabrica(tabla, destiny) {
+            var posturl = "<?= base_url() ?>valoriza/grabardetalle/" + destiny;
+            var result = getTableFabrica(tabla, 'idvaluacion', registryid);
             var postdata = JSON.parse('{ "' + destiny + '" : ' + result + '}');
 
             $.ajax({
@@ -2357,6 +2412,164 @@
             $("#a304").val(total.toFixed(2));
         }
         //FIN FUNCIONES GRUPO TABLA EDITABLE EDIFICACION
+
+        //FUNCIONES GRUPO TABLA EDITABLE FABRICA
+        const newFaBlq = `<div class="form-group row" bloque-id="{num}">
+                            <div class="col-sm-1"></div>
+                            <label class="col-sm-11 text-left control-label col-form-label">
+                                BLOQUE {num}                                
+                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 block-remove">x</button>
+                            </label>
+
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-sistema-{num}" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-sistema-{num}" name="fabrica-sistema-{num}" form="form-null" multiple>
+                                    <option>Concreto Armado</option>
+                                    <option>Adobe</option>
+                                    <option>Madera</option>
+                                    <option>Estructura Metálica</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-muro-{num}" class="col-sm-3 text-left control-label col-form-label">Muros</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-muro-{num}" name="fabrica-muro-{num}" form="form-null" multiple>
+                                    <option>Ladrillo de Arcilla</option>
+                                    <option>Drywall</option>
+                                    <option>Madera</option>
+                                    <option>Adobe</option>
+                                    <option>Muro de ladrillos de concreto</option>
+                                    <option>Techos de losa aligerado horizontal</option>
+                                    <option>Piso porcelanato</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-techo-{num}" class="col-sm-3 text-left control-label col-form-label">Techos</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-techo-{num}" name="fabrica-techo-{num}" form="form-null" multiple>
+                                    <option>Calamina</option>
+                                    <option>Teja Andina</option>
+                                    <option>Termo acustico</option>
+                                    <option>Fibrocemento</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-puerta-{num}" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-puerta-{num}" name="fabrica-puerta-{num}" form="form-null" multiple>
+                                    <option>Metalicas</option>
+                                    <option>Madera Contraplacada</option>
+                                    <option>Madera Tablero Rajado</option>
+                                    <option>Fibrocemento</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-ventana-{num}" class="col-sm-3 text-left control-label col-form-label">Ventanas</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-ventana-{num}" name="fabrica-ventana-{num}" form="form-null" multiple>
+                                    <option>Vidrio Semi Doble</option>
+                                    <option>Estructura de Aluminio</option>
+                                    <option>Estructura de Madera</option>
+                                    <option>Otros</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-revestimiento-{num}" class="col-sm-3 text-left control-label col-form-label">Revestimiento</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-revestimiento-{num}" name="fabrica-revestimiento-{num}" form="form-null" multiple>
+                                    <option>Enchapado con cerámico</option>
+                                    <option>Enchapado con piedra</option>
+                                    <option>Estucado con yeso</option>
+                                    <option>otros</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-piso-{num}" class="col-sm-3 text-left control-label col-form-label">Pisos</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-piso-{num}" name="fabrica-piso-{num}" form="form-null" multiple>
+                                    <option>Sin Piso</option>
+                                    <option>Tierra Compactada</option>
+                                    <option>Cemento Pulido</option>
+                                    <option>Cerámico Nacional</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-sshh-{num}" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-sshh-{num}" name="fabrica-sshh-{num}" form="form-null" multiple>
+                                    <option>Completo con mayolica nacional de color</option>
+                                    <option>Completo con ceramico importado</option>
+                                    <option>Básico de granito</option>
+                                    <option>otros</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="fabrica-sanitaria-{num}" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                            <div class="col-sm-7">
+                                <select class="select2 form-control custom-select" id="fabrica-sanitaria-{num}" name="fabrica-sanitaria-{num}" form="form-null" multiple>
+                                    <option>Agua fría</option>
+                                    <option>Agua caliente</option>
+                                    <option>Corriente monofasica</option>
+                                    <option>Corriente trifásica</option>
+                                    <option>Teléfono</option>
+                                    <option>otros</option>
+                                </select>
+                            </div>
+                        </div>`;
+
+        var numfablq = 1;
+        $('.table-fabrica-add-bloque').on('click', 'a', () => {
+            numfablq++;
+            var newBlq = newFaBlq.replace(/{num}/g, numfablq);
+            $(".grupo-fabrica").append(newBlq);
+
+            $("#fabrica-sistema-" + numfablq + ", #fabrica-muro-" + numfablq + ", #fabrica-techo-" + numfablq + ", #fabrica-puerta-" + numfablq + ", #fabrica-ventana-" + numfablq + ", #fabrica-revestimiento-" + numfablq + ", #fabrica-piso-" + numfablq + ", #fabrica-sshh-" + numfablq + ", #fabrica-sanitaria-" + numfablq).select2({
+                tags: true,
+                createTag: function(params) {
+                    var term = $.trim(params.term);
+                    var count = 0
+                    var existsVar = false;
+
+                    if ($('#keywords option').length > 0) {
+                        $('#keywords option').each(function() {
+                            if ($(this).text().toUpperCase() == term.toUpperCase()) {
+                                existsVar = true
+                                return false;
+                            } else {
+                                existsVar = false
+                            }
+                        });
+                        if (existsVar) {
+                            return null;
+                        }
+                        return {
+                            id: params.term,
+                            text: params.term,
+                            newTag: true
+                        }
+                    }
+
+                    //since select has 0 options, add new without comparing
+                    else {
+                        return {
+                            id: params.term,
+                            text: params.term,
+                            newTag: true
+                        }
+                    }
+                },
+                maximumInputLength: 20, // only allow terms up to 20 characters long
+                closeOnSelect: true
+            });
+        });
+
+        $('.grupo-fabrica').on('click', '.block-remove', function() {
+            numfablq--;
+            $(this).closest("div.form-group").remove();
+
+        });
+        //FIN FUNCIONES GRUPO TABLA EDITABLE FABRICA
 
         //FUNCIONES TABLA EDITABLE REFERENCIA
         const $tableReferencia = $('#table-referencia');
@@ -2779,12 +2992,11 @@
             }
 
             var valVoc = parseFloat($("#d1903a").val());
-            valorCon+=valVoc;
+            valorCon += valVoc;
 
             $("#d1903k").val(valorCon.toFixed(2));
             var verDol = valorCon / parseFloat($("#c1400c").val());
             $("#d1903j").val(verDol.toFixed(2));
-
         }
         //FIN FUNCIONES TABLA EDITABLE VALOR EDIFICACION
 
@@ -2809,7 +3021,7 @@
 
         $tableValorComp.on('click', '.table-remove', function() {
             $(this).parents('tr').detach();
-            
+
             calcula1903a();
         });
 
@@ -3022,21 +3234,22 @@
         }
 
         function guardarContacto(){
-
-const dni = $('#dni').val();
-const nombre = $('#nombre').val();
-const app = $('#app').val();
-const apm = $('#apm').val();
-const fenac = $('#fenac').val();
-const telefono = $('#telefono').val();
-const email = $('#email').val();
-const pago = $('#pago').val();		
-const obs = $('#obs').val();
+        const nrovalcontac =$('#nrovalcontac').val();
+        const dni = $('#dni').val();
+        const nombre = $('#nombre').val();
+        const app = $('#app').val();
+        const apm = $('#apm').val();
+        const fenac = $('#fenac').val();
+        const telefono = $('#telefono').val();
+        const email = $('#email').val();
+        const pago = $('#pago').val();		
+        const obs = $('#obs').val();
 
 $.ajax({
             type: "post",
             url: " <?php echo base_url(); ?>contacto/registrar",
             data: {
+                nrovalcontac: nrovalcontac,
                 dni: dni,
                 nombre: nombre,
                 app: app,
@@ -3061,8 +3274,7 @@ $.ajax({
                 alert("Error al registrar el contacto");
             }
         });
-
-}
+    }
     </script>
 </body>
 

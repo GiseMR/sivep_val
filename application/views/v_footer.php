@@ -15,15 +15,15 @@
 	  margin:0 auto;
 	}
 	.fcontainer .text-muted {
-	  margin: 5px 5px;
+	  margin: 0 5px;
 	  font-size: 15px;
 	  color: #FFF;
-	  text-align:center;
+	  text-align:right;
 	}
 </style>
 <footer class="footer">
       <div class="fcontainer">
-        <p class="text-muted">© Derechos Reservados - Sistema de Valuaciones Prediales - 2019</p>
+       <p class="text-muted">© Derechos Reservados - Sistema de Valuaciones Prediales - 2019</p>
       </div>
 </footer>
 </body>

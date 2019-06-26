@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/matrix/assets/images/favicon.png">
-    <title>Edita valuacion</title>
+    <title>Leer valuacion</title>
     <!-- Custom CSS -->
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
@@ -53,7 +53,7 @@
         <!-- ============================================================== -->
         <div class="card">
             <div class="card-body wizard-content">
-                <h4 class="card-title">EDICIÓN DE INFORME DE EVALUACIÓN</h4>
+                <h4 class="card-title">REVISIÓN DE INFORME DE EVALUACIÓN</h4>
                 <h6 class="card-subtitle"></h6>
                 <form id="valuacion-form" class="m-t-40">
                     <input type="hidden" name="idvaluacion" id="idvaluacion" value="<?= $valoriza[0]->idvaluacion ?>">
@@ -109,14 +109,12 @@
                                                                         <td class="pt-1-half" contenteditable="true"><?= $pitem->dni ?></td>
                                                                         <td class="pt-5-half" contenteditable="true"><?= $pitem->nombres ?></td>
                                                                         <td style="display:none"><?= $pitem->idpropietario ?></td>
-                                                                        <td>
-                                                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
-                                                                        </td>
+                                                                        
                                                                     </tr>
                                                                 <? } ?>
                                                             </tbody>
                                                         </table>
-                                                        <span class="table-propietario-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus" aria-hidden="true"></i> Nuevo item</a></span>
+                                                       
                                                     </div>
                                                 </div>
 

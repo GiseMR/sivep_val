@@ -229,9 +229,9 @@
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contacto" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu"> Reportes </span></a>
            <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item"><a href="<?= base_url() ?>" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu"> Valorizaciones Entre Fechas </span></a></li>
-                <li class="sidebar-item"><a href="<?= base_url() ?>" target="content-frame" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">Contacto con Mas Valorizaciones </span></a></li>
-                <li class="sidebar-item"><a href="<?= base_url() ?>" target="content-frame" class="sidebar-link"><i class="mdi mdi-bank"></i><span class="hide-menu">Entidades con Mas Solicitudes </span></a></li>
+                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalfecha" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu"> Valorizaciones Entre Fechas </span></a></li>
+                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalcontac" target="content-frame" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">Contacto con Mas Valorizaciones </span></a></li>
+                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalentidad" target="content-frame" class="sidebar-link"><i class="mdi mdi-bank"></i><span class="hide-menu">Entidades con Mas Solicitudes </span></a></li>
               </ul>
 
 

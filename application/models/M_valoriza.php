@@ -113,6 +113,9 @@ class M_valoriza extends CI_Model
 		$query = $this->db->get($table);
 		return $query->result();
 	}
+	
+
+	
 }
 
 

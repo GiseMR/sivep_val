@@ -2,13 +2,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="nroValuacionResumen" class="col-sm-9 text-right control-label col-form-label">Código</label>
+                                                <label for="nroValuacioncontacto" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="nroValuacionResumen" name="nroValuacionResumen" value="Val.N° 001-2019" readonly>
-                                                </div>
-                                                <label for="tipoinmuebleresumen" class="col-sm-9 text-right control-label col-form-label">Inmueble</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="tipoinmuebleresumen" name="tipoinmuebleresumen" value="URBANO" readonly>
+                                                    <input type="text" class="form-control" id="nrovalcontac" name="nrovalcontac" value="<?= $codigo ?>" readonly>
                                                 </div>
                                                 <label for="FECVALCONTAC" class="col-sm-9 text-right control-label col-form-label">Fecha</label>
                                                 <div class="col-sm-3">
@@ -20,7 +16,7 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="DNI" class="col-sm-2 text-left control-label col-form-label">DNI</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" class="form-control" id="dni" name="dni">
+                                                    <input type="text" class="form-control" id="dni" name="dni" minlength="5" maxlength="8" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -55,7 +51,7 @@
                                                 <div class="col-sm-1"></div>
                                                 <label for="TELEFONO" class="col-sm-2 text-left control-label col-form-label">TELEFONO</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="telefono" name="telefono">
+                                                    <input type="text" class="form-control" id="telefono" name="telefono"minlength="5" maxlength="9" require>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
