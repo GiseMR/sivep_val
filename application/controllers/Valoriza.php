@@ -5,7 +5,7 @@ require_once APPPATH.'third_party/phpexcel/PHPExcel.php';
 class Valoriza extends CI_Controller
 {
 
-
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -29,12 +29,14 @@ class Valoriza extends CI_Controller
 		$crud->add_action('Fotos', '', '','el el-picture', array($this, 'fotosLink'));
 		$crud->columns('nroValuacion','tipoinmueble','fechavaluacion','a101','a102b', 'a103a', 'a103b','a104a','a104b','a201','a202','a202a','a203a','a203b','a203c','a301',/*'a302','a302a','a302b','a302c','a302d',*/'a303a','a303b','a304','a304a','a304b','a305','a306','a307a','a307a','a307b','a307c','a307d','a307e','a307f','a307g','a307h','a307i','a308'/*,'a309','a309a','a400','a500','a600','a700','b800','b900a','b900b','b1000a','b1000b','b1000b1','b1000c','b1000d','b1100a','b1100b','c1200','c1300'*/,'c1400','c1400a','c1400b','c1400c','c1400d','c1400e','c1400f',
 		'c1500a','c1500b','c1500c','c1500d','c1500e','c1500f','c1500g','c1600','c1700','d1800a','d1800b','d1800c','d1800d','d1901a','d1901b','d1901c','d1901d','d1902','d1902a','d1902b','d1902c','d1902d','d1902e','d1902f','d1903a','d1903b','d1903c','d1903d','d1903e','d1903f','d1903g','d1903h','d1903i','d1903j','d1903k','d1903l'/*,'e2000','e2100','e2200','e2300','e2400','e2500','e2600','e2700','e2800a','e2800b','e2800c','e2800d','e2800e','e2800f'*/,'e2900a','e2900b','e2900c','e2900d'/*,'e3000a','e3000b','e3000c'*/,'registro'); 
-		
+		$crud->callback_column('a102b',array($this,'propietarios_callback'));
+		$crud->callback_column('nroValuacion',array($this,'color_row_callback'));
+
 		$crud->display_as('nroValuacion','Nro._Valuación'); 
 		$crud->display_as('tipoinmueble','Tipo_de_Inmueble');
 		$crud->display_as('fechavaluacion','Fecha_de_Valuación');
 		$crud->display_as('a101','Objeto_de_Valuación');
-		$crud->display_as('a102a','Propietarios');
+		$crud->display_as('a102a','DNI');
 		$crud->display_as('a102b','Propietarios');
 		$crud->display_as('a103a','DNI_Solicitante');
 		$crud->display_as('a103b','Solicitante');
@@ -152,7 +154,7 @@ class Valoriza extends CI_Controller
 		$crud->display_as('e3000c','Fotos');*/
 		$crud->display_as('registro','Fecha Registro');
 	
-		$crud ->set_relation( 'idvaluacion' , 'propietario' , '{nombres}') ;
+		$crud ->set_relation('idvaluacion' , 'propietario' , '{nombres}') ;
 		$crud->unset_export();
 		$crud->unset_clone();
 		$crud->unset_print();
@@ -170,6 +172,51 @@ class Valoriza extends CI_Controller
 		$data->titulo = $titulo;
 		$data->state = $state;
 		$this->load->view('v_crud_valoriza', $data);
+	}
+
+	function propietarios_callback($value, $row){
+		$nombres =$this->getDataPropiestario($row->idvaluacion);
+		$html= "";
+		if(strlen($nombres)>1)
+			$html='<button type="button" id="'.$row->idvaluacion.'show" onmouseover="showPropietarios()" 
+			data-trigger="focus" class="btn btn-outline-info btn-sm"
+			data-toggle="popover" title="Propietarios"
+			data-content="'.$nombres.'">Ver</button>';
+
+			$row->a102b=$nombres;
+
+		return $html;
+	}
+
+
+	function getDataPropiestario($idvaluacion){
+		$propietarios = $this->m_valoriza->get_detail('propietario', $idvaluacion);
+		$nombres ="";
+		$i= 0;
+		foreach($propietarios  as $item){
+			if($i==0)
+				$nombres = ''.$item->dni.':'.$item->nombres.'';
+			else
+				$nombres= $nombres.', '.$item->dni.':'.$item->nombres;
+			$i++;
+		}
+		return  $nombres;
+	}
+	function color_row_callback($value, $row){
+		
+		
+		$temp =	json_encode(array_filter((array) $row, function($val) {
+			return !empty($val);
+		}));
+
+		$someArray = json_decode($temp, true);
+		$result = $value;
+		if(count($someArray)<100)
+		{
+			$separador='"';
+			$result = $value."<script> $(".$separador."input[data-id='".$row->idvaluacion."']:checkbox".$separador.").parent().parent().css('background-color','#FFA07A'); </script>";	
+		}		
+		return $result;
 	}
 
 	function nuevo()

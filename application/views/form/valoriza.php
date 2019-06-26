@@ -89,6 +89,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="form-group row">
+                                             <input name="idContacto" id="idContacto" type="hidden">
                                                 <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="<?= $codigo ?>" readonly>
@@ -1656,9 +1657,11 @@
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
     <script src="<?= base_url(); ?>assets/codigos/js/proceso.js"></script>
+    <script src="<?= base_url(); ?>assets/codigos/js/bootstrap-popover.js"></script>
 
     <script>
         $(function() {
+            $('[data-toggle="popover"]').popover();
             //serializar form como json
             $.fn.serializeFormJSON = function() {
                 var o = {};

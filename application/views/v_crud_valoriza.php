@@ -11,9 +11,15 @@
  <div class="container-fluid">
  	<div><?php echo $output; ?></div>
  </div>
-
+ <script src="<?= base_url(); ?>assets/codigos/js/tooltip.js"></script>
+ <script src="<?= base_url(); ?>assets/codigos/js/popper.js"></script>  
+ <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
+ <script src="<?= base_url(); ?>assets/grocery_crud/themes/bootstrap-v4/js/bootstrap/bootstrap.js"></script>
+ 
  <script type="text/javascript">
- 	//Growl notification
+	 //Growl notification
+	
+
  	function showNotif(content, tipo) {
  		try {
  			$.growl(content, {
@@ -24,8 +30,12 @@
  		}
  	}
 
- 	$(function() {
+	 function showPropietarios(){
+		$('[data-toggle="popover"]').popover();
+	 }
 
+ 	$(function() {
+		$('[data-toggle="popover"]').popover();
  		//NO TITULO
  		$(".table-label").hide();
 

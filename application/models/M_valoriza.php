@@ -1,12 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+use GroceryCrud\Core\Model\ModelFieldType;
+
 class M_valoriza extends CI_Model
 {
-
-	public function __construct()
-	{
-		parent::__construct();
-	}
+	
+    function __construct() {
+    }
 
 
 	public function get_number()
