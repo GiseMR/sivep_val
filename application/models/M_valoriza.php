@@ -120,6 +120,18 @@ class M_valoriza extends CI_Model
 		$this->db->delete($table);
 	}
 
+	public function getAllDataById($id){
+		$data["valoriza"] = $this->get_header($id);
+		$data["edificaciones"] = $this->get_detail('edificacion',$id);
+		$data["fotos"] = $this->get_detail('foto',$id);
+		$data["linderos"] = $this->get_detail('lindero',$id);
+		$data["propietarios"] = $this->get_detail('propietario',$id);
+		$data["referencias"] = $this->get_detail('referencia',$id);
+		$data["sintesis"] = $this->get_detail('sintesis',$id);
+		$data["valores"] = $this->get_detail('valor',$id);
+		$data["valorcomplementarios"] = $this->get_detail('valorcomplementario',$id);
+		return $data;
+	}
 	
 }
 
