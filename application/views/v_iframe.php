@@ -6,7 +6,7 @@
   <!-- Container fluid  -->
   <!-- ============================================================== -->
   <div class="container-fluid">
-    <iframe style="width:100%" src="<?= base_url()?>inicio/main" onload="resizeIframe(this)" frameborder="0" scrolling="no" id="content-frame" name="content-frame">
+    <iframe style="width:100%" src="<?= base_url()?>inicio/main" onload="resizeIframe(this)" frameborder="0" scrolling="yes" id="content-frame" name="content-frame">
     <center><div><img src="assets/img/logo.png"></div></center>
     </iframe>
   </div>

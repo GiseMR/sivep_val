@@ -271,7 +271,7 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-2">  <h6 class="card-title">FECHA:</div>
                                                 <label for="fechavaluacion" class="col-sm-4 text-right control-label col-form-label">
-                                                    <h6>San Jerónimo - CUSCO</h6>
+                                                    <h6></h6>
                                                 </label>
                                                 <div class="col-sm-2">
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
@@ -289,7 +289,7 @@
                                             <i class="el el-print"></i>
                                             Imprimir             
                                     </a>
-                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza/verresumen/<?=$valoriza->idvaluacion;?>">
+                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza/exportarresumenexcel/<?=$valoriza->idvaluacion;?>">
                                             <i class="el el-export"></i>
                                             Exportar Excel
                                     </a>      

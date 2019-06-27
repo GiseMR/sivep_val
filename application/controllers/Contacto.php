@@ -8,11 +8,12 @@ class Contacto extends CI_Controller {
     }
 	
 	public function index(){
-		$crud = new grocery_CRUD();
+		
+        $crud = new grocery_CRUD();
         $this->config->load('grocery_crud');
         $crud->set_subject('Contacto');
         $crud->set_table('contacto');
-        $crud->columns('ID_CONT','DNI_CONT','NOM_CONT','APP_CONT','APM_CONT','FENAC_CONT','TEL_CONT','EMAIL_CONT', 'PAGO_CONT', 'OBS_CONT');   
+        $crud->columns('DNI_CONT','NOM_CONT','APP_CONT','APM_CONT','FENAC_CONT','TEL_CONT','EMAIL_CONT', 'PAGO_CONT', 'OBS_CONT');   
 		
 		$crud->display_as('ID_CONT','ID');
 		$crud->display_as('DNI_CONT','DNI');
@@ -30,11 +31,11 @@ class Contacto extends CI_Controller {
 		
 		/*$crud->unset_export();
 		$crud->unset_print();*/
-		$crud->unset_add();
+
 		$titulo = "";
 		$state = $crud->getState();
 		if ($state=="list") $titulo = "Gestión de Contactos de Valorizaciones";
-		/*else if ($state=="add") $titulo = "Registro de Contacto de Valorizaciones";*/
+		else if ($state=="add") $titulo = "Registro de Contacto de Valorizaciones";
 		else if ($state=="edit") $titulo = "Edición de Contacto de Valorizaciones";
 		else if ($state=="read") $titulo = "Revisión de Contacto de Valorizaciones";
 		
@@ -44,8 +45,7 @@ class Contacto extends CI_Controller {
         $data->titulo= $titulo;
 		$data->state = $state;
 		$this->load->view('v_crud',$data);
-
-		}
+    }
 	
 		public function registrar()
 		{		

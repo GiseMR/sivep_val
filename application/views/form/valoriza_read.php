@@ -106,8 +106,8 @@
                                                             <tbody>
                                                                 <? foreach ($propietario as $pitem) { ?>
                                                                     <tr>
-                                                                        <td class="pt-1-half" contenteditable="true"><?= $pitem->dni ?></td>
-                                                                        <td class="pt-5-half" contenteditable="true"><?= $pitem->nombres ?></td>
+                                                                        <td class="pt-1-half" contenteditable="false"><?= $pitem->dni ?></td>
+                                                                        <td class="pt-5-half" contenteditable="false"><?= $pitem->nombres ?></td>
                                                                         <td style="display:none"><?= $pitem->idpropietario ?></td>
                                                                         
                                                                     </tr>
@@ -350,9 +350,9 @@
                                                                         } ?>
                                                                         <tr>
                                                                             <td style="display:none"><?= $listitem[0] ?></td>
-                                                                            <td class="pt-3-half" contenteditable="true"><?= $listitem[1] ?></td>
-                                                                            <td class="pt-3-half" contenteditable="true"><?= $listitem[2] ?></td>
-                                                                            <td class="pt-3-half" contenteditable="true"><?= $listitem[3] ?></td>
+                                                                            <td class="pt-3-half" contenteditable="false"><?= $listitem[1] ?></td>
+                                                                            <td class="pt-3-half" contenteditable="false"><?= $listitem[2] ?></td>
+                                                                            <td class="pt-3-half" contenteditable="false"><?= $listitem[3] ?></td>
                                                                             <td style="display:none"><?= $listitem[4] ?></td>
                                                                             <td>
                                                                                 <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
@@ -761,12 +761,12 @@
                                                                 foreach ($referencia as $ritem) {
                                                                     $cantreferencia++; ?>
                                                                     <tr>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->direccion ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->propietario ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->telefono ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->distancia ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->terreno ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $ritem->fecha ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->direccion ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->propietario ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->telefono ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->distancia ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->terreno ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $ritem->fecha ?></td>
                                                                         <td style="display:none"><?= $ritem->idreferencia ?></td>
                                                                         <td>
                                                                             <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
@@ -1136,8 +1136,8 @@
                                                                             <tr>
                                                                                 <td style="display:none"><?= $listitem[0] ?></td>
                                                                                 <td class="pt-3-half" contenteditable="false" colid="<?= $aux ?>"><?= $listitem[1] ?></td>
-                                                                                <td class="pt-3-half" contenteditable="true"><?= $listitem[2] ?></td>
-                                                                                <td class="pt-3-half" contenteditable="true"><?= $listitem[3] ?></td>
+                                                                                <td class="pt-3-half" contenteditable="false"><?= $listitem[2] ?></td>
+                                                                                <td class="pt-3-half" contenteditable="false"><?= $listitem[3] ?></td>
                                                                                 <td style="display:none"><?= $listitem[4] ?></td>
                                                                                 <td>
                                                                                     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">x</button></span>
@@ -1229,10 +1229,10 @@
                                                             <tbody>
                                                                 <? foreach ($valorcomplementario as $vcitem) { ?>
                                                                     <tr>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $vcitem->descripcion ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $vcitem->costo ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $vcitem->cantidad ?></td>
-                                                                        <td class="pt-3-half" contenteditable="true"><?= $vcitem->depreciacion ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $vcitem->descripcion ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $vcitem->costo ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $vcitem->cantidad ?></td>
+                                                                        <td class="pt-3-half" contenteditable="false"><?= $vcitem->depreciacion ?></td>
                                                                         <td class="pt-3-half" contenteditable="false"><?= $vcitem->total ?></td>
                                                                         <td class="pt-3-half" contenteditable="false"><?= $vcitem->totalsindep ?></td>
                                                                         <td style="display:none"><?= $vcitem->idvalorcomplementario ?></td>
@@ -1540,7 +1540,7 @@
                                                             <? foreach ($foto as $fitem) { ?>
                                                                 <tr>
                                                                     <td style="display:none"><?= $fitem->ruta ?></td>
-                                                                    <td class="pt-3-half" contenteditable="true"><?= $fitem->leyenda ?></td>
+                                                                    <td class="pt-3-half" contenteditable="false"><?= $fitem->leyenda ?></td>
                                                                     <td style="display:none"><?= $fitem->idfoto ?></td>
                                                                     <td class="pt-3-half"><input type="file" class="form-control" form="temp-form" accept=".jpeg, .jpg, .png"></td>
                                                                     <td class="pt-3-half"><img src="<?= base_url() . $fitem->ruta ?>" style="height: 200px"></td>

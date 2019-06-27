@@ -114,6 +114,11 @@ class M_valoriza extends CI_Model
 		return $query->result();
 	}
 	
+	public function delete_detail($table, $id)
+	{
+		$this->db->where('idvaluacion', $id);
+		$this->db->delete($table);
+	}
 
 	
 }

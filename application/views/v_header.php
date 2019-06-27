@@ -226,7 +226,7 @@
                 <li class="sidebar-item"><a href="<?= base_url() ?>valoriza/nuevo" target="content-frame" class="sidebar-link"><i class="mdi mdi-library-plus"></i><span class="hide-menu"> Nuevo </span></a></li>
               </ul>
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>usuario" target="content-frame" aria-expanded="false"><i class="mdi mdi-account-key"></i><span class="hide-menu">Usuarios </span></a>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contacto" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contactolista" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu"> Reportes </span></a>
            <ul aria-expanded="false" class="collapse  first-level">
                 <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalfecha" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu"> Valorizaciones Entre Fechas </span></a></li>

@@ -89,7 +89,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="form-group row">
-                                             <input name="idContacto" id="idContacto" type="hidden">
+                                             <input name="idcontacto" id="idcontacto" type="hidden">
                                                 <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="<?= $codigo ?>" readonly>
@@ -3266,7 +3266,7 @@ $.ajax({
             success: function(response) {
                 let data = JSON.parse(response);
                 if(data){
-                    $('#idContacto').val(data[0].ID_CONT);
+                    $('#idcontacto').val(data[0].idcontacto);
                 }
                 alert('Se registro correcto');
                 $('#contactoModalLong').modal('hide');

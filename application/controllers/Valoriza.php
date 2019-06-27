@@ -27,11 +27,16 @@ class Valoriza extends CI_Controller
 		$crud->order_by('registro', 'desc');
 		$crud->add_action('Resumen', '', '','el el-file', array($this, 'resumenLink'));
 		$crud->add_action('Fotos', '', '','el el-picture', array($this, 'fotosLink'));
-		$crud->columns('nroValuacion','tipoinmueble','fechavaluacion','a101','a102b', 'a103a', 'a103b','a104a','a104b','a201','a202','a202a','a203a','a203b','a203c','a301',/*'a302','a302a','a302b','a302c','a302d',*/'a303a','a303b','a304','a304a','a304b','a305','a306','a307a','a307a','a307b','a307c','a307d','a307e','a307f','a307g','a307h','a307i','a308'/*,'a309','a309a','a400','a500','a600','a700','b800','b900a','b900b','b1000a','b1000b','b1000b1','b1000c','b1000d','b1100a','b1100b','c1200','c1300'*/,'c1400','c1400a','c1400b','c1400c','c1400d','c1400e','c1400f',
-		'c1500a','c1500b','c1500c','c1500d','c1500e','c1500f','c1500g','c1600','c1700','d1800a','d1800b','d1800c','d1800d','d1901a','d1901b','d1901c','d1901d','d1902','d1902a','d1902b','d1902c','d1902d','d1902e','d1902f','d1903a','d1903b','d1903c','d1903d','d1903e','d1903f','d1903g','d1903h','d1903i','d1903j','d1903k','d1903l'/*,'e2000','e2100','e2200','e2300','e2400','e2500','e2600','e2700','e2800a','e2800b','e2800c','e2800d','e2800e','e2800f'*/,'e2900a','e2900b','e2900c','e2900d'/*,'e3000a','e3000b','e3000c'*/,'registro'); 
+		$crud->columns('nroValuacion','tipoinmueble','fechavaluacion','a101','a102b', 'a103a',
+		 'a103b','a104a','a104b','a201','a202','a202a','a203a','a203b','a203c','a301',
+		 'a303a','a303b','a304','a305','a306','d1800a',
+		'd1800b','d1800c','d1800d','d1901a','d1901b','d1901c','d1901d','d1902','d1902a',
+		'd1903a','d1903b','d1903c','d1903d','d1903e','d1903f',
+		'd1903g','d1903h','d1903i','d1903j','d1903k','d1903l','registro'); 
 		$crud->callback_column('a102b',array($this,'propietarios_callback'));
 		$crud->callback_column('nroValuacion',array($this,'color_row_callback'));
-
+		$crud->callback_before_delete(array($this,'delete_detail'));
+		
 		$crud->display_as('nroValuacion','Nro._Valuación'); 
 		$crud->display_as('tipoinmueble','Tipo_de_Inmueble');
 		$crud->display_as('fechavaluacion','Fecha_de_Valuación');
@@ -48,113 +53,41 @@ class Valoriza extends CI_Controller
 		$crud->display_as('a203a','Departamento');
 		$crud->display_as('a203b','Provincia');
 		$crud->display_as('a203c','Distrito');
-		$crud->display_as('a301','Zonificación');
-		/*$crud->display_as('a302','Lindero Fuente');
-		$crud->display_as('a302a','Lindero Frente');
-		$crud->display_as('a302b','Lindero Fondo');
-		$crud->display_as('a302c','Lindero Derecha');
-		$crud->display_as('a302d','Lindero Izquierda');*/
+		$crud->display_as('a301','Zonificación');		
 		$crud->display_as('a303a','Área');
 		$crud->display_as('a303b','Perímetro');
 		$crud->display_as('a304','Edificaión_Área_Construida');
-		$crud->display_as('a304a','Edificación_Estado');
-		$crud->display_as('a304b','Edificación_Años_Antigüedad');
 		$crud->display_as('a305','Ocupación_Uso');
-		$crud->display_as('a306','Descrip. Predio');
-		$crud->display_as('a307a','Sistema_Constructivo');
-		$crud->display_as('a307b','Muros');
-		$crud->display_as('a307c','Techos');
-		$crud->display_as('a307d','Puertas');
-		$crud->display_as('a307e','Ventanas');
-		$crud->display_as('a307f','Revestimiento');
-		$crud->display_as('a307g','Pisos');
-		$crud->display_as('a307h','Servicios Higénicos');
-		$crud->display_as('a307i','Instalaciones Sanitarias');
-		$crud->display_as('a308','Servidumbre');
-		/*$crud->display_as('a309a','Declaratoria de Fábrica');
-		$crud->display_as('a400','Análisis del Bien');
-		$crud->display_as('a500','Alcances y Limitaciones');
-		$crud->display_as('a600','Fecha de Asignación');
-		$crud->display_as('a700','Poliza de Seguros');
-		$crud->display_as('b800','Inspección Ocular del Bien');
-		$crud->display_as('b900a','Cargas y Gravámenes');
-		$crud->display_as('b900b','Cargas y Gravámenes Fuente');
-		$crud->display_as('b1000a','Oficina Registral');
-		$crud->display_as('b1000b','Código del Predio');
-		$crud->display_as('b1000b1','Partida Electrónica');
-		$crud->display_as('b1000c','Folio');
-		$crud->display_as('b1000d','Asiento');
-		$crud->display_as('b1100a','Cod. Suministro Energía Eléctrica');
-		$crud->display_as('b1100b','Cod. Suministro Agua');
-		$crud->display_as('c1200','Bases Para Su Desarrollo');
-		$crud->display_as('c1300','Metodología Utilizada');*/
-		$crud->display_as('c1400','Valores_Comerciales_de_Referencia');
-		$crud->display_as('c1400a','Total');
-		$crud->display_as('c1400b','Dolares');
-		$crud->display_as('c1400c','Tipo de Cambio');
-		$crud->display_as('c1400d','Valor Soles');
-		$crud->display_as('c1400e','Valores_Comerciales_de_Referencia');
-		$crud->display_as('c1400f','Mapa Referencia');
-		$crud->display_as('c1500a','Características');
-		$crud->display_as('c1500b','Áreas');
-		$crud->display_as('c1500c','Ubicación');
-		$crud->display_as('c1500d','Servicios');
-		$crud->display_as('c1500e','Puntaje');
-		$crud->display_as('c1500f','Porcentaje');
-		$crud->display_as('c1500g','Tipo Garantía');
-		$crud->display_as('c1600','Deducciones Aplicadas');
-		$crud->display_as('c1700','Sustento');
-		$crud->display_as('d1800a','Valor Comercial del Predio');
-		$crud->display_as('d1800b','Valor Comercial Unitario');
-		$crud->display_as('d1800c','Valor Comercial del Terreno');
-		$crud->display_as('d1800d','Tpo de Cambio');
-		$crud->display_as('d1901a','Area m2 (VT)');
-		$crud->display_as('d1901b','Valor $ m2 (VT) ');
-		$crud->display_as('d1901c','Valor Total $ (VT)');
-		$crud->display_as('d1901d','Valor Total S/ (VT)');
-		$crud->display_as('d1902','Región (VE)');
-		$crud->display_as('d1902a','Valor m2 (VE)');
-		$crud->display_as('d1902b','Valor Construcción (VE)');
-		$crud->display_as('d1902c','Depreciación % (VE)');
-		$crud->display_as('d1902d','Depreciación (VE)');
-		$crud->display_as('d1902e','Subtotal (VE)');
-		$crud->display_as('d1902f','Total (VE)');
-		$crud->display_as('d1903a','TOTAL (VOC)');
-		$crud->display_as('d1903b','Estado Conservación (VOC)');
-		$crud->display_as('d1903c','Antiguedad (VOC)');
-		$crud->display_as('d1903d','Valor Obras Complementarias $');
-		$crud->display_as('d1903e','Valor Obras Complementaria S/.');
-		$crud->display_as('d1903f','Valor Obras Complementaria %');
-		$crud->display_as('d1903g','Valor Obras Complementarias $ (VNR)');
-		$crud->display_as('d1903h','Valor Obras Complementarias S/. (VNR)');
-		$crud->display_as('d1903i','Valor Obras Complementarias (VNR)');
-		$crud->display_as('d1903j','Valor Obras Complementarias $ ');
-		$crud->display_as('d1903k','Valor Obras Complementarias S/.');
-		$crud->display_as('d1903l','Tipo de Cambio (VOC)');
-		/*$crud->display_as('e2000','Declaracion de Independencia de Criterio');
-		$crud->display_as('e2100','Normas Aplicables');
-		$crud->display_as('e2200','Declaración Jurada');
-		$crud->display_as('e2300','Vigencia de Evaluación');
-		$crud->display_as('e2400','Posesión del Inmueble');
-		$crud->display_as('e2500','Verificador del Inmueble');
-		$crud->display_as('e2600','Consideraciones');
-		$crud->display_as('e2700','Observaciones/Recomendaciones');
-		$crud->display_as('e2800a','Titulo');
-		$crud->display_as('e2800b','Certificado');
-		$crud->display_as('e2800c','Autovaluo');
-		$crud->display_as('e2800d','Planos');
-		$crud->display_as('e2800e','Memoria');
-		$crud->display_as('e2800f','Documentación');*/
+		$crud->display_as('a306','Descrip._Predio');
+		$crud->display_as('d1800a','Valor_Comercial_del_Predio');
+		$crud->display_as('d1800b','Valor_Comercial_Unitario');
+		$crud->display_as('d1800c','Valor_Comercial_del_Terreno');
+		$crud->display_as('d1800d','Tpo_de_Cambio');
+		$crud->display_as('d1901a','Area_m2_(VT)');
+		$crud->display_as('d1901b','Valor$ _m2 (VT) ');
+		$crud->display_as('d1901c','Valor_Total_$ (VT)');
+		$crud->display_as('d1901d','Valor_Total_S/ (VT)');
+		$crud->display_as('d1902','Región_(VE)');
+		$crud->display_as('d1902a','Valor_m2 (VE)');
+		$crud->display_as('d1903a','TOTAL_(VOC)');
+		$crud->display_as('d1903b','Estado_Conservación_(VOC)');
+		$crud->display_as('d1903c','Antiguedad_(VOC)');
+		$crud->display_as('d1903d','Valor_Obras_Complementarias_$');
+		$crud->display_as('d1903e','Valor_Obras_Complementaria_S/.');
+		$crud->display_as('d1903f','Valor_Obras_Complementaria_%');
+		$crud->display_as('d1903g','Valor_Obras_Complementarias_$_(VNR)');
+		$crud->display_as('d1903h','Valor_Obras_Complementarias_S/._(VNR)');
+		$crud->display_as('d1903i','Valor_Obras_Complementarias_(VNR)');
+		$crud->display_as('d1903j','Valor_Obras_Complementarias_$ ');
+		$crud->display_as('d1903k','Valor_Obras_Complementarias_S/.');
+		$crud->display_as('d1903l','Tipo_de_Cambio_(VOC)');
 		$crud->display_as('e2900a','Perito_Valuador');
 		$crud->display_as('e2900b','Profesión');
 		$crud->display_as('e2900c','CAP');
 		$crud->display_as('e2900d','Estado');
-		/*$crud->display_as('e3000a','Fotos');
-		$crud->display_as('e3000b','Fotos');
-		$crud->display_as('e3000c','Fotos');*/
-		$crud->display_as('registro','Fecha Registro');
-	
-		$crud ->set_relation('idvaluacion' , 'propietario' , '{nombres}') ;
+		$crud->display_as('registro','Fecha_Registro');		
+		
+		
 		$crud->unset_export();
 		$crud->unset_clone();
 		$crud->unset_print();
@@ -173,6 +106,14 @@ class Valoriza extends CI_Controller
 		$data->state = $state;
 		$this->load->view('v_crud_valoriza', $data);
 	}
+	public function delete_detail($primary_key)
+	{
+	  	$detalles = array("propietario", "edificacion", "lindero", "referencia", "sintesis", "valor", "valorcomplementario", "foto", "fabrica");
+		foreach ($detalles as $item) {
+			$this->m_valoriza->delete_detail($item, $primary_key);
+		}
+		return true;
+	}
 
 	function propietarios_callback($value, $row){
 		$nombres =$this->getDataPropiestario($row->idvaluacion);
@@ -188,6 +129,7 @@ class Valoriza extends CI_Controller
 		return $html;
 	}
 
+	
 
 	function getDataPropiestario($idvaluacion){
 		$propietarios = $this->m_valoriza->get_detail('propietario', $idvaluacion);
@@ -211,13 +153,14 @@ class Valoriza extends CI_Controller
 
 		$someArray = json_decode($temp, true);
 		$result = $value;
-		if(count($someArray)<100)
+		if(count($someArray)<110)
 		{
 			$separador='"';
 			$result = $value."<script> $(".$separador."input[data-id='".$row->idvaluacion."']:checkbox".$separador.").parent().parent().css('background-color','#FFA07A'); </script>";	
 		}		
 		return $result;
 	}
+	
 
 	function nuevo()
 	{
@@ -395,36 +338,9 @@ class Valoriza extends CI_Controller
 	}
 
 	function resumen($id) {
-
-		$valoriza= $this->m_valoriza->get_header($id);
-		$fistValoriza = $valoriza[0];
-		
-		$dpto = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a)[0]->C_NOMUBIGEO;
-		$prov = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a, $fistValoriza->a203b)[0]->C_NOMUBIGEO;
-		$dist = $this->m_ubigeo->get_ubigeo($fistValoriza->a203a, $fistValoriza->a203b, $fistValoriza->a203c)[0]->C_NOMUBIGEO;
-
-		$fistValoriza->a203a = $dpto;
-		$fistValoriza->a203b = $prov;
-		$fistValoriza->a203c = $dist;
-		$propietarios = $this->m_valoriza->get_detail('propietario', $id);
-		$data = array('valoriza'=>$fistValoriza, 'propietarios'=>$propietarios);
-
+		$data = $this->getDataResumen($id);
 		$this->load->view('form/valoriza_resumen', $data);
 	} 
-
-	function fotosLink($primary_key , $row)
-	{
-		return site_url('valoriza/panelfotos/'.$primary_key);
-	}
-
-	function panelfotos($id) {
-		$valoriza= $this->m_valoriza->get_header($id);
-		$fistValoriza = $valoriza[0];
-		$fotos = $this->m_valoriza->get_detail('foto', $id);
-		$data = array('valoriza'=>$fistValoriza, 'fotos'=>$fotos);
-		$this->load->view('form/valoriza_fotos', $data);
-	} 
-
 
 	function getDataResumen($id){
 		$valoriza= $this->m_valoriza->get_header($id);
@@ -443,7 +359,7 @@ class Valoriza extends CI_Controller
 		return $data;
 	}
 
-	function verresumen($id){
+	function exportarresumenexcel($id){
 		$data = $this->getDataResumen($id);
 		$valoriza = $data["valoriza"];
 		$propietarios = $data["propietarios"];
@@ -632,6 +548,19 @@ class Valoriza extends CI_Controller
 		$object_excel_writer->save('php://output'); 
 	}
 
+	function fotosLink($primary_key , $row)
+	{
+		return site_url('valoriza/panelfotos/'.$primary_key);
+	}
+
+	function panelfotos($id) {
+		$valoriza= $this->m_valoriza->get_header($id);
+		$fistValoriza = $valoriza[0];
+		$fotos = $this->m_valoriza->get_detail('foto', $id);
+		$data = array('valoriza'=>$fistValoriza, 'fotos'=>$fotos);
+		$this->load->view('form/valoriza_fotos', $data);
+	} 
+	
 	function createImageFromFile($filename, $use_include_path = false, $context = null, &$info = null)
     {      
       $info = array("image"=>getimagesize($filename));
