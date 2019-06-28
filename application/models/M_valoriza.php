@@ -129,6 +129,7 @@ class M_valoriza extends CI_Model
 		$data["referencias"] = $this->get_detail('referencia',$id);
 		$data["sintesis"] = $this->get_detail('sintesis',$id);
 		$data["valores"] = $this->get_detail('valor',$id);
+		$data["fabricas"] = $this->get_detail('fabrica',$id);
 		$data["valorcomplementarios"] = $this->get_detail('valorcomplementario',$id);
 		return $data;
 	}

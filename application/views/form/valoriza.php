@@ -446,7 +446,6 @@
                                             <div class="form-group row" bloque-id="1">
                                                 <div class="col-sm-1"></div>
                                                 <label class="col-sm-11 text-left control-label col-form-label">BLOQUE 1</label>
-
                                                 <div class="col-sm-2"></div>
                                                 <label for="fabrica-sistema-1" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
                                                 <div class="col-sm-7">
@@ -1945,10 +1944,9 @@
 
         function getTableFabrica(tableName, addHead, headValue) {
             var o = "[";
-            var head = ["sistema", "muro", "techo", "puerta", "ventana", "revestimiento", "piso", "sshh", "sanitaria"];
-
             var chead = 0;
             $(".grupo-fabrica .form-group").each(function() {
+            
                 var item = "{";
                 $(this).find("select").each(function() {
                     if ($(this) != undefined) {
@@ -2108,6 +2106,7 @@
                         alert("OCURRIÓ UN ERROR AL GRABAR");
                     }
                 }).done(function() {
+                    debugger
                     if (registryid != 0) {
                         grabaDetalle("table-propietario", "propietario");
                         grabaDetalleEdificacion("table-edificacion", "edificacion");
@@ -2423,7 +2422,6 @@
                                 BLOQUE {num}                                
                                 <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 block-remove">x</button>
                             </label>
-
                             <div class="col-sm-2"></div>
                             <label for="fabrica-sistema-{num}" class="col-sm-3 text-left control-label col-form-label">Sistema constructivo</label>
                             <div class="col-sm-7">
