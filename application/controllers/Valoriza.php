@@ -155,7 +155,8 @@ class Valoriza extends CI_Controller
 
 		$someArray = json_decode($temp, true);
 		$result = $value;
-		if(count($someArray)<110)
+		
+		if(count($someArray)<95)
 		{
 			$separador='"';
 			$result = $value."<script> $(".$separador."input[data-id='".$row->idvaluacion."']:checkbox".$separador.").parent().parent().css('background-color','#FFA07A'); </script>";	
