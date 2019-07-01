@@ -19,16 +19,37 @@
             $sheet->setTitle('VALUACION');
 
             
-            $row = 1;
-            $sheet->setCellValueByColumnAndRow(1, $row, 'INFORME DE VALUACIÓN');
+            $row = 2;
+            $styleArray = array(
+                'borders' => array(
+                'allborders' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN
+                )
+                )
+            );
+
+            $sheet->mergeCells('A'.$row.':G'.($row+1).'');
+            $sheet->getStyle('A'.$row.':G'.($row+1).'')->applyFromArray($styleArray);
+            $sheet->getCell('A'.$row)->setValue('INFORME DE VALUACIÓN');
+            $sheet->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+            $sheet->getColumnDimension('A')->setWidth(25);
+            $sheet->getColumnDimension('B')->setWidth(15);
+            $sheet->getColumnDimension('C')->setWidth(15);
+            $sheet->getColumnDimension('D')->setWidth(15);
+            $sheet->getColumnDimension('E')->setWidth(10);
+            $sheet->getColumnDimension('F')->setWidth(10);
+            $sheet->getColumnDimension('G')->setWidth(15);
+
             $row= $row + 3;
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->nroValuacion);
+            $sheet->getStyle('F'.$row.':G'.($row+1).'')->applyFromArray($styleArray);
+            $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->nroValuacion);
             $row++;
-            $sheet->setCellValueByColumnAndRow(3, $row, 'Inmueble:');
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->tipoinmueble);
+            $sheet->setCellValueByColumnAndRow(5, $row, 'Inmueble:');
+            $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->tipoinmueble);
             $row++;
-            $sheet->setCellValueByColumnAndRow(3, $row, 'Fecha:');
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->fechavaluacion);
+            
+            $sheet->setCellValueByColumnAndRow(5, $row, 'Fecha:');
+            $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->fechavaluacion);
 
             /* Datos generales*/
             $row++;
@@ -36,33 +57,49 @@
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '1.0 INSTRUCCIONES RECIBIDAS');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '1.01 Objeto de Valuación');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a101);
+            $sheet->setCellValueByColumnAndRow(1, $row, '1.01 Objeto de Valuación');
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getCell('C'.$row)->setValue($valoriza->a101);
 
             $row=$row+2;
             $nombresPropiestarios = "";
             foreach($propietarios as $item){
                 $nombresPropiestarios = $nombresPropiestarios.' '.$item->nombres;
             }
-            $sheet->setCellValueByColumnAndRow(0, $row, '1.02 Propietarios');
-            $sheet->setCellValueByColumnAndRow(2, $row, $nombresPropiestarios);
+            $sheet->setCellValueByColumnAndRow(1, $row, '1.02 Propietarios');
+
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getStyle('C'.$row.':G'.$row)->applyFromArray($styleArray);
+            $sheet->getCell('C'.$row)->setValue($nombresPropiestarios);
+
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '1.03 Solicitante');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a103b);
+            $sheet->setCellValueByColumnAndRow(1, $row, '1.03 Solicitante');
+
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getStyle('C'.$row.':G'.$row)->applyFromArray($styleArray);
+            $sheet->getCell('C'.$row)->setValue($valoriza->a103b);
+
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '1.04 Entidad Financiera');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a104b);
+            $sheet->setCellValueByColumnAndRow(1, $row, '1.04 Entidad Financiera');
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getStyle('C'.$row.':G'.$row)->applyFromArray($styleArray);
+            $sheet->getCell('C'.$row)->setValue($valoriza->a104b);
             /* End Datos generales*/
 
             $row=$row+2;
-            /* Ubicación*/
+            /* Ubicación*/            
             $sheet->setCellValueByColumnAndRow(0, $row, '2.0 UBICACIÓN');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'REGISTRAL');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a201);
+            $sheet->getStyle('B'.$row.':G'.($row + 2).'')->applyFromArray($styleArray);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'REGISTRAL');
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getCell('C'.$row)->setValue($valoriza->a201);
+
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'AUTOVALUO');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a202);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'AUTOVALUO');
+            $sheet->mergeCells('C'.$row.':G'.$row);
+            $sheet->getCell('C'.$row)->setValue($valoriza->a202);
+
             $row++;
             $sheet->setCellValueByColumnAndRow(1, $row, 'Distrito');
             $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a203c);
@@ -78,26 +115,33 @@
             /* Descripción detallada*/
             $sheet->setCellValueByColumnAndRow(0, $row, '3.0 DESCRIPCIÓN DETALLADA');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.01 Zonificación');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a301);
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.01 Zonificación');
+            $sheet->getStyle('C'.$row.':C'.$row)->applyFromArray($styleArray);
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a301);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.02 Linderos');
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.02 Linderos');
             $row=$row+2;
+            $rowStart=$row;
             foreach($linderos as $item){
-                $sheet->setCellValueByColumnAndRow(0, $row, $item->ubicacion);
-                $sheet->setCellValueByColumnAndRow(2, $row, $item->detalle);
+                $sheet->mergeCells('B'.$row.':C'.$row);
+                $sheet->getCell('B'.$row)->setValue($item->ubicacion);
+                $sheet->mergeCells('D'.$row.':G'.$row);
+                $sheet->getCell('D'.$row)->setValue($item->detalle);
                 $row++;
             }
+            $sheet->getStyle('B'.$rowStart.':G'.($row-1).'')->applyFromArray($styleArray);
+
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.03 Terreno');
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.03 Terreno');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Area:');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a303a);
-            $sheet->setCellValueByColumnAndRow(2, $row, 'Perímetro:');
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->a303b);
+            $sheet->getStyle('B'.$row.':G'.$row)->applyFromArray($styleArray);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Area:');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a303a);
+            $sheet->setCellValueByColumnAndRow(3, $row, 'Perímetro:');
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->a303b);
 
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.04 Edificación');
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.04 Edificación');
             /* End Descripción detallada*/
 
             /*Bloques */
@@ -109,122 +153,138 @@
             if(isset($bloques)){
                 $row=$row+2;
                 $i=1;
-                foreach($bloques as $bloque){
-                    $sheet->setCellValueByColumnAndRow(0, $row, 'BLOQUE '.$i);
+                $rowStart=$row;
+                foreach($bloques as $bloque){                    
+                    $sheet->setCellValueByColumnAndRow(1, $row, 'BLOQUE '.$i);
                     $i++;
                     $row++;
-                    $sheet->setCellValueByColumnAndRow(0, $row, 'NIVEL');
-                    $sheet->setCellValueByColumnAndRow(1, $row, 'DISTRIBUCION DE AMBIENTES');
-                    $sheet->setCellValueByColumnAndRow(3, $row, 'AREA CONSTRUIDA (m2)');
+                    $sheet->setCellValueByColumnAndRow(1, $row, 'NIVEL');
+                    $sheet->setCellValueByColumnAndRow(2, $row, 'DISTRIBUCION DE AMBIENTES');
+                    $sheet->setCellValueByColumnAndRow(6, $row, 'AREA CONSTRUIDA (m2)');
                     $row++;
                     $area=0;
                     foreach($bloque as $item){
-                        $sheet->setCellValueByColumnAndRow(0, $row, $item->nivel);
-                        $sheet->setCellValueByColumnAndRow(1, $row, $item->distribucion);
-                        $sheet->setCellValueByColumnAndRow(3, $row, $item->area);
+                        $sheet->setCellValueByColumnAndRow(1, $row, $item->nivel);
+                        $sheet->setCellValueByColumnAndRow(2, $row, $item->distribucion);
+                        $sheet->setCellValueByColumnAndRow(6, $row, $item->area);
                         $area =$area + $item->area;
                         $row++;
                     }
-                    $sheet->setCellValueByColumnAndRow(2, $row, 'Total');
-                    $sheet->setCellValueByColumnAndRow(3, $row, $area);
+
+                    $sheet->setCellValueByColumnAndRow(5, $row, 'Total');
+                    $sheet->setCellValueByColumnAndRow(6, $row, $area);
                     $row++;
-                    $sheet->setCellValueByColumnAndRow(0, $row, 'Estadode Conservación');
-                    $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a304a);
-                    $sheet->setCellValueByColumnAndRow(2, $row, 'Antiguedad');
-                    $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->a304b);
-                    $sheet->setCellValueByColumnAndRow(4, $row, 'AÑOS');
+                    $sheet->setCellValueByColumnAndRow(1, $row, 'Estadode Conservación');
+                    $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a304a);
+                    $sheet->setCellValueByColumnAndRow(3, $row, 'Antiguedad');
+                    $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->a304b);
+                    $sheet->setCellValueByColumnAndRow(5, $row, 'AÑOS');
                     $row=$row+2;
+                    $sheet->getStyle('B'.($rowStart+1).':G'.($row-2).'')->applyFromArray($styleArray);
+                    $rowStart=$row;
                 }
+                
             }
             /*End Bloques */
             $row=$row+2;
             /* Fabricas*/
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.06 Descripción del Predio:');
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.06 Descripción del Predio:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->a306);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->a306);
+
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.07 Fábrica- Especificaciones técnicas');
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.07 Fábrica- Especificaciones técnicas');
             $row=$row+2;
             $i=1;
+            
             foreach($fabricas as $fabrica){
-                $sheet->setCellValueByColumnAndRow(0, $row, 'BLOQUE '.$i);
+                $rowStart=$row;
+                $sheet->setCellValueByColumnAndRow(1, $row, 'BLOQUE '.$i);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Sistema constructivo');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->sistema);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Sistema constructivo');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->sistema);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Muros y Columnas');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->muro);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Muros y Columnas');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->muro);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Techos');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->techo);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Techos');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->techo);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Puertas');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->puerta);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Puertas');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->puerta);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Ventanas');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->ventana);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Ventanas');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->ventana);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Revestimiento');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->revestimiento);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Revestimiento');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->revestimiento);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Pisos');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->piso);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Pisos');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->piso);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'SS.HH');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->sshh);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'SS.HH');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->sshh);
                 $row++;
-                $sheet->setCellValueByColumnAndRow(0, $row, 'Inst. eléctricas y sanitarias');
-                $sheet->setCellValueByColumnAndRow(1, $row, $fabrica->sanitaria);
+                $sheet->setCellValueByColumnAndRow(1, $row, 'Inst. eléctricas y sanitarias');
+                $sheet->setCellValueByColumnAndRow(2, $row, $fabrica->sanitaria);
+                $sheet->getStyle('B'.$rowStart.':C'.$row)->applyFromArray($styleArray);
                 $i++;
                 $row= $row+2;
             }
             
-            /* End Fabricas*/
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.08 Fábrica- Especificaciones técnicas');
-            $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->a308);
-            $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3.09 Declaratoria de Fabrica');
-            $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->a309);
 
-            $sheet->setCellValueByColumnAndRow(3, $row, 'Porcebtaje');
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->a309a);
+            /* End Fabricas*/
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.08 Fábrica- Especificaciones técnicas');
+            $row++;
+            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a308);
+            $row=$row+2;
+            $sheet->setCellValueByColumnAndRow(1, $row, '3.09 Declaratoria de Fabrica');
+            $row++;
+            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a309);
+
+            $sheet->setCellValueByColumnAndRow(4, $row, 'Porcebtaje');
+            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->a309a);
             $row= $row+2;
              /* 4*/
             $sheet->setCellValueByColumnAndRow(0, $row, '4.00 ANALISIS DEL MEJOR Y MÁS INTENSIVO USOS POSIBLE DEL BIEN');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Dado su ubicación, dimensiones y características constructivas el inmueble se puede utilizar como:');
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Dado su ubicación, dimensiones y características constructivas el inmueble se puede utilizar como:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->a400);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->a400);
             /* End 4*/
             $row= $row+2;
 
             /* 5*/
-            $sheet->setCellValueByColumnAndRow(0, $row, '5.00 ALCANCES Y LIMITACIONES DEL TRABAJO EFECTUADO');
+            $sheet->mergeCells('A'.$row.':G'.$row);
+            $sheet->getCell('A'.$row)->setValue('5.00 ALCANCES Y LIMITACIONES DEL TRABAJO EFECTUADO');
             $row++;            
-            $sheet->setCellValueByColumnAndRow(0, $row, 'La valuación es para determinar el valor comercial del predio.');
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('La valuación es para determinar el valor comercial del predio.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->a500);            
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->a500);
             /* End 5*/
             $row = $row+2;
             /* 6*/
             $sheet->setCellValueByColumnAndRow(0, $row, '6.00 FECHA DE ASIGNACIÓN DEL VALOR');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a600);
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->a600);
             /* End 6*/
             $row = $row+2;
             /* 7*/
             $sheet->setCellValueByColumnAndRow(0, $row, '7.00 POLIZA DE SEGUROS');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->a700);
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->a700);
             /* End 7*/
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, 'B)     VERIFICACIONES EFECTUADAS');
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '8.00 INSPECCIÓN OCULAR DEL BIEN ');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->b800);
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->b800);
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '9.00 GRAVÁMENES');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->b900a);
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->b900a);
             $row++;
             $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->b900b);
             $row = $row+2;
@@ -234,6 +294,8 @@
             $sheet->setCellValueByColumnAndRow(1, $row, 'El predio está inscrito en la Oficina Registral de :');
             $sheet->setCellValueByColumnAndRow(4, $row, 'Oficina Registral:'.$valoriza->b1000a);
             $row++;
+
+            $sheet->getStyle('B'.$row.':F'.$row)->applyFromArray($styleArray);
             $sheet->setCellValueByColumnAndRow(1, $row, 'Codigo del Predio / Ficha N°');
             $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->b1000b);
             $sheet->setCellValueByColumnAndRow(3, $row, 'Folio: '.$valoriza->b1000c);
@@ -243,6 +305,7 @@
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '11.00 CÓDIGO DE SUMINISTROS.');
             $row++;
+            $sheet->getStyle('B'.$row.':F'.$row)->applyFromArray($styleArray);
             $sheet->setCellValueByColumnAndRow(1, $row, 'Energía Eléctrica :');
             $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->b1100a);
             $sheet->setCellValueByColumnAndRow(3, $row, 'Agua :');
@@ -252,16 +315,20 @@
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '12.00 BASES PARA SU DESARROLLO');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->c1200);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->c1200);
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '13.00 METODOLOGÍA UTILIZADA.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->c1300);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->c1300);
             $row = $row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '14.00 INVESTIGACIÓN Y VALORES COMERCIALES DE REFERENCIA.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->c1400);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->c1400);
             $row = $row+2;
+            $rowStart=$row;
             $sheet->setCellValueByColumnAndRow(1, $row, 'DIRECCION');
             $sheet->setCellValueByColumnAndRow(2, $row, 'PROPIETARIO');
             $sheet->setCellValueByColumnAndRow(3, $row, 'TELEFONO');
@@ -280,6 +347,7 @@
                 $terreno=$terreno+$refrencia->terreno;
                 $row++;
             }
+            $sheet->getStyle('B'.$rowStart.':G'.($row+1).'')->applyFromArray($styleArray);
             $sheet->setCellValueByColumnAndRow(2, $row, 'VALOR PROMEDIO $');
             $sheet->setCellValueByColumnAndRow(3, $row, $terreno);
             $row = $row+2;
@@ -306,50 +374,56 @@
             $row=$row+14;
             $sheet->setCellValueByColumnAndRow(3, $row, 'Ubicación de las referencias');
             $row++;
-            $sheet->setCellValueByColumnAndRow(1, $row, 'Se toma el valor   de las referencias debido a la ubicación del terreno y 
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Se toma el valor   de las referencias debido a la ubicación del terreno y 
                                                         la semejanza con otros inmuebles de similares caracteristicas, 
                                                         con un criterio conservador y prudente. Con un reajuste debido a 
                                                         que el área ocupada acualmente es menor al área registrada.');
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '15.00 FACTIBILIDAD DE REALIZACION Y CLASE DE GARANTÍA');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'La factibilidad de realización se realiza según la siguiente ponderación:');
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('La factibilidad de realización se realiza según la siguiente ponderación:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Criterios');
-            $sheet->setCellValueByColumnAndRow(1, $row, 'Ponderación (1 a 5)');
+            $rowStart=$row;
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Criterios');
+            $sheet->setCellValueByColumnAndRow(2, $row, 'Ponderación (1 a 5)');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '1. Características de Predio');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500a);
+            $sheet->setCellValueByColumnAndRow(1, $row, '1. Características de Predio');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500a);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '2. Áreas del predio');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500b);
+            $sheet->setCellValueByColumnAndRow(1, $row, '2. Áreas del predio');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500b);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '3. Ubicación del Predio');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500c);
+            $sheet->setCellValueByColumnAndRow(1, $row, '3. Ubicación del Predio');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500c);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, '4. Servicios del Predio');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500d);
+            $sheet->setCellValueByColumnAndRow(1, $row, '4. Servicios del Predio');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500d);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Total Puntaje');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500e);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Total Puntaje');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500e);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Porcentaje');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500f);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Porcentaje');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500f);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Tipo de Garantía');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1500g);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Tipo de Garantía');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->c1500g);
+            $sheet->getStyle('B'.$rowStart.':C'.($row).'')->applyFromArray($styleArray);
 
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '16.00 DEDUCCIONES APLICADAS');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Para el caso de la realización del inmueble de acuerdo a lo establecido por la Resolución 
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Para el caso de la realización del inmueble de acuerdo a lo establecido por la Resolución 
                                                         N° 880-97 de fecha 15 de diciembre de 1997,modificado por las resoluciones SBS N° 816-2005 y 12879-2009');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->c1600);
+            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->c1600);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '17.00  SUSTENTO');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->c1700);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->c1700);
 
             $row=$row+2;
             /*D */
@@ -359,27 +433,28 @@
             $sheet->setCellValueByColumnAndRow(0, $row, '18.00 VALOR COMERCIAL DEL PRECIO (VCP)');
 
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'El valor comercial se obtiene multiplicando el valor comercial investigado se rige la oferta y la 
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('El valor comercial se obtiene multiplicando el valor comercial investigado se rige la oferta y la 
                                                          demanda del mercado con criterio prudente y conservador. Rs. S.B.S. N° 11356-2008, R.M. Nº 172-2016-VIVIENDA.');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VCP = VCT + VE + VOC');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VCP = VCT + VE + VOC');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Formula:');
-            $sheet->setCellValueByColumnAndRow(1, $row, 'VCT = S*VCU');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Formula:');
+            $sheet->setCellValueByColumnAndRow(2, $row, 'VCT = S*VCU');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Donde:');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Donde:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'S =        Area Total');
+            $sheet->setCellValueByColumnAndRow(2, $row, 'S =        Area Total');
             $sheet->setCellValueByColumnAndRow(5, $row, 'm2');
             $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->d1800a);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VCU =   Valor Comercial Unitario');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VCU =   Valor Comercial Unitario');
             $sheet->setCellValueByColumnAndRow(5, $row, '$');
             $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->d1800b);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VCT =    Valor Comercial del Terreno.');
-            $sheet->setCellValueByColumnAndRow(2, $row, 'Tipo de cambio:');
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1800d);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VCT =    Valor Comercial del Terreno.');
+            $sheet->setCellValueByColumnAndRow(3, $row, 'Tipo de cambio:');
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1800d);
 
             $sheet->setCellValueByColumnAndRow(5, $row, 'S/.');
             $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->d1800c);
@@ -387,52 +462,55 @@
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '19. VALOR COMERCIAL DE LA EDIFICACION');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Se obtiene a través de la aplicación de la siguiente fórmula:');
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Se obtiene a través de la aplicación de la siguiente fórmula:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VSN = Σ(At x VUAt) +  Σ (metr.oc x VUOC) +  Σ (metr.if x VUIF)');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VSN = Σ(At x VUAt) +  Σ (metr.oc x VUOC) +  Σ (metr.if x VUIF)');
             $row++;
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Donde:');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Donde:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VSN = Valor similar nuevo.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VSN = Valor similar nuevo.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'At = Ärea techada.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'At = Ärea techada.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VUAT = Valor Unitario del área techada.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VUAT = Valor Unitario del área techada.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'metr.oc = Metrado de las obras complementarias.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'metr.oc = Metrado de las obras complementarias.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VUOC = Valor unitario de las obras complementarias.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VUOC = Valor unitario de las obras complementarias.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'metr.if = Metrado de las instalaciones fijas y permanentes.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'metr.if = Metrado de las instalaciones fijas y permanentes.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VUIF = Valor unitario de las instalaciones fijas y permanentes.');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VUIF = Valor unitario de las instalaciones fijas y permanentes.');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Depreciación:');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Depreciación:');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Formula: D = (P / 100) x VSN');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Formula: D = (P / 100) x VSN');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Donde');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Donde');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'D = Depreciación de la Edificación');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'D = Depreciación de la Edificación');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'P = Porcentaje de depreciación');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'P = Porcentaje de depreciación');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'VSN = Valor similar Nuevo');
+            $sheet->setCellValueByColumnAndRow(1, $row, 'VSN = Valor similar Nuevo');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '19.1 Valor del terreno (VT)');
-            $sheet->setCellValueByColumnAndRow(2, $row, 'Area m2');
-            $sheet->setCellValueByColumnAndRow(3, $row, 'Valor ($)/m2');
-            $sheet->setCellValueByColumnAndRow(4, $row, 'VT US$');
-            $sheet->setCellValueByColumnAndRow(5, $row, 'VT S/.');
+            $rowStart=$row;
+            $sheet->setCellValueByColumnAndRow(1, $row, '19.1 Valor del terreno (VT)');
+            $sheet->setCellValueByColumnAndRow(3, $row, 'Area m2');
+            $sheet->setCellValueByColumnAndRow(4, $row, 'Valor ($)/m2');
+            $sheet->setCellValueByColumnAndRow(5, $row, 'VT US$');
+            $sheet->setCellValueByColumnAndRow(6, $row, 'VT S/.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->d1901a);
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1901b);
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1901c);
-            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1901d);
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1901a);
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1901b);
+            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1901c);
+            $sheet->setCellValueByColumnAndRow(6, $row, $valoriza->d1901d);
+            $sheet->getStyle('D'.$rowStart.':G'.($row).'')->applyFromArray($styleArray);
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, '19.2 Valor de la Edificación (VE)');
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1902);
+            $sheet->setCellValueByColumnAndRow(1, $row, '19.2 Valor de la Edificación (VE)');
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1902);
             $row=$row+2;
 
 
@@ -443,24 +521,25 @@
            if(isset($valorbloques)){
                 $row=$row+2;
                 $i=1;
+                $rowStart=$row;
                 foreach($valorbloques as $bloque){
-                    $sheet->setCellValueByColumnAndRow(0, $row, 'BLOQUE '.$i);
+                    $sheet->setCellValueByColumnAndRow(1, $row, 'BLOQUE '.$i);
                     $i++;
                     $row++;
-                    $sheet->setCellValueByColumnAndRow(0, $row, '(*)Prop. Exclusiva');
-                    $sheet->setCellValueByColumnAndRow(1, $row, 'Categ');
-                    $sheet->setCellValueByColumnAndRow(3, $row, 'Precio Unit S/.');
+                    $sheet->setCellValueByColumnAndRow(1, $row, '(*)Prop. Exclusiva');
+                    $sheet->setCellValueByColumnAndRow(2, $row, 'Categ');
+                    $sheet->setCellValueByColumnAndRow(4, $row, 'Precio Unit S/.');
                     $row++;
                     $precio=0;
                     foreach($valores as $item){
-                        $sheet->setCellValueByColumnAndRow(0, $row, $item->propiedad);
-                        $sheet->setCellValueByColumnAndRow(1, $row, $item->categoria);
-                        $sheet->setCellValueByColumnAndRow(3, $row, $item->precio);
+                        $sheet->setCellValueByColumnAndRow(1, $row, $item->propiedad);
+                        $sheet->setCellValueByColumnAndRow(2, $row, $item->categoria);
+                        $sheet->setCellValueByColumnAndRow(4, $row, $item->precio);
                         $precio =$precio + $item->precio;
                         $row++;
                     }
-                    $sheet->setCellValueByColumnAndRow(2, $row, 'Total');
-                    $sheet->setCellValueByColumnAndRow(3, $row, $precio);
+                    $sheet->setCellValueByColumnAndRow(3, $row, 'Total');
+                    $sheet->setCellValueByColumnAndRow(4, $row, $precio);
                     /*$row++;
                     $sheet->setCellValueByColumnAndRow(0, $row, 'Estado de Conservación');
                     $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->a304a);
@@ -469,41 +548,46 @@
                     $sheet->setCellValueByColumnAndRow(4, $row, 'AÑOS');*/
                     $row=$row+2;
                     }
+                    $sheet->getStyle('B'.($rowStart+1).':E'.($row-2).'')->applyFromArray($styleArray);
             }
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '19.3 Valor de las Obras Complementarias (VOC)');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Comprende las obras complementarias comunes, como cerco en acceso, bajo el régimen de unidades inmobiliarias de propiedad exclusiva y propiedad común.');
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Comprende las obras complementarias comunes, como cerco en acceso, bajo el régimen de unidades inmobiliarias de propiedad exclusiva y propiedad común.');
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'DESCRIPCION');
-            $sheet->setCellValueByColumnAndRow(1, $row, 'COSTO S/ M2');
-            $sheet->setCellValueByColumnAndRow(2, $row, 'Depreciación');
-            $sheet->setCellValueByColumnAndRow(3, $row, 'TOTAL S/.');
-            $sheet->setCellValueByColumnAndRow(4, $row, 'TOTAL SIN DEPRECIACIÓN S/.');
+            $rowStart=$row;
+            $sheet->setCellValueByColumnAndRow(1, $row, 'DESCRIPCION');
+            $sheet->setCellValueByColumnAndRow(2, $row, 'COSTO S/ M2');
+            $sheet->setCellValueByColumnAndRow(3, $row, 'Depreciación');
+            $sheet->setCellValueByColumnAndRow(4, $row, 'TOTAL S/.');
+            $sheet->setCellValueByColumnAndRow(5, $row, 'TOTAL SIN DEPRECIACIÓN S/.');
             $row++;
             $costo=0;
             $total=0;
             $totalsindep=0;
             foreach($valorcomplementarios as $item){
-                $sheet->setCellValueByColumnAndRow(0, $row, $item->descripcion);
-                $sheet->setCellValueByColumnAndRow(1, $row, $item->costo);
-                $sheet->setCellValueByColumnAndRow(2, $row, $item->depreciacion);
-                $sheet->setCellValueByColumnAndRow(3, $row, $item->total);
-                $sheet->setCellValueByColumnAndRow(4, $row, $item->totalsindep);
+                $sheet->setCellValueByColumnAndRow(1, $row, $item->descripcion);
+                $sheet->setCellValueByColumnAndRow(2, $row, $item->costo);
+                $sheet->setCellValueByColumnAndRow(3, $row, $item->depreciacion);
+                $sheet->setCellValueByColumnAndRow(4, $row, $item->total);
+                $sheet->setCellValueByColumnAndRow(5, $row, $item->totalsindep);
                 $total=$total+$item->total;
                 $costo=$costo+$item->costo;
                 $totalsindep=$totalsindep+$item->totalsindep;
                 $row++;
-            }
+            }            
             
-            $sheet->setCellValueByColumnAndRow(1, $row, $costo/3.328);
+            $sheet->setCellValueByColumnAndRow(2, $row, $costo/3.328);
             $sheet->setCellValueByColumnAndRow(4, $row, $total);
             $sheet->setCellValueByColumnAndRow(5, $row, $totalsindep);
+            $sheet->getStyle('B'.$rowStart.':F'.($row).'')->applyFromArray($styleArray);
             $row++;
             $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1903a);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(1, $row, 'SINTESIS DE LA VALUACIÓN');
             $row++;
+            $rowStart=$row;
             $sheet->setCellValueByColumnAndRow(1, $row, 'VCP = VT + VE + VOC');
             $sheet->setCellValueByColumnAndRow(3, $row, 'US$');
             $sheet->setCellValueByColumnAndRow(4, $row, 'S/.');
@@ -514,22 +598,31 @@
                 $sheet->setCellValueByColumnAndRow(4, $row, $item->montos);
                 $row++;
             }
+            
+            $sheet->mergeCells('B'.$row.':D'.$row);
+            $sheet->getCell('B'.$row)->setValue('VALOR COMERCIAL DEL PREDIO (VCP)');
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1903d);
+            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1903e);
+            $sheet->getStyle('B'.$rowStart.':E'.($row).'')->applyFromArray($styleArray);
 
-            $sheet->setCellValueByColumnAndRow(1, $row, 'VALOR COMERCIAL DEL PREDIO (VCP)');
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1903d);
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1903e);
-            $row++;
-            $sheet->setCellValueByColumnAndRow(1, $row, 'VALOR NETO DE REALIZACIÓN (VNR)');
-            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->d1903f);
-            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1903g);
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1903h);
             $row=$row+2;
-            $sheet->setCellValueByColumnAndRow(1, $row, 'Valor Estimado de Reconstrucción de la Edificación (VER)');
+            $sheet->mergeCells('B'.$row.':C'.$row);
+            $sheet->getCell('B'.$row)->setValue('VALOR NETO DE REALIZACIÓN (VNR)');
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->d1903f);
+            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1903g);
+            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1903h);
+            $sheet->getStyle('B'.$row.':G'.$row)->applyFromArray($styleArray);
+            $row=$row+2;
+
+            $sheet->mergeCells('B'.$row.':D'.$row);
+            $sheet->getCell('B'.$row)->setValue('Valor Estimado de Reconstrucción de la Edificación (VER)');
             $row++;
-            $sheet->setCellValueByColumnAndRow(4, $row, 'US$');
-            $sheet->setCellValueByColumnAndRow(5, $row, 'S/.');
+            $sheet->setCellValueByColumnAndRow(5, $row, 'US$');
+            $sheet->setCellValueByColumnAndRow(6, $row, 'S/.');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'El VER se estima considerado el VE + VOC (sin depreciación)');
+            $sheet->mergeCells('B'.$row.':D'.$row);
+            $sheet->getCell('B'.$row)->setValue('El VER se estima considerado el VE + VOC (sin depreciación)');
+
             $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->d1903j);
             $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->d1903k);
             $row=$row+2;
@@ -542,81 +635,88 @@
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '20.00 DECLARACION DE INDEPENDENCIA DE CRITERIO');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->e2000);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->e2000);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '21.00  RECONOCIMIENTO DE NORMAS APLICABLES');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->e2100);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->e2100);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '22.00 DECLARACIÓN JURADA');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->e2200);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->e2200);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '23.00 VIGENCIA DE LA VALUACIÓN');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->e2300);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue($valoriza->e2300);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '24.00 DE LA POSESIÓN DEL INMUEBLE');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'El bien inmueble se encuentra en posesion de: '.$valoriza->e2400);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('El bien inmueble se encuentra en posesion de: '.$valoriza->e2400);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '25.00 PERSONA QUE ATENDIÓ LA VERIFICACIÓN DEL INMUEBLE');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'La persona que atendió la verificación es: '.$valoriza->e2500);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('La persona que atendió la verificación es: '.$valoriza->e2500);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '26.00 CONSIDERACIONES PARA LA VALORIZACIÓN');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Para la valuación se toma en cuenta lo siguiente: '.$valoriza->e2600);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue('Para la valuación se toma en cuenta lo siguiente: '.$valoriza->e2600);
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '27.00 OBSERVACIONES Y/O RECOMENDACIONES ');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, $valoriza->e2700);
+            $sheet->mergeCells('B'.$row.':G'.$row);
+            $sheet->getCell('B'.$row)->setValue( $valoriza->e2700);
             
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '28.00 DOCUMENTACION UTILIZADA EN LA VALUACION');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Título de propiedad o derechos');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800a);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Título de propiedad o derechos');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800a);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Certificado de dominio, gravámenes');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800b);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Certificado de dominio, gravámenes');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800b);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Autoavalúo');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800c);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Autoavalúo');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800c);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Planos de ubicación, distribución');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800d);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Planos de ubicación, distribución');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800d);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Memoria descriptiva');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800e);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Memoria descriptiva');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800e);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Otros');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2800f);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Otros');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2800f);
 
             $row=$row+2;
             $sheet->setCellValueByColumnAndRow(0, $row, '29.00 DEL PERITO VALUADOR');
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Nombre');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2900a);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Nombre');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2900a);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Profesión:');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2900b);
-            $sheet->setCellValueByColumnAndRow(3, $row, 'CAP:');
-            $sheet->setCellValueByColumnAndRow(4, $row, $valoriza->e2900c);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Profesión:');
+            $sheet->setCellValueByColumnAndRow(3, $row, $valoriza->e2900b);
+            $sheet->setCellValueByColumnAndRow(4, $row, 'CAP:');
+            $sheet->setCellValueByColumnAndRow(5, $row, $valoriza->e2900c);
             $row++;
-            $sheet->setCellValueByColumnAndRow(0, $row, 'Habilitación');
-            $sheet->setCellValueByColumnAndRow(1, $row, $valoriza->e2900d);
+            $sheet->setCellValueByColumnAndRow(1, $row, 'Habilitación');
+            $sheet->setCellValueByColumnAndRow(2, $row, $valoriza->e2900d);
+            $row=$row+2;
+            $sheet->mergeCells('A'.$row.':G'.$row);
+            $sheet->getCell('A'.$row)->setValue('30.00 PANEL FOTOGRÁFICO');
 
-           
+            $sheet->getStyle('A1:A'.$row)->getFont()->setBold( true );
            
             $fotografiaSheet = $object_excel->createSheet(1);
             $fotografiaSheet->setTitle('FOTOGRAFIAS');
             $sheet->getStyle('A1:G'.$row)->getAlignment()->setWrapText(true); 
 
-            for ($col = 0; $col <= PHPExcel_Cell::columnIndexFromString($sheet->getHighestDataColumn()); $col++)
-            {
-                $sheet->getColumnDimensionByColumn($col)->setAutoSize(true); 
-            }  
             return $object_excel;
         }
 
