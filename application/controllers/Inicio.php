@@ -12,6 +12,7 @@ class Inicio extends CI_Controller {
 		if($this->verificarUserDataSesion()){
 			$this->load->view('v_header');
 			$this->load->view('v_iframe');
+			$this->load->view('v_footer');
 		}else{			
 			header('Location: ' . base_url());
 		}

@@ -3,6 +3,7 @@
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
   
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -180,23 +181,26 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url() ?>assets/matrix/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
                 <h3 class="badge badge-light"><b>
-                  <?php 
-                  if (isset($this->session->userdata['logged_in']) )
-                    { echo $this->session->userdata['nombres'].' - '.$this->session->userdata['cargo']; }
-                  ?></b></h3>
+                    <?php
+                    if (isset($this->session->userdata['logged_in'])) {
+                      echo $this->session->userdata['nombres'] . ' - ' . $this->session->userdata['cargo'];
+                    }
+                    ?></b></h3>
               </a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                <a class="dropdown-item" href="<?php echo base_url();?>usuario/index/read/<?php 
-                  if (isset($this->session->userdata['logged_in']) )
-                    { echo $this->session->userdata['codigo']; }
-                  ?>"  target="content-frame"><i class="ti-user m-r-5 m-l-5" ></i> Mi perfil</a>
+                <a class="dropdown-item" href="<?php echo base_url(); ?>usuario/index/read/<?php
+                                                                                          if (isset($this->session->userdata['logged_in'])) {
+                                                                                            echo $this->session->userdata['codigo'];
+                                                                                          }
+                                                                                          ?>" target="content-frame"><i class="ti-user m-r-5 m-l-5"></i> Mi perfil</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>usuario/password/<?php 
-                  if (isset($this->session->userdata['logged_in']) )
-                    { echo $this->session->userdata['codigo']; }
-                  ?>" class="dropdown-item" target="content-frame"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
+                <a href="<?php echo base_url(); ?>usuario/password/<?php
+                                                                  if (isset($this->session->userdata['logged_in'])) {
+                                                                    echo $this->session->userdata['codigo'];
+                                                                  }
+                                                                  ?>" class="dropdown-item" target="content-frame"><i class="ti-settings m-r-5 m-l-5"></i> Cambiar contraseña</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo base_url();?>index.php/login/salir" class="dropdown-item" ><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
+                <a href="<?php echo base_url(); ?>index.php/login/salir" class="dropdown-item"><i class="fa fa-power-off m-r-5 m-l-5"></i> Salir</a>
               </div>
             </li>
             <!-- ============================================================== -->
@@ -219,23 +223,20 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav" class="p-t-30">
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>inicio/main" target="content-frame" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Inicio</span></a></li>
-            
+
             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu"> Valorizaciones </span></a>
-            <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item"><a href="<?= base_url() ?>valoriza" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-library-books"></i><span class="hide-menu"> Gestión </span></a></li>
+              <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item"><a href="<?= base_url() ?>valoriza" target="content-frame" class="sidebar-link"><i target="content-frame" class="mdi mdi-library-books"></i><span class="hide-menu"> Gestión </span></a></li>
                 <li class="sidebar-item"><a href="<?= base_url() ?>valoriza/nuevo" target="content-frame" class="sidebar-link"><i class="mdi mdi-library-plus"></i><span class="hide-menu"> Nuevo </span></a></li>
               </ul>
             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>usuario" target="content-frame" aria-expanded="false"><i class="mdi mdi-account-key"></i><span class="hide-menu">Usuarios </span></a>
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contactolista" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url() ?>contacto/lista" target="content-frame" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Contactos </span></a>
             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu"> Reportes </span></a>
-           <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalfecha" target="content-frame" class="sidebar-link"><i  target="content-frame" class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu"> Valorizaciones Entre Fechas </span></a></li>
-                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalcontac" target="content-frame" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">Contacto con Mas Valorizaciones </span></a></li>
-                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalentidad" target="content-frame" class="sidebar-link"><i class="mdi mdi-bank"></i><span class="hide-menu">Entidades con Mas Solicitudes </span></a></li>
+              <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/listarvalfecha" target="content-frame" class="sidebar-link"><i target="content-frame" class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu"> Valorizaciones Entre Fechas </span></a></li>
+                <li class="sidebar-item"><a href=" <?= base_url() ?>reportes/listarvalcontac" target="content-frame" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">Contacto con mas Valorizaciones </span></a></li>
+                <li class="sidebar-item"><a href="<?= base_url() ?>reportes/contactoval" target="content-frame" class="sidebar-link"><i class="mdi mdi-bank"></i><span class="hide-menu">Contactos y Pagos</span></a></li>
               </ul>
-
-
-            
             </li>
           </ul>
         </nav>
@@ -247,7 +248,7 @@
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <script>
-       function resizeIframe(obj) {
+      function resizeIframe(obj) {
         obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
       }
 
@@ -257,5 +258,4 @@
         }, 250);
 
       }
-
     </script>

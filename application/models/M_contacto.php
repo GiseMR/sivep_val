@@ -7,16 +7,45 @@ class M_contacto extends CI_Model {
 
 	}
 	
-	public function registrar($dni, $nombre, $app, $apm, $fenac, $telefono, $email, $pago, $obs){
-		$this->db->query('INSERT INTO contacto(DNI_CONT, NOM_CONT, APP_CONT, APM_CONT, FENAC_CONT, 
-                         TEL_CONT, EMAIL_CONT, PAGO_CONT, OBS_CONT) VALUES 
-                         ("'.$dni.'","'.$nombre.'","'.$app.'","'.$apm.'","'.$fenac.'",
-                         "'.$telefono.'","'.$email.'",'.$pago.',"'.$obs.'")');
-		return true;
+	public function registrar($data){
+		$this->db->insert('contacto', $data);
+
+		$id = $this->db->insert_id();
+
+		if ($id > 0) {
+			return $id;
+		} else {
+			return "ERROR";
+		}
+	}
+	public function insertar($data)
+	{
+		$this->db->insert('valuacion', $data);
+
+		$id = $this->db->insert_id();
+
+		if ($id > 0) {
+			return $id;
+		} else {
+			return "ERROR";
+		}
 	}
 
     public function consultarpordni($dni){
         $result = $this->db->query('SELECT * FROM  contacto where dni_cont="'.$dni.'"');
 		return $result->result();
 	}
+
+ public function consultarporid($id){
+        $result = $this->db->query('SELECT * FROM  contacto where idcontacto="'.$id.'"');
+		return $result->result();
+	}
+	
+	public function obtener_contactos(){
+		$query = $this->db->query('SELECT idcontacto, DNI_CONT, NOM_CONT, APP_CONT, APM_CONT FROM contacto ORDER BY APP_CONT, APM_CONT, NOM_CONT ASC');
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+	}	
 }	

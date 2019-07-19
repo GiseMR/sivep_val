@@ -27,16 +27,14 @@ class Login extends CI_Controller {
      }
 	public function iniciar(){
 		if($this->verificarUserDataSesion()){
-						$this->headerMenu(null);
-						$this->load->view('v_iframe');
-						$this->load->view('v_footer');
-						return;
+			header('Location: ' . base_url('inicio'));
+			die();
 		  }		  
 		if ($this->input->post('iniciar')){
 			$user = $this->input->post('usuario');
 			$clave = md5($this->input->post('password'));
 			$datos = $this->m_login->LoginBD($user);
-			if (count($datos)==1){
+			if ($datos!=NULL){
 				$pass = $datos->PASS_USU;
 				if($clave==$pass){
 					if($datos->ESTADO_USU=='0'){
@@ -62,9 +60,8 @@ class Login extends CI_Controller {
 							return;
 						}
 					}
-					$this->headerMenu($menu);
-					$this->load->view('v_iframe');
-					$this->load->view('v_footer');
+					
+					header('Location: ' . base_url('inicio'));
 				}else{
 					$this->MuestraLogin('* Contraseña incorrecta');
 				}

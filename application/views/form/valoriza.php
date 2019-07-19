@@ -16,8 +16,7 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/css/select2.min.css" rel="stylesheet">
-    <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
-
+    <link href="<?= base_url() ?>assets/uidatepicker/jquery-ui.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,28 +46,139 @@
 
     <div class="modal" id="contactoModalLong" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">REGISTRO DE CONTACTO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php include_once 'contacto.php'; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="guardarContacto()"><i class="mdi mdi-check"></i>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="modalFormPay" role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-        <div class="modal-header">
-                <h5 class="modal-title">CONTACTO</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h5 class="modal-title">PAGO DE VALORIZACIONES</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">脳</span>
+                    <span class="sr-only">Close</span>
                 </button>
-         </div>
+                
+                
+                
+            </div>
+            
+            <!-- Modal Body -->
             <div class="modal-body">
-                <?php include_once 'contacto.php';?>
+                <p class="statusMsg"></p>
+                <form role="form">
+                    <h5 class="card-title">Datos de Contacto</h5>
+                           
+                           <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="NOMBRES">Nombres:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="nombres" name="nombres" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="APELLIDOS" >Apellidos:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="DNI" >Dni:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="FENAC">Fecha Nacimiento:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="fenac" name="fenac" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="CORREO" >Correo:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="correo" name="correo">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="TELEFONO" >Tel茅fono:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4">
+                                    <label for="" ></label>
+                             </div>   
+                            </div>
+                            <div class="row">                            
+                            <div class="col-sm-5">                                               
+                                <label for="COSTOTOTAL">***Costo Total Valorizaci贸n S/.***</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="costo" name="costo">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</label>
+                                    
+                                    </div>
+                                </div>
+                            <h5 class="card-title">Registro de Pagos</h5>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="PAGO">Pago S/.</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="pago" name="pago" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="FECHA" >Fecha:</label>
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control" id="fecha" name="fecha">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 mt-2">
+                                    <br>
+                                <button type="button" class="btn btn-success" onclick="AgregarPagos()"><i class="mdi mdi-check"></i>Agregar</button>
+                                </div>
+                            </div>
+                             
+                            
+                </form>
             </div>
+            
+            <!-- Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
-                <button type="button" class="btn btn-success" onclick="guardarContacto()"><i class="mdi mdi-check"></i>Guardar</button>
-            </div>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="guardarPagos()"><i class="mdi mdi-check"></i>Guardar</button>
             </div>
         </div>
-        </div>
-
-        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#contactoModalLong">
-        <i class="mdi mdi-account-plus"></i> REGISTRAR CONTACTO
-        </button>
-
+    </div>
+</div>
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -89,7 +199,6 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="form-group row">
-                                             <input name="idcontacto" id="idcontacto" type="hidden">
                                                 <label for="nroValuacion" class="col-sm-9 text-right control-label col-form-label">Código</label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control" id="nroValuacion" name="nroValuacion" value="<?= $codigo ?>" readonly>
@@ -101,6 +210,32 @@
                                                 <label for="fechavaluacion" class="col-sm-9 text-right control-label col-form-label">Fecha</label>
                                                 <div class="col-sm-3">
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
+                                                </div>
+                                                <label for="idcontacto" class="col-sm-9 text-right control-label col-form-label">
+                                                    Contacto
+                                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#contactoModalLong">
+                                                        <i class="mdi mdi-plus"></i>
+                                                    </button>
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <select class="form-control" id="idcontacto" name="idcontacto">
+                                                        <option>SELECCIONE...</OPTION>
+                                                        <?php
+                                                        if ($lista_contacto) {
+                                                            foreach ($lista_contacto as $row) : ?>
+                                                                <option value="<?= $row->idcontacto ?>"><?= $row->NOM_CONT . ' ' . $row->APP_CONT . ' ' . $row->APM_CONT ?></option>
+                                                            <?php
+                                                            endforeach;
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                                <label for="costo" class="col-sm-9 text-right control-label col-form-label">Costo</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="costo" name="costo" value="0.00">
+                                                </div>
+                                                <label for="pago" class="col-sm-9 text-right control-label col-form-label">Pago</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="pago" name="pago" value="0.00">
                                                 </div>
                                             </div>
                                             <h4 class="card-title">A) DATOS GENERALES</h4>
@@ -177,6 +312,7 @@
                                                 <option>C.A.C SAN PEDRO DE ANDAHUAYLAS</option>
                                                 <option>C.A.C PIURA</option>
                                                 <option>C.A.C. SAN CRISTOVAL DE HUAMANGA</option>
+                                                <option>CREDISCOTIA FINANCIERA S.A.</option>
                                                 <option>MIBANCO </option>
                                                 <option>INTERBANK</option>
                                                 <option>C.A.C EMPRENDER</option>
@@ -217,8 +353,8 @@
                                                             foreach ($consulta_departamento as $row) : ?>
                                                                 <option value="<?= $row->C_CODDPTO ?>"><?= $row->C_NOMUBIGEO ?></option>
                                                             <?php
-                                                        endforeach;
-                                                    } ?>
+                                                            endforeach;
+                                                        } ?>
                                                     </select>
                                                 </div>
                                                 <label for="a203b" class="col-sm-2 text-right control-label col-form-label">PROVINCIA</label>
@@ -314,12 +450,13 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-2"></div>
-                                            <label for="a303a" class="col-sm-2 text-left control-label col-form-label">Area (m<sup>2</sup>)</label>
-                                            <div class="col-sm-3">
+                                            <label for="a303a" class="col-sm-1 text-left control-label col-form-label">Area (m<sup>2</sup>)</label>
+                                            <div class="col-sm-2">
                                                 <input type="number" class="form-control" id="a303a" name="a303a" value="0.00">
                                             </div>
-                                            <label for="a303b" class="col-sm-2 text-right control-label col-form-label">Perimetro (ml)</label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2"></div>
+                                            <label for="a303b" class="col-sm-1 text-left control-label col-form-label">Perimetro (ml)</label>
+                                            <div class="col-sm-2">
                                                 <input type="text" class="form-control" id="a303b" name="a303b" value="0.00">
                                             </div>
                                         </div>
@@ -454,6 +591,7 @@
                                                         <option>Adobe</option>
                                                         <option>Madera</option>
                                                         <option>Estructura Metálica</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
@@ -467,6 +605,13 @@
                                                         <option>Muro de ladrillos de concreto</option>
                                                         <option>Techos de losa aligerado horizontal</option>
                                                         <option>Piso porcelanato</option>
+                                                        <option>Estructuras laminares Curvadas de Concreto Armado</option>
+                                                        <option>Concreto armado y/o metálicas</option>
+                                                        <option>Placas de concreto</option>
+                                                        <option>Albañilería Armada</option>
+                                                        <option>Ladrillo sin elementos de concreto armado</option>
+                                                        <option>Tapial o Quincha</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
@@ -475,18 +620,36 @@
                                                     <select class="select2 form-control custom-select" id="fabrica-techo-1" name="fabrica-techo-1" form="form-null" multiple>
                                                         <option>Calamina</option>
                                                         <option>Teja Andina</option>
-                                                        <option>Termo acustico</option>
+                                                        <option>Termo acústico</option>
                                                         <option>Fibrocemento</option>
+                                                        <option>Losa o aligerado de concreto armado</option>
+                                                        <option>Aligerados o losas de concreto armado inclinadas</option>
+                                                        <option>Aligerados o losas de concreto armado Horizontales</option>
+                                                        <option>Calamina metálica</option>
+                                                        <option>Madera con material impermeabilizante</option>
+                                                        <option>Teja sobre viguería de madera corriente</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="fabrica-puerta-1" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
                                                 <div class="col-sm-7">
                                                     <select class="select2 form-control custom-select" id="fabrica-puerta-1" name="fabrica-puerta-1" form="form-null" multiple>
-                                                        <option>Metalicas</option>
+                                                        <option>Metálicas</option>
                                                         <option>Madera Contraplacada</option>
                                                         <option>Madera Tablero Rajado</option>
                                                         <option>Fibrocemento</option>
+                                                        <option>Aluminio pesado con perfiles especiales</option>
+                                                        <option>Madera fina ornamental</option>
+                                                        <option>Vidrio insulado</option>
+                                                        <option>Aluminio o madera fina de diseño especial</option>
+                                                        <option>Vidrio tratado polarizado</option>
+                                                        <option>Vidrio laminado o templado</option>
+                                                        <option>Madera selecta</option>
+                                                        <option>Vidrio tratado transparente</option>
+                                                        <option>Material MDF o HDF</option>
+                                                        <option>Vidrio simple trasnparente</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
@@ -496,6 +659,18 @@
                                                         <option>Vidrio Semi Doble</option>
                                                         <option>Estructura de Aluminio</option>
                                                         <option>Estructura de Madera</option>
+                                                        <option>Madera fina ornamental</option>
+                                                        <option>Vidrio insulado</option>
+                                                        <option>Aluminio</option>
+                                                        <option>Madera fina de diseño especial</option>
+                                                        <option>Vidrio tratado polarizado</option>
+                                                        <option>Vidrio laminado o templado</option>
+                                                        <option>Madera selecta</option>
+                                                        <option>Fierro</option>
+                                                        <option>Vidrio tratado transparente</option>
+                                                        <option>Fierroo aluminio industrial</option>
+                                                        <option>Vidrio simple transparente</option>
+                                                        <option>Aluminio pesado con perfiles especiales</option>
                                                         <option>Otros</option>
                                                     </select>
                                                 </div>
@@ -506,7 +681,19 @@
                                                         <option>Enchapado con cerámico</option>
                                                         <option>Enchapado con piedra</option>
                                                         <option>Estucado con yeso</option>
-                                                        <option>otros</option>
+                                                        <option>Mármol importado</option>
+                                                        <option>Madera fina</option>
+                                                        <option>Baldosa acústico en techo o similar</option>
+                                                        <option>Mármol nacional</option>
+                                                        <option>Enchapes en techos</option>
+                                                        <option>Encofrado especial</option>
+                                                        <option>Enchape de madera o laminados</option>
+                                                        <option>Piedra o material vitrificado</option>
+                                                        <option>Superficie de ladrillo caravista</option>
+                                                        <option>Tarraje frotachado</option>
+                                                        <option>Yeso moldurado</option>
+                                                        <option>Pintura lavable</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
@@ -517,28 +704,62 @@
                                                         <option>Tierra Compactada</option>
                                                         <option>Cemento Pulido</option>
                                                         <option>Cerámico Nacional</option>
+                                                        <option>Mármol importado</option>
+                                                        <option>Piedras naturales importadas</option>
+                                                        <option>Porcelanato</option>
+                                                        <option>Mármol nacional o reconstituido</option>
+                                                        <option>Parquet fino</option>
+                                                        <option>Cerámico importada</option>
+                                                        <option>Madera fina</option>
+                                                        <option>Machihembrada</option>
+                                                        <option>Terrazo</option>
+                                                        <option>Loseta veneciana</option>
+                                                        <option>Piso laminado</option>
+                                                        <option>Lajas de cemento con canto rodado</option <option>Loseta corriente</option>
+                                                        <option>Canto rodado</option>
+                                                        <option>Alfombra</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                                 <label for="fabrica-sshh-1" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
                                                 <div class="col-sm-7">
                                                     <select class="select2 form-control custom-select" id="fabrica-sshh-1" name="fabrica-sshh-1" form="form-null" multiple>
-                                                        <option>Completo con mayolica nacional de color</option>
-                                                        <option>Completo con ceramico importado</option>
+                                                        <option>Completo con mayólica nacional de color</option>
+                                                        <option>Completo con cerámico importado</option>
                                                         <option>Básico de granito</option>
-                                                        <option>otros</option>
+                                                        <option>Baños completos de lujo</option>
+                                                        <option>Importado con enchape fino</option>
+                                                        <option>Mayólica o cerámico decorativo importado</option>
+                                                        <option>Mayólica o cerámico decorativo nacional de color</option>
+                                                        <option>Mayólica blanca</option>
+                                                        <option>Mayólica blanca parcial</option>
+                                                        <option>Baños blancos sin mayólica</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2"></div>
-                                                <label for="fabrica-sanitaria-1" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                                                <label for="fabrica-sanitaria-1" class="col-sm-3 text-left control-label col-form-label">Instalaciones Eléctricas y Sanitarias</label>
                                                 <div class="col-sm-7">
                                                     <select class="select2 form-control custom-select" id="fabrica-sanitaria-1" name="fabrica-sanitaria-1" form="form-null" multiple>
                                                         <option>Agua fría</option>
                                                         <option>Agua caliente</option>
-                                                        <option>Corriente monofasica</option>
+                                                        <option>Corriente monofásica</option>
                                                         <option>Corriente trifásica</option>
                                                         <option>Teléfono</option>
-                                                        <option>otros</option>
+                                                        <option>Aire acondicionado</option>
+                                                        <option>Iluminanción especial</option>
+                                                        <option>Ventilación forzada</option>
+                                                        <option>Sistema hidroneumático</option>
+                                                        <option>Agua caliente y fria</option>
+                                                        <option>Intercomunicador</option>
+                                                        <option></option>
+                                                        <option>Alarmas</option>
+                                                        <option>Ascensor</option>
+                                                        <option>Sistema de bombeo de agua y desagüe</option>
+                                                        <option>Gas natural</option>
+                                                        <option>Sistema de bombeo de agua potable</option>
+                                                        <option>Otros</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -591,7 +812,7 @@
                                             <label for="a500" class="col-sm-12 text-left control-label col-form-label"></label>
                                             <div class="col-sm-1"></div>
                                             <div class="col-sm-11">
-                                                <textarea rows="2" class="form-control" id="a500" name="a500">La valuación es para determinar el valor comercial del predio.\nNo hubo ninguna objeción para efectuar la evaluación y valuación del inmueble</textarea>
+                                                <textarea rows="2" class="form-control" id="a500" name="a500">La valuación es para determinar el valor comercial del predio. No hubo ninguna objeción para efectuar la evaluación y valuación del inmueble</textarea>
                                             </div>
                                         </div>
 
@@ -694,7 +915,7 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">C) METODOLOGÍA APLICADA</h4>
+                                            <h4 class="card-title">C) METODOLOGÍA APLICADA</h4>
 
                                             <h5 class="card-title">12.00 BASES PARA SU DESARROLLO</h5>
                                             <div class="form-group row">
@@ -1473,9 +1694,9 @@
                                                 <div class="col-sm-4"></div>
 
                                                 <div class="col-sm-1"></div>
-                                                <label for="e2900d" class="col-sm-3 text-left control-label col-form-label">Planos de ubicación, distribución</label>
+                                                <label for="e2800d" class="col-sm-3 text-left control-label col-form-label">Planos de ubicación, distribución</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="e2900d" name="e2900d">
+                                                    <input type="text" class="form-control" id="e2800d" name="e2800d">
                                                 </div>
                                                 <div class="col-sm-4"></div>
 
@@ -1655,11 +1876,97 @@
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="<?= base_url(); ?>assets/codigos/js/proceso.js"></script>
     <script src="<?= base_url(); ?>assets/codigos/js/bootstrap-popover.js"></script>
+    <script src="<?= base_url(); ?>assets/uidatepicker/jquery-ui.min.js"></script>
 
     <script>
         $(function() {
+            var base_url = '<?= base_url() ?>';
+
+            //Funcion que captura cuando se cambia la seleccion del combo DEPARTAMENTO
+            $("#a203a").change(function(event) { //Departamento
+
+
+                //Capturamos ID del departamento seleccionado
+                var valor = $("#a203a option:selected").val();
+
+                $("#a203b").html("<option>Seleccione...</option>"); //Limpiamos los combos para que no se sobrecargen los datos
+                $("#a203c").html("<option>Seleccione...</option>"); //Limpiamos los combos para que no se sobrecargen los datos
+
+                //Consultamos a la BD via AJAX
+                $.ajax({
+                    url: base_url + 'ubigeo/cargar_provincia',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: valor
+                    },
+                    success: function(data) {
+
+                        var datos = data.consulta_provincia;
+                        for (i in datos) {
+                            $("#a203b").append("<option value=" + datos[i].C_CODPROV + ">" + datos[i].C_NOMUBIGEO + "</option>")
+                        }
+                    },
+                    error: function(error) {
+                        console.log('Error al obtener los datos');
+                    }
+                });
+                return false;
+            });
+
+
+            //Funcion que captura cuando se cambia la seleccion del combo PROVINCIA
+            $("#a203b").change(function(event) { //provincia
+
+                //Capturamos ID del departamento seleccionado
+                var id_dep = $("#a203a option:selected").val();
+                var id_prov = $("#a203b option:selected").val();
+
+                $("#a203c").html("<option>Seleccione...</option>"); //Limpiamos los combos para que no se sobrecargen los datos
+
+                $.ajax({
+                    url: base_url + 'ubigeo/cargar_distrito',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id_dep: id_dep,
+                        id_prov: id_prov
+                    },
+                    success: function(data) {
+
+                        var datos = data.consulta_distrito;
+                        for (i in datos) {
+                            $("#a203c").append("<option value=" + datos[i].C_CODDIST + ">" + datos[i].C_NOMUBIGEO + "</option>")
+                        }
+                    },
+                    error: function(error) {
+                        console.log('Error al obtener los datos');
+                    }
+                });
+                return false;
+            });
+
+            //formato datepicker
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+
             $('[data-toggle="popover"]').popover();
             //serializar form como json
             $.fn.serializeFormJSON = function() {
@@ -1887,7 +2194,7 @@
                 var item = "{";
                 $(this).find("td").each(function(n, v) {
                     if (head[n] != undefined) {
-                        item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                        item += '"' + head[n] + '" : "' + $(v).text() + '",';
                     }
                 });
                 item += '"' + addHead + '": "' + headValue + '"},';
@@ -1927,7 +2234,7 @@
                     var item = "{";
                     $(this).find("td").each(function(n, v) {
                         if (head[n] != undefined) {
-                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                            item += '"' + head[n] + '" : "' + $(v).text() + '",';
                         }
                     });
                     orden++;
@@ -1946,7 +2253,7 @@
             var o = "[";
             var chead = 0;
             $(".grupo-fabrica .form-group").each(function() {
-            
+
                 var item = "{";
                 $(this).find("select").each(function() {
                     if ($(this) != undefined) {
@@ -1993,7 +2300,7 @@
                     var item = "{";
                     $(this).find("td").each(function(n, v) {
                         if (head[n] != undefined) {
-                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                            item += '"' + head[n] + '" : "' + $(v).text() + '",';
                         }
                     });
                     item += '"' + addHead + '": "' + headValue + '"},';
@@ -2035,6 +2342,7 @@
             $("#c1500e").val(total);
             var porcentaje = (total * 100 / 20);
             $("#c1500f").val(porcentaje.toFixed(2));
+            $("#d1903f").val(porcentaje.toFixed(2));
             $("#c1600").val((100 - porcentaje).toFixed(2));
         }
 
@@ -2430,6 +2738,7 @@
                                     <option>Adobe</option>
                                     <option>Madera</option>
                                     <option>Estructura Metálica</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2441,8 +2750,15 @@
                                     <option>Madera</option>
                                     <option>Adobe</option>
                                     <option>Muro de ladrillos de concreto</option>
-                                    <option>Techos de losa aligerado horizontal</option>
-                                    <option>Piso porcelanato</option>
+									<option>Techos de losa aligerado horizontal</option>
+									<option>Piso porcelanato</option>
+									<option>Estructuras laminares Curvadas de Concreto Armado</option>
+									<option>Concreto armado y/o metálicas</option>
+									<option>Placas de concreto</option>
+									<option>Albañilería Armada</option>
+									<option>Ladrillo sin elementos de concreto armado</option>
+									<option>Tapial o Quincha</option>
+									<option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2453,6 +2769,13 @@
                                     <option>Teja Andina</option>
                                     <option>Termo acustico</option>
                                     <option>Fibrocemento</option>
+                                    <option>Losa o aligerado de concreto armado</option>
+                                    <option>Aligerados o losas de concreto armado inclinadas</option>
+                                    <option>Aligerados o losas de concreto armado Horizontales</option>
+                                    <option>Calamina metálica</option>
+                                    <option>Madera con material impermeabilizante</option>
+                                    <option>Teja sobre viguería de madera corriente</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2463,6 +2786,17 @@
                                     <option>Madera Contraplacada</option>
                                     <option>Madera Tablero Rajado</option>
                                     <option>Fibrocemento</option>
+                                    <option>Aluminio pesado con perfiles especiales</option>
+                                    <option>Madera fina ornamental</option>
+                                    <option>Vidrio insulado</option>
+                                    <option>Aluminio o madera fina de diseño especial</option> 
+                                    <option>Vidrio tratado polarizado</option>
+                                    <option>Vidrio laminado o templado</option>
+                                    <option>Madera selecta</option>
+                                    <option>Vidrio tratado transparente</option>
+                                    <option>Material MDF o HDF</option>
+                                    <option>Vidrio simple trasnparente</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2472,6 +2806,18 @@
                                     <option>Vidrio Semi Doble</option>
                                     <option>Estructura de Aluminio</option>
                                     <option>Estructura de Madera</option>
+                                    <option>Madera fina ornamental</option>
+                                    <option>Vidrio insulado</option>
+                                    <option>Aluminio</option>
+                                    <option>Madera fina de diseño especial</option> 
+                                    <option>Vidrio tratado polarizado</option>
+                                    <option>Vidrio laminado o templado</option>
+                                    <option>Madera selecta</option>
+                                    <option>Fierro</option>
+                                    <option>Vidrio tratado transparente</option>
+                                    <option>Fierro aluminio industrial</option>
+                                    <option>Vidrio simple transparente</option>
+                                    <option>Aluminio pesado con perfiles especiales</option>
                                     <option>Otros</option>
                                 </select>
                             </div>
@@ -2482,7 +2828,19 @@
                                     <option>Enchapado con cerámico</option>
                                     <option>Enchapado con piedra</option>
                                     <option>Estucado con yeso</option>
-                                    <option>otros</option>
+                                    <option>Mármol importado</option>
+                                    <option>Madera fina</option>
+                                    <option>Baldosa acústico en techo o similar</option>
+                                    <option>Mármol nacional</option>
+                                    <option>Enchapes en techos</option>
+                                    <option>Encofrado especial</option>
+                                    <option>Enchape de madera o laminados</option>
+                                    <option>Piedra o material vitrificado</option>
+                                    <option>Superficie de ladrillo caravista</option>
+                                    <option>Tarraje frotachado</option>
+                                    <option>Yeso moldurado</option>
+                                    <option>Pintura lavable</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2493,6 +2851,22 @@
                                     <option>Tierra Compactada</option>
                                     <option>Cemento Pulido</option>
                                     <option>Cerámico Nacional</option>
+                                    <option>Mármol importado</option>
+                                    <option>Piedras naturales importadas</option>
+                                    <option>Porcelanato</option>
+                                    <option>Mármol nacional o reconstituido</option>
+                                    <option>Parquet fino</option>
+                                    <option>Cerámico importada</option>
+                                    <option>Madera fina</option>
+                                    <option>Machihembrada</option>
+                                    <option>Terrazo</option>
+                                    <option>Loseta veneciana</option>
+                                    <option>Piso laminado</option>
+                                    <option>Lajas de cemento con canto rodado</option
+                                    <option>Loseta corriente</option>
+                                    <option>Canto rodado</option>
+                                    <option>Alfombra</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2502,19 +2876,37 @@
                                     <option>Completo con mayolica nacional de color</option>
                                     <option>Completo con ceramico importado</option>
                                     <option>Básico de granito</option>
-                                    <option>otros</option>
+                                    <option>Baños completos de lujo</option>
+                                    <option>Importado con enchape fino</option>
+                                    <option>Mayólica o cerámico decorativo importado</option>
+                                    <option>Mayólica o cerámico decorativo nacional de color</option>
+                                    <option>Mayólica blanca</option>
+                                    <option>Mayólica blanca parcial</option>
+                                    <option>Baños blancos sin mayólica</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
-                            <label for="fabrica-sanitaria-{num}" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                            <label for="fabrica-sanitaria-{num}" class="col-sm-3 text-left control-label col-form-label">Instalaciones Eléctricas y Sanitarias</label>
                             <div class="col-sm-7">
                                 <select class="select2 form-control custom-select" id="fabrica-sanitaria-{num}" name="fabrica-sanitaria-{num}" form="form-null" multiple>
                                     <option>Agua fría</option>
                                     <option>Agua caliente</option>
-                                    <option>Corriente monofasica</option>
+                                    <option>Corriente monofásica</option>
                                     <option>Corriente trifásica</option>
                                     <option>Teléfono</option>
-                                    <option>otros</option>
+                                    <option>Aire acondicionado</option>
+                                    <option>Iluminanción especial</option>
+                                    <option>Ventilación forzada</option>
+                                    <option>Sistema hidroneumático</option>
+                                    <option>Agua caliente y fria</option>
+                                    <option>Intercomunicador</option><option></option>
+                                    <option>Alarmas</option>
+                                    <option>Ascensor</option>
+                                    <option>Sistema de bombeo de agua y desagüe</option>
+                                    <option>Gas natural</option>
+                                    <option>Sistema de bombeo de agua potable</option>                           
+                                    <option>Otros</option>
                                 </select>
                             </div>
                         </div>`;
@@ -2605,6 +2997,27 @@
                 if (!isNaN(precioTerreno)) {
                     calcula1400a();
                 }
+            }
+        });
+
+        $("#table-referencia").on('click', 'td', function(e) {
+            if (this.cellIndex == 5) {
+                var cell = $(this);
+                var inp = $("<input type='text'>");
+                $(this).append(inp);
+                inp.datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    numberOfMonths: 1,
+                    dateFormat: 'dd/mm/yy',
+                    onClose: function() {
+                        if ($(this).datepicker().val().length > 0) {
+                            cell.html($(this).datepicker().val());
+                        }
+                    }
+                });
+                inp.datepicker("show");
+                inp.hide();
             }
         });
 
@@ -2991,8 +3404,13 @@
             for (aux = 1; aux <= numblqval; aux++) {
                 valorCon += parseFloat($("#valor-construccion-" + aux).val());
             }
-
-            var valVoc = parseFloat($("#d1903a").val());
+            var valVoc = 0;
+            $('#table-valor-comp tbody tr').each(function(index, value) {
+                var valor = parseFloat($(value).find("td:eq(5)").html());
+                if (!isNaN(valor)) {
+                    valVoc += valor;
+                }
+            });
             valorCon += valVoc;
 
             $("#d1903k").val(valorCon.toFixed(2));
@@ -3234,47 +3652,32 @@
             }
         }
 
-        function guardarContacto(){
-        const nrovalcontac =$('#nrovalcontac').val();
-        const dni = $('#dni').val();
-        const nombre = $('#nombre').val();
-        const app = $('#app').val();
-        const apm = $('#apm').val();
-        const fenac = $('#fenac').val();
-        const telefono = $('#telefono').val();
-        const email = $('#email').val();
-        const pago = $('#pago').val();		
-        const obs = $('#obs').val();
+        function guardarContacto() {
+            var dataCont = $("#formContacto").serialize();
 
-$.ajax({
-            type: "post",
-            url: " <?php echo base_url(); ?>contacto/registrar",
-            data: {
-                nrovalcontac: nrovalcontac,
-                dni: dni,
-                nombre: nombre,
-                app: app,
-                apm: apm,
-                fenac: fenac,
-                telefono: telefono,
-                email: email,
-                pago: pago,
-                obs: obs
-            },
-            success: function(response) {
-                let data = JSON.parse(response);
-                if(data){
-                    $('#idcontacto').val(data[0].idcontacto);
+            $.ajax({
+                type: "post",
+                url: " <?php echo base_url(); ?>contacto/registrar",
+                data: dataCont,
+                success: function(response) {
+                    let data = JSON.parse(response);
+                    if (data) {
+                        var option = "<option value='" + data[0].idcontacto + "' selected>";
+                        option += data[0].NOM_CONT + " " + data[0].APP_CONT + " " + data[0].APM_CONT;
+                        option += "</option>";
+                        $("#idcontacto").append(option);
+                    }
+                    alert('Contacto registrado correctamente');
+                    $('#contactoModalLong').modal('hide');
+                },
+                error: function() {
+                    alert("Error al registrar el contacto");
                 }
-                alert('Se registro correcto');
-                $('#contactoModalLong').modal('hide');
-                
-                
-            },
-            error: function() {
-                alert("Error al registrar el contacto");
-            }
-        });
+            });
+        }
+        
+    function openPay(idvaluacion, idcontacto){
+        $('#modalFormPay').modal('show');
     }
     </script>
 </body>

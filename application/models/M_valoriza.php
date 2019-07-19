@@ -82,6 +82,21 @@ class M_valoriza extends CI_Model
 			return "OK";
 		}
 	}
+	
+	public function update_pago($id, $monto)
+	{
+		$this->db->trans_start();
+		$this->db->where('idvaluacion', $id);
+		$this->db->update('valuacion', ['pago' => $monto]);
+		$this->db->trans_complete();
+		
+		if ($this->db->trans_status() === FALSE) {
+			return "ERROR";
+		} else {
+			return "OK";
+		}
+	}
+	
 	public function eliminaDetalle($id, $table)
 	{
 		$this->db->trans_start();
@@ -101,6 +116,13 @@ class M_valoriza extends CI_Model
 	{
 		$this->db->where('idvaluacion', $id);
 		$query = $this->db->get('valuacion');
+		return $query->result();
+	}
+
+	public function get_detail_pago($id)
+	{
+		$this->db->where('idpago', $id);
+		$query = $this->db->get('pago');
 		return $query->result();
 	}
 

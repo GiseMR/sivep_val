@@ -277,28 +277,29 @@
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= date('Y-m-d') ?>" readonly>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group gcrud-form-group">
+                                                <div class="col-sm-offset-3 col-sm-7">        
+                                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza">
+                                                            <i class="el el-return-key"></i>
+                                                            Volver a la lista                 
+                                                    </a>      
+                                                    <a class="btn btn-success b10" href="#" onclick="imprimirResumen()">
+                                                            <i class="el el-print"></i>
+                                                            Imprimir             
+                                                    </a>
+                                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza/exportarresumenexcel/<?=$valoriza->idvaluacion;?>">
+                                                            <i class="mdi mdi-file-excel"></i>
+                                                            Exportar Excel
+                                                    </a>      
+                                                </div>
+                                             </div>
                                                      
-                                <div class="form-group gcrud-form-group">
-                                <div class="col-sm-offset-3 col-sm-7">        
-                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza">
-                                            <i class="el el-return-key"></i>
-                                            Volver a la lista                 
-                                    </a>      
-                                    <a class="btn btn-success b10" href="#" onclick="imprimirResumen()">
-                                            <i class="el el-print"></i>
-                                            Imprimir             
-                                    </a>
-                                    <a class="btn btn-info b10" href="<?= base_url() ?>valoriza/exportarresumenexcel/<?=$valoriza->idvaluacion;?>">
-                                            <i class="el el-export"></i>
-                                            Exportar Excel
-                                    </a>      
-                                </div>
-                                </div>
+                                
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
           
 
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery/dist/jquery.min.js"></script>

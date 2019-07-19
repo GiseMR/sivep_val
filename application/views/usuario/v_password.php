@@ -13,7 +13,7 @@
     <link href="<?= base_url() ?>assets/grocery_crud/themes/bootstrap-v4/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2>Cambiar Contrasenia</h2>
+<h2>Cambiar Contraseña</h2>
 
 <form method="post" action="<?= base_url() ?>usuario/cambiarpassword">
 <input name="codigoUsuario" type="hidden" value="<?php echo $codigoUsuario; ?>" />
@@ -22,11 +22,11 @@
     <h5>Nombre usuario: <?php echo $nombreusuario; ?></h5>    
     </div>
     <div class="col-sm-offset-3 col-sm-3">
-        <label for="password">Contrasenia actual</label>
+        <label for="password">Contraseña actual</label>
         <input type="password" name="password" class="form-control" required/>
     </div>
     <div class="col-sm-offset-3 col-sm-3">
-        <label for="password">Nueva contrasenia </label>
+        <label for="password">Nueva contraseña </label>
         <input type="password" name="newpassword" class="form-control" required/>
     </div>
 </div>

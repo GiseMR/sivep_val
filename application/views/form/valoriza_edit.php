@@ -16,8 +16,7 @@
     <link href="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/css/select2.min.css" rel="stylesheet">
-    <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
-
+    <link href="<?= base_url() ?>assets/uidatepicker/jquery-ui.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,6 +42,25 @@
         </div>
     </div>
 
+    <div class="modal" id="contactoModalLong" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">REGISTRO DE CONTACTO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php include_once 'contacto.php'; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="guardarContacto()"><i class="mdi mdi-check"></i>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ============================================================== -->
     <!-- Container fluid  -->
@@ -76,6 +94,32 @@
                                                 <label for="fechavaluacion" class="col-sm-9 text-right control-label col-form-label">Fecha</label>
                                                 <div class="col-sm-3">
                                                     <input type="date" class="form-control" id="fechavaluacion" name="fechavaluacion" value="<?= $valoriza[0]->fechavaluacion ?>" readonly>
+                                                </div>
+                                                <label for="idcontacto" class="col-sm-9 text-right control-label col-form-label">
+                                                    Contacto
+                                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#contactoModalLong">
+                                                        <i class="mdi mdi-plus"></i>
+                                                    </button>
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <select class="form-control" id="idcontacto" name="idcontacto">
+                                                        <option>SELECCIONE...</OPTION>
+                                                        <?php
+                                                        if ($lista_contacto) {
+                                                            foreach ($lista_contacto as $row) : ?>
+                                                                <option value="<?= $row->idcontacto ?>" <?= ($valoriza[0]->idcontacto == $row->idcontacto ? "selected" : "") ?>><?= $row->NOM_CONT . ' ' . $row->APP_CONT . ' ' . $row->APM_CONT ?></option>
+                                                            <?php
+                                                            endforeach;
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                                <label for="costo" class="col-sm-9 text-right control-label col-form-label">Costo</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="costo" name="costo" value="<?= $valoriza[0]->costo ?>">
+                                                </div>
+                                                <label for="pago" class="col-sm-9 text-right control-label col-form-label">Pago</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="pago" name="pago" value="<?= $valoriza[0]->pago ?>">
                                                 </div>
                                             </div>
                                             <h4 class="card-title">A) DATOS GENERALES</h4>
@@ -156,6 +200,7 @@
                                                 <option>C.A.C SAN PEDRO DE ANDAHUAYLAS</option>
                                                 <option>C.A.C PIURA</option>
                                                 <option>C.A.C. SAN CRISTOVAL DE HUAMANGA</option>
+                                                <option>CREDISCOTIA FINANCIERA S.A.</option>
                                                 <option>MIBANCO </option>
                                                 <option>INTERBANK</option>
                                                 <option>C.A.C EMPRENDER</option>
@@ -195,8 +240,8 @@
                                                             foreach ($consulta_departamento as $row) : ?>
                                                                 <option value="<?= $row->C_CODDPTO ?>" <?= ($row->C_CODDPTO == $valoriza[0]->a203a ? "selected" : "") ?>><?= $row->C_NOMUBIGEO ?></option>
                                                             <?php
-                                                        endforeach;
-                                                    } ?>
+                                                            endforeach;
+                                                        } ?>
                                                     </select>
                                                 </div>
                                                 <label for="a203b" class="col-sm-2 text-right control-label col-form-label">PROVINCIA</label>
@@ -273,12 +318,13 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-2"></div>
-                                            <label for="a303a" class="col-sm-2 text-left control-label col-form-label">Area (m<sup>2</sup>)</label>
-                                            <div class="col-sm-3">
+                                            <label for="a303a" class="col-sm-1 text-left control-label col-form-label">Area (m<sup>2</sup>)</label>
+                                            <div class="col-sm-2">
                                                 <input type="number" class="form-control" id="a303a" name="a303a" value="<?= $valoriza[0]->a303a ?>">
                                             </div>
-                                            <label for="a303b" class="col-sm-2 text-left control-label col-form-label">Perimetro (ml)</label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2"></div>
+                                            <label for="a303b" class="col-sm-1 text-left control-label col-form-label">Perimetro (ml)</label>
+                                            <div class="col-sm-2">
                                                 <input type="text" class="form-control" id="a303b" name="a303b" value="<?= $valoriza[0]->a303b ?>">
                                             </div>
                                         </div>
@@ -464,6 +510,7 @@
                                                             <option <?= (in_array("Adobe", $fabrica_sistema) ? "selected" : "") ?>>Adobe</option>
                                                             <option <?= (in_array("Madera", $fabrica_sistema) ? "selected" : "") ?>>Madera</option>
                                                             <option <?= (in_array("Estructura Metálica", $fabrica_sistema) ? "selected" : "") ?>>Estructura Metálica</option>
+                                                            <option <?= (in_array("otros", $fabrica_sistema) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
@@ -478,6 +525,13 @@
                                                             <option <?= (in_array("Muro de ladrillos de concreto", $fabrica_muro) ? "selected" : "") ?>>Muro de ladrillos de concreto</option>
                                                             <option <?= (in_array("Techos de losa aligerado horizontal", $fabrica_muro) ? "selected" : "") ?>>Techos de losa aligerado horizontal</option>
                                                             <option <?= (in_array("Piso porcelanato", $fabrica_muro) ? "selected" : "") ?>>Piso porcelanato</option>
+                                                            <option<?= (in_array("Estructuras laminares Curvadas de Concreto Armado", $fabrica_muro) ? "selected" : "") ?>>Estructuras laminares Curvadas de Concreto Armado</option>
+                                                                <option<?= (in_array("Piso porcelanato", $fabrica_muro) ? "selected" : "") ?>>Concreto armado y/o metálicas</option>
+                                                                    <option<?= (in_array("Concreto armado y/o metálicas", $fabrica_muro) ? "selected" : "") ?>>Placas de concreto</option>
+                                                                        <option<?= (in_array("Concreto armado y/o metálicas", $fabrica_muro) ? "selected" : "") ?>>Albañilería Armada</option>
+                                                                            <option<?= (in_array("Ladrillo sin elementos de concreto armado", $fabrica_muro) ? "selected" : "") ?>>Ladrillo sin elementos de concreto armado</option>
+                                                                                <option<?= (in_array("Tapial o Quincha", $fabrica_muro) ? "selected" : "") ?>>Tapial o Quincha</option>
+                                                                                    <option<?= (in_array("otros", $fabrica_muro) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
@@ -487,8 +541,15 @@
                                                         <select class="select2 form-control custom-select" id="fabrica-techo-<?= $cantfitem ?>" name="fabrica-techo-<?= $cantfitem ?>" form="form-null" multiple>
                                                             <option <?= (in_array("Calamina", $fabrica_techo) ? "selected" : "") ?>>Calamina</option>
                                                             <option <?= (in_array("Teja Andina", $fabrica_techo) ? "selected" : "") ?>>Teja Andina</option>
-                                                            <option <?= (in_array("Termo acustico", $fabrica_techo) ? "selected" : "") ?>>Termo acustico</option>
+                                                            <option <?= (in_array("Termo acústico", $fabrica_techo) ? "selected" : "") ?>>Termo acústico</option>
                                                             <option <?= (in_array("Fibrocemento", $fabrica_techo) ? "selected" : "") ?>>Fibrocemento</option>
+                                                            <option <?= (in_array("Losa o aligerado de concreto armado", $fabrica_techo) ? "selected" : "") ?>>Losa o aligerado de concreto armado</option>
+                                                            <option <?= (in_array("Aligerados o losas de concreto armado inclinadas", $fabrica_techo) ? "selected" : "") ?>>Aligerados o losas de concreto armado inclinadas</option>
+                                                            <option <?= (in_array("Aligerados o losas de concreto armado Horizontales", $fabrica_techo) ? "selected" : "") ?>>Aligerados o losas de concreto armado Horizontales</option>
+                                                            <option <?= (in_array("Calamina metálica", $fabrica_techo) ? "selected" : "") ?>>Calamina metálica</option>
+                                                            <option <?= (in_array("Madera con material impermeabilizante", $fabrica_techo) ? "selected" : "") ?>>Madera con material impermeabilizante</option>
+                                                            <option <?= (in_array("Teja sobre viguería de madera corriente", $fabrica_techo) ? "selected" : "") ?>>Teja sobre viguería de madera corriente</option>
+                                                            <option <?= (in_array("otros", $fabrica_techo) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
@@ -496,10 +557,21 @@
                                                     <div class="col-sm-7">
                                                         <? $fabrica_puerta = explode(",", $fitem->puerta); ?>
                                                         <select class="select2 form-control custom-select" id="fabrica-puerta-<?= $cantfitem ?>" name="fabrica-puerta-<?= $cantfitem ?>" form="form-null" multiple>
-                                                            <option <?= (in_array("Metalicas", $fabrica_puerta) ? "selected" : "") ?>>Metalicas</option>
+                                                            <option <?= (in_array("Metálicas", $fabrica_puerta) ? "selected" : "") ?>>Metálicas</option>
                                                             <option <?= (in_array("Madera Contraplacada", $fabrica_puerta) ? "selected" : "") ?>>Madera Contraplacada</option>
                                                             <option <?= (in_array("Madera Tablero Rajado", $fabrica_puerta) ? "selected" : "") ?>>Madera Tablero Rajado</option>
                                                             <option <?= (in_array("Fibrocemento", $fabrica_puerta) ? "selected" : "") ?>>Fibrocemento</option>
+                                                            <option <?= (in_array("Aluminio pesado con perfiles especiales", $fabrica_puerta) ? "selected" : "") ?>>Aluminio pesado con perfiles especiales</option>
+                                                            <option <?= (in_array("Madera fina ornamental", $fabrica_puerta) ? "selected" : "") ?>>Madera fina ornamental</option>
+                                                            <option <?= (in_array("Vidrio insulado", $fabrica_puerta) ? "selected" : "") ?>>Vidrio insulado</option>
+                                                            <option <?= (in_array("Aluminio o madera fina de diseño especial", $fabrica_puerta) ? "selected" : "") ?>>Aluminio o madera fina de diseño especial</option>
+                                                            <option <?= (in_array("Vidrio tratado polarizado", $fabrica_puerta) ? "selected" : "") ?>>Vidrio tratado polarizado</option>
+                                                            <option <?= (in_array("Vidrio laminado o templado", $fabrica_puerta) ? "selected" : "") ?>>Vidrio laminado o templado</option>
+                                                            <option <?= (in_array("Madera selecta", $fabrica_puerta) ? "selected" : "") ?>>Madera selecta</option>
+                                                            <option <?= (in_array("Vidrio tratado transparente", $fabrica_puerta) ? "selected" : "") ?>>Vidrio tratado transparente</option>
+                                                            <option <?= (in_array("Material MDF o HDF", $fabrica_puerta) ? "selected" : "") ?>>Material MDF o HDF</option>
+                                                            <option <?= (in_array("Vidrio simple trasnparente", $fabrica_puerta) ? "selected" : "") ?>>Vidrio simple trasnparente</option>
+                                                            <option <?= (in_array("otros", $fabrica_puerta) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
@@ -510,6 +582,18 @@
                                                             <option <?= (in_array("Vidrio Semi Doble", $fabrica_ventana) ? "selected" : "") ?>>Vidrio Semi Doble</option>
                                                             <option <?= (in_array("Estructura de Aluminio", $fabrica_ventana) ? "selected" : "") ?>>Estructura de Aluminio</option>
                                                             <option <?= (in_array("Estructura de Madera", $fabrica_ventana) ? "selected" : "") ?>>Estructura de Madera</option>
+                                                            <option <?= (in_array("Madera fina ornamental", $fabrica_ventana) ? "selected" : "") ?>>Madera fina ornamental</option>
+                                                            <option <?= (in_array("Vidrio insulado", $fabrica_ventana) ? "selected" : "") ?>>Vidrio insulado</option>
+                                                            <option <?= (in_array("Aluminio", $fabrica_ventana) ? "selected" : "") ?>>Aluminio</option>
+                                                            <option <?= (in_array("Madera fina de diseño especial", $fabrica_ventana) ? "selected" : "") ?>>Madera fina de diseño especial</option>
+                                                            <option <?= (in_array("Vidrio tratado polarizado", $fabrica_ventana) ? "selected" : "") ?>>Vidrio tratado polarizado</option>
+                                                            <option <?= (in_array("Vidrio laminado o templado", $fabrica_ventana) ? "selected" : "") ?>>Vidrio laminado o templado</option>
+                                                            <option <?= (in_array("Madera selecta", $fabrica_ventana) ? "selected" : "") ?>>Madera selecta</option>
+                                                            <option <?= (in_array("Fierro", $fabrica_ventana) ? "selected" : "") ?>>Fierro</option>
+                                                            <option <?= (in_array("Vidrio tratado transparente", $fabrica_ventana) ? "selected" : "") ?>>Vidrio tratado transparente</option>
+                                                            <option <?= (in_array("Fierro aluminio industrial", $fabrica_ventana) ? "selected" : "") ?>>Fierro aluminio industrial</option>
+                                                            <option <?= (in_array("Vidrio simple transparente", $fabrica_ventana) ? "selected" : "") ?>>Vidrio simple transparente</option>
+                                                            <option <?= (in_array("Aluminio pesado con perfiles especiales", $fabrica_ventana) ? "selected" : "") ?>>Aluminio pesado con perfiles especiales</option>
                                                             <option <?= (in_array("Otros", $fabrica_ventana) ? "selected" : "") ?>>Otros</option>
                                                         </select>
                                                     </div>
@@ -521,6 +605,18 @@
                                                             <option <?= (in_array("Enchapado con cerámico", $fabrica_revestimiento) ? "selected" : "") ?>>Enchapado con cerámico</option>
                                                             <option <?= (in_array("Enchapado con piedra", $fabrica_revestimiento) ? "selected" : "") ?>>Enchapado con piedra</option>
                                                             <option <?= (in_array("Estucado con yeso", $fabrica_revestimiento) ? "selected" : "") ?>>Estucado con yeso</option>
+                                                            <option <?= (in_array("Mármol importado", $fabrica_revestimiento) ? "selected" : "") ?>>Mármol importado</option>
+                                                            <option <?= (in_array("Madera fina", $fabrica_revestimiento) ? "selected" : "") ?>>Madera fina</option>
+                                                            <option <?= (in_array("Baldosa acústico en techo o similar", $fabrica_revestimiento) ? "selected" : "") ?>>Baldosa acústico en techo o similar</option>
+                                                            <option <?= (in_array(">Mármol nacional", $fabrica_revestimiento) ? "selected" : "") ?>>Mármol nacional</option>
+                                                            <option <?= (in_array("Enchapes en techos", $fabrica_revestimiento) ? "selected" : "") ?>>Enchapes en techos</option>
+                                                            <option <?= (in_array("Encofrado especial", $fabrica_revestimiento) ? "selected" : "") ?>>Encofrado especial</option>
+                                                            <option <?= (in_array("Enchape de madera o laminados", $fabrica_revestimiento) ? "selected" : "") ?>>Enchape de madera o laminados</option>
+                                                            <option <?= (in_array("Piedra o material vitrificado", $fabrica_revestimiento) ? "selected" : "") ?>>Piedra o material vitrificado</option>
+                                                            <option <?= (in_array("Superficie de ladrillo caravista", $fabrica_revestimiento) ? "selected" : "") ?>>Superficie de ladrillo caravista</option>
+                                                            <option <?= (in_array("Tarraje frotachado", $fabrica_revestimiento) ? "selected" : "") ?>>Tarraje frotachado</option>
+                                                            <option <?= (in_array("Yeso moldurado", $fabrica_revestimiento) ? "selected" : "") ?>>Yeso moldurado</option>
+                                                            <option <?= (in_array("Pintura lavable", $fabrica_revestimiento) ? "selected" : "") ?>>Pintura lavable</option>
                                                             <option <?= (in_array("otros", $fabrica_revestimiento) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
@@ -533,6 +629,21 @@
                                                             <option <?= (in_array("Tierra Compactada", $fabrica_piso) ? "selected" : "") ?>>Tierra Compactada</option>
                                                             <option <?= (in_array("Cemento Pulido", $fabrica_piso) ? "selected" : "") ?>>Cemento Pulido</option>
                                                             <option <?= (in_array("Cerámico Nacional", $fabrica_piso) ? "selected" : "") ?>>Cerámico Nacional</option>
+                                                            <option <?= (in_array("Mármol importado", $fabrica_piso) ? "selected" : "") ?>>Mármol importado</option>
+                                                            <option <?= (in_array("Piedras naturales importadas", $fabrica_piso) ? "selected" : "") ?>>Piedras naturales importadas</option>
+                                                            <option <?= (in_array("Porcelanatol", $fabrica_piso) ? "selected" : "") ?>>Porcelanato</option>
+                                                            <option <?= (in_array("Mármol nacional o reconstituido", $fabrica_piso) ? "selected" : "") ?>>Mármol nacional o reconstituido</option>
+                                                            <option <?= (in_array("Parquet fino", $fabrica_piso) ? "selected" : "") ?>>Parquet fino</option>
+                                                            <option <?= (in_array("Cerámico importada", $fabrica_piso) ? "selected" : "") ?>>Cerámico importada</option>
+                                                            <option <?= (in_array("Madera fina", $fabrica_piso) ? "selected" : "") ?>>Madera fina</option>
+                                                            <option <?= (in_array("Machihembradal", $fabrica_piso) ? "selected" : "") ?>>Machihembrada</option>
+                                                            <option <?= (in_array("Terrazo", $fabrica_piso) ? "selected" : "") ?>>Terrazo</option>
+                                                            <option <?= (in_array("Loseta venecianal", $fabrica_piso) ? "selected" : "") ?>>Loseta veneciana</option>
+                                                            <option <?= (in_array("Piso laminado", $fabrica_piso) ? "selected" : "") ?>>Piso laminado</option>
+                                                            <option <?= (in_array(">Lajas de cemento con canto rodado", $fabrica_piso) ? "selected" : "") ?>>Lajas de cemento con canto rodado</option <option <?= (in_array("Loseta corriente", $fabrica_piso) ? "selected" : "") ?>>Loseta corriente</option>
+                                                            <option <?= (in_array("Canto rodado", $fabrica_piso) ? "selected" : "") ?>>Canto rodado</option>
+                                                            <option <?= (in_array("Alfombra", $fabrica_piso) ? "selected" : "") ?>>Alfombra</option>
+                                                            <option <?= (in_array("otros", $fabrica_piso) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
@@ -540,23 +651,42 @@
                                                     <div class="col-sm-7">
                                                         <? $fabrica_sshh = explode(",", $fitem->sshh); ?>
                                                         <select class="select2 form-control custom-select" id="fabrica-sshh-<?= $cantfitem ?>" name="fabrica-sshh-<?= $cantfitem ?>" form="form-null" multiple>
-                                                            <option <?= (in_array("Completo con mayolica nacional de color", $fabrica_sshh) ? "selected" : "") ?>>Completo con mayolica nacional de color</option>
-                                                            <option <?= (in_array("Completo con ceramico importado", $fabrica_sshh) ? "selected" : "") ?>>Completo con ceramico importado</option>
+                                                            <option <?= (in_array("Completo con mayólica nacional de color", $fabrica_sshh) ? "selected" : "") ?>>Completo con mayólica nacional de color</option>
+                                                            <option <?= (in_array("Completo con cerámico importado", $fabrica_sshh) ? "selected" : "") ?>>Completo con cerámico importado</option>
                                                             <option <?= (in_array("Básico de granito", $fabrica_sshh) ? "selected" : "") ?>>Básico de granito</option>
+                                                            <option <?= (in_array("Baños completos de lujo", $fabrica_sshh) ? "selected" : "") ?>>Baños completos de lujo</option>
+                                                            <option <?= (in_array("Importado con enchape fino", $fabrica_sshh) ? "selected" : "") ?>>Importado con enchape fino</option>
+                                                            <option <?= (in_array("Mayólica o cerámico decorativo importado", $fabrica_sshh) ? "selected" : "") ?>>Mayólica o cerámico decorativo importado</option>
+                                                            <option <?= (in_array("Mayólica o cerámico decorativo nacional de color", $fabrica_sshh) ? "selected" : "") ?>>Mayólica o cerámico decorativo nacional de color</option>
+                                                            <option <?= (in_array("Mayólica blanca", $fabrica_sshh) ? "selected" : "") ?>>Mayólica blanca</option>
+                                                            <option <?= (in_array(">Mayólica blanca parcial", $fabrica_sshh) ? "selected" : "") ?>>Mayólica blanca parcial</option>
+                                                            <option <?= (in_array("Baños blancos sin mayólica", $fabrica_sshh) ? "selected" : "") ?>>Baños blancos sin mayólica</option>
                                                             <option <?= (in_array("otros", $fabrica_sshh) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-2"></div>
-                                                    <label for="fabrica-sanitaria-<?= $cantfitem ?>" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                                                    <label for="fabrica-sanitaria-<?= $cantfitem ?>" class="col-sm-3 text-left control-label col-form-label">Instalaciones Eléctricas y Sanitarias</label>
                                                     <div class="col-sm-7">
                                                         <? $fabrica_sanitaria = explode(",", $fitem->sanitaria); ?>
                                                         <select class="select2 form-control custom-select" id="fabrica-sanitaria-<?= $cantfitem ?>" name="fabrica-sanitaria-<?= $cantfitem ?>" form="form-null" multiple>
 
                                                             <option <?= (in_array("Agua fría", $fabrica_sanitaria) ? "selected" : "") ?>>Agua fría</option>
                                                             <option <?= (in_array("Agua caliente", $fabrica_sanitaria) ? "selected" : "") ?>>Agua caliente</option>
-                                                            <option <?= (in_array("Corriente monofasica", $fabrica_sanitaria) ? "selected" : "") ?>>Corriente monofasica</option>
+                                                            <option <?= (in_array("Corriente monofásica", $fabrica_sanitaria) ? "selected" : "") ?>>Corriente monofásica</option>
                                                             <option <?= (in_array("Corriente trifásica", $fabrica_sanitaria) ? "selected" : "") ?>>Corriente trifásica</option>
                                                             <option <?= (in_array("Teléfono", $fabrica_sanitaria) ? "selected" : "") ?>>Teléfono</option>
+                                                            <option <?= (in_array("Aire acondicionado", $fabrica_sanitaria) ? "selected" : "") ?>>Aire acondicionado</option>
+                                                            <option <?= (in_array(">Iluminanción especial", $fabrica_sanitaria) ? "selected" : "") ?>>Iluminanción especial</option>
+                                                            <option <?= (in_array("Ventilación forzada", $fabrica_sanitaria) ? "selected" : "") ?>>Ventilación forzada</option>
+                                                            <option <?= (in_array("Sistema hidroneumático", $fabrica_sanitaria) ? "selected" : "") ?>>Sistema hidroneumático</option>
+                                                            <option <?= (in_array("Sistema hidroneumático", $fabrica_sanitaria) ? "selected" : "") ?>>Agua caliente y fria</option>
+                                                            <option <?= (in_array("Intercomunicador", $fabrica_sanitaria) ? "selected" : "") ?>>Intercomunicador</option>
+                                                            <option></option>
+                                                            <option <?= (in_array("Alarmas", $fabrica_sanitaria) ? "selected" : "") ?>>Alarmas</option>
+                                                            <option <?= (in_array("Teléfono", $fabrica_sanitaria) ? "selected" : "") ?>>Ascensor</option>
+                                                            <option <?= (in_array("Sistema de bombeo de agua y desagüe", $fabrica_sanitaria) ? "selected" : "") ?>>Sistema de bombeo de agua y desagüe</option>
+                                                            <option <?= (in_array("Gas natural", $fabrica_sanitaria) ? "selected" : "") ?>>Gas natural</option>
+                                                            <option <?= (in_array("Sistema de bombeo de agua potable", $fabrica_sanitaria) ? "selected" : "") ?>>Sistema de bombeo de agua potable</option>
                                                             <option <?= (in_array("otros", $fabrica_sanitaria) ? "selected" : "") ?>>otros</option>
                                                         </select>
                                                     </div>
@@ -1470,7 +1600,7 @@
                                                 <div class="col-sm-4"></div>
 
                                                 <div class="col-sm-1"></div>
-                                                <label for="e2900d" class="col-sm-3 text-left control-label col-form-label">Planos de ubicación, distribución</label>
+                                                <label for="e2800d" class="col-sm-3 text-left control-label col-form-label">Planos de ubicación, distribución</label>
                                                 <div class="col-sm-4">
                                                     <input type="text" class="form-control" id="e2800d" name="e2800d" value="<?= $valoriza[0]->e2800d ?>">
                                                 </div>
@@ -1653,9 +1783,29 @@
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="<?= base_url() ?>assets/matrix/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="<?= base_url(); ?>assets/uidatepicker/jquery-ui.min.js"></script>
 
     <script>
         $(function() {
+            //formato datepicker
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
 
             //combos
             var idprov = "<?= $valoriza[0]->a203b ?>";
@@ -1939,7 +2089,7 @@
             var num_sel = <?= $cantfitem ?>;
 
             for (faux = 1; faux <= num_sel; faux++) {
-                $("#fabrica-sistema-"+faux+", #fabrica-muro-"+faux+", #fabrica-techo-"+faux+", #fabrica-puerta-"+faux+", #fabrica-ventana-"+faux+", #fabrica-revestimiento-"+faux+", #fabrica-piso-"+faux+", #fabrica-sshh-"+faux+", #fabrica-sanitaria-"+faux).select2({
+                $("#fabrica-sistema-" + faux + ", #fabrica-muro-" + faux + ", #fabrica-techo-" + faux + ", #fabrica-puerta-" + faux + ", #fabrica-ventana-" + faux + ", #fabrica-revestimiento-" + faux + ", #fabrica-piso-" + faux + ", #fabrica-sshh-" + faux + ", #fabrica-sanitaria-" + faux).select2({
                     tags: true,
                     createTag: function(params) {
                         var term = $.trim(params.term);
@@ -2001,7 +2151,7 @@
                 var item = "{";
                 $(this).find("td").each(function(n, v) {
                     if (head[n] != undefined) {
-                        item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                        item += '"' + head[n] + '" : "' + $(v).text() + '",';
                     }
                 });
                 if ($(this).attr("delete") == "yes") {
@@ -2047,7 +2197,7 @@
                     var item = "{";
                     $(this).find("td").each(function(n, v) {
                         if (head[n] != undefined) {
-                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                            item += '"' + head[n] + '" : "' + $(v).text() + '",';
                         }
                     });
                     if ($(this).attr("delete") == "yes") {
@@ -2123,7 +2273,7 @@
                     var item = "{";
                     $(this).find("td").each(function(n, v) {
                         if (head[n] != undefined) {
-                            item += '"' + head[n] + '" : "' + $(v).html() + '",';
+                            item += '"' + head[n] + '" : "' + $(v).text() + '",';
                         }
                     });
                     if ($(this).attr("delete") == "yes") {
@@ -2171,6 +2321,7 @@
             $("#c1500e").val(total);
             var porcentaje = (total * 100 / 20);
             $("#c1500f").val(porcentaje.toFixed(2));
+            $("#d1903f").val(porcentaje.toFixed(2));
             $("#c1600").val((100 - porcentaje).toFixed(2));
         }
 
@@ -2554,19 +2705,26 @@
                                     <option>Adobe</option>
                                     <option>Madera</option>
                                     <option>Estructura Metálica</option>
+                                    <option>Otros</option>>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
                             <label for="fabrica-muro-{num}" class="col-sm-3 text-left control-label col-form-label">Muros</label>
                             <div class="col-sm-7">
                                 <select class="select2 form-control custom-select" id="fabrica-muro-{num}" name="fabrica-muro-{num}" form="form-null" multiple>
-                                    <option>Ladrillo de Arcilla</option>
                                     <option>Drywall</option>
                                     <option>Madera</option>
                                     <option>Adobe</option>
                                     <option>Muro de ladrillos de concreto</option>
                                     <option>Techos de losa aligerado horizontal</option>
                                     <option>Piso porcelanato</option>
+                                    <option>Estructuras laminares Curvadas de Concreto Armado</option>
+                                    <option>Concreto armado y/o metálicas</option>
+                                    <option>Placas de concreto</option>
+                                    <option>Albañilería Armada</option>
+                                    <option>Ladrillo sin elementos de concreto armado</option>
+                                    <option>Tapial o Quincha</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2575,18 +2733,36 @@
                                 <select class="select2 form-control custom-select" id="fabrica-techo-{num}" name="fabrica-techo-{num}" form="form-null" multiple>
                                     <option>Calamina</option>
                                     <option>Teja Andina</option>
-                                    <option>Termo acustico</option>
+                                    <option>Termo acústico</option>
                                     <option>Fibrocemento</option>
+                                    <option>Losa o aligerado de concreto armado</option>
+                                    <option>Aligerados o losas de concreto armado inclinadas</option>
+                                    <option>Aligerados o losas de concreto armado Horizontales</option>
+                                    <option>Calamina metálica</option>
+                                    <option>Madera con material impermeabilizante</option>
+                                    <option>Teja sobre viguería de madera corriente</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
                             <label for="fabrica-puerta-{num}" class="col-sm-3 text-left control-label col-form-label">Puertas</label>
                             <div class="col-sm-7">
                                 <select class="select2 form-control custom-select" id="fabrica-puerta-{num}" name="fabrica-puerta-{num}" form="form-null" multiple>
-                                    <option>Metalicas</option>
+                                    <option>Metálicas</option>
                                     <option>Madera Contraplacada</option>
                                     <option>Madera Tablero Rajado</option>
                                     <option>Fibrocemento</option>
+                                    <option>Aluminio pesado con perfiles especiales</option>
+                                    <option>Madera fina ornamental</option>
+                                    <option>Vidrio insulado</option>
+                                    <option>Aluminio o madera fina de diseño especial</option> 
+                                    <option>Vidrio tratado polarizado</option>
+                                    <option>Vidrio laminado o templado</option>
+                                    <option>Madera selecta</option>
+                                    <option>Vidrio tratado transparente</option>
+                                    <option>Material MDF o HDF</option>
+                                    <option>Vidrio simple trasnparente</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2596,6 +2772,18 @@
                                     <option>Vidrio Semi Doble</option>
                                     <option>Estructura de Aluminio</option>
                                     <option>Estructura de Madera</option>
+                                    <option>Madera fina ornamental</option>
+                                    <option>Vidrio insulado</option>
+                                    <option>Aluminio</option>
+                                    <option>Madera fina de diseño especial</option> 
+                                    <option>Vidrio tratado polarizado</option>
+                                    <option>Vidrio laminado o templado</option>
+                                    <option>Madera selecta</option>
+                                    <option>Fierro</option>
+                                    <option>Vidrio tratado transparente</option>
+                                    <option>Fierroo aluminio industrial</option>
+                                    <option>Vidrio simple transparente</option>
+                                    <option>Aluminio pesado con perfiles especiales</option>
                                     <option>Otros</option>
                                 </select>
                             </div>
@@ -2606,7 +2794,19 @@
                                     <option>Enchapado con cerámico</option>
                                     <option>Enchapado con piedra</option>
                                     <option>Estucado con yeso</option>
-                                    <option>otros</option>
+                                    <option>Mármol importado</option>
+                                    <option>Madera fina</option>
+                                    <option>Baldosa acústico en techo o similar</option>
+                                    <option>Mármol nacional</option>
+                                    <option>Enchapes en techos</option>
+                                    <option>Encofrado especial</option>
+                                    <option>Enchape de madera o laminados</option>
+                                    <option>Piedra o material vitrificado</option>
+                                    <option>Superficie de ladrillo caravista</option>
+                                    <option>Tarraje frotachado</option>
+                                    <option>Yeso moldurado</option>
+                                    <option>Pintura lavable</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
@@ -2617,33 +2817,67 @@
                                     <option>Tierra Compactada</option>
                                     <option>Cemento Pulido</option>
                                     <option>Cerámico Nacional</option>
+                                    <option>Mármol importado</option>
+                                    <option>Piedras naturales importadas</option>
+                                    <option>Porcelanato</option>
+                                    <option>Mármol nacional o reconstituido</option>
+                                    <option>Parquet fino</option>
+                                    <option>Cerámico importada</option>
+                                    <option>Madera fina</option>
+                                    <option>Machihembrada</option>
+                                    <option>Terrazo</option>
+                                    <option>Loseta veneciana</option>
+                                    <option>Piso laminado</option>
+                                    <option>Lajas de cemento con canto rodado</option
+                                    <option>Loseta corriente</option>
+                                    <option>Canto rodado</option>
+                                    <option>Alfombra</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
                             <label for="fabrica-sshh-{num}" class="col-sm-3 text-left control-label col-form-label">SS.HH.</label>
                             <div class="col-sm-7">
                                 <select class="select2 form-control custom-select" id="fabrica-sshh-{num}" name="fabrica-sshh-{num}" form="form-null" multiple>
-                                    <option>Completo con mayolica nacional de color</option>
-                                    <option>Completo con ceramico importado</option>
+                                    <option>Completo con mayólica nacional de color</option>
+                                    <option>Completo con cerámico importado</option>
                                     <option>Básico de granito</option>
-                                    <option>otros</option>
+                                    <option>Baños completos de lujo</option>
+                                    <option>Importado con enchape fino</option>
+                                    <option>Mayólica o cerámico decorativo importado</option>
+                                    <option>Mayólica o cerámico decorativo nacional de color</option>
+                                    <option>Mayólica blanca</option>
+                                    <option>Mayólica blanca parcial</option>
+                                    <option>Baños blancos sin mayólica</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                             <div class="col-sm-2"></div>
-                            <label for="fabrica-sanitaria-{num}" class="col-sm-3 text-left control-label col-form-label">Instalaciones Sanitarias</label>
+                            <label for="fabrica-sanitaria-{num}" class="col-sm-3 text-left control-label col-form-label">Instalaciones Eléctricas y Sanitarias</label>
                             <div class="col-sm-7">
                                 <select class="select2 form-control custom-select" id="fabrica-sanitaria-{num}" name="fabrica-sanitaria-{num}" form="form-null" multiple>
                                     <option>Agua fría</option>
                                     <option>Agua caliente</option>
-                                    <option>Corriente monofasica</option>
+                                    <option>Corriente monofásica</option>
                                     <option>Corriente trifásica</option>
                                     <option>Teléfono</option>
-                                    <option>otros</option>
+                                    <option>Aire acondicionado</option>
+                                    <option>Iluminanción especial</option>
+                                    <option>Ventilación forzada</option>
+                                    <option>Sistema hidroneumático</option>
+                                    <option>Agua caliente y fria</option>
+                                    <option>Intercomunicador</option><option></option>
+                                    <option>Alarmas</option>
+                                    <option>Ascensor</option>
+                                    <option>Sistema de bombeo de agua y desagüe</option>
+                                    <option>Gas natural</option>
+                                    <option>Sistema de bombeo de agua potable</option>
+                                    <option>Otros</option>
                                 </select>
                             </div>
                         </div>`;
 
-        var numfablq = "<?=$cantfitem?>";
+        var numfablq = "<?= $cantfitem ?>";
         $('.table-fabrica-add-bloque').on('click', 'a', () => {
             numfablq++;
             var newBlq = newFaBlq.replace(/{num}/g, numfablq);
@@ -2732,6 +2966,27 @@
                 if (!isNaN(precioTerreno)) {
                     calcula1400a();
                 }
+            }
+        });
+
+        $("#table-referencia").on('click', 'td', function(e) {
+            if (this.cellIndex == 5) {
+                var cell = $(this);
+                var inp = $("<input type='text'>");
+                $(this).append(inp);
+                inp.datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    numberOfMonths: 1,
+                    dateFormat: 'dd/mm/yy',
+                    onClose: function() {
+                        if ($(this).datepicker().val().length > 0) {
+                            cell.html($(this).datepicker().val());
+                        }
+                    }
+                });
+                inp.datepicker("show");
+                inp.hide();
             }
         });
 
@@ -3132,7 +3387,13 @@
                 valorCon += parseFloat($("#valor-construccion-" + aux).val());
             }
 
-            var valVoc = parseFloat($("#d1903a").val());
+            var valVoc = 0;
+            $('#table-valor-comp tbody tr').each(function(index, value) {
+                var valor = parseFloat($(value).find("td:eq(5)").html());
+                if (!isNaN(valor)) {
+                    valVoc += valor;
+                }
+            });
             valorCon += valVoc;
 
             $("#d1903k").val(valorCon.toFixed(2));
@@ -3377,6 +3638,30 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function guardarContacto() {
+            var dataCont = $("#formContacto").serialize();
+
+            $.ajax({
+                type: "post",
+                url: " <?php echo base_url(); ?>contacto/registrar",
+                data: dataCont,
+                success: function(response) {
+                    let data = JSON.parse(response);
+                    if (data) {
+                        var option = "<option value='" + data[0].idcontacto + "' selected>";
+                        option += data[0].NOM_CONT + " " + data[0].APP_CONT + " " + data[0].APM_CONT;
+                        option += "</option>";
+                        $("#idcontacto").append(option);
+                    }
+                    alert('Contacto registrado correctamente');
+                    $('#contactoModalLong').modal('hide');
+                },
+                error: function() {
+                    alert("Error al registrar el contacto");
+                }
+            });
         }
     </script>
 </body>

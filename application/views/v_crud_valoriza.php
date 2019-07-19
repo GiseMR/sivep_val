@@ -1,4 +1,4 @@
- <meta charset="utf-8">
+ 
  <?php foreach ($css_files as $file) : ?>
  	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
  <?php endforeach; ?>
@@ -11,6 +11,121 @@
  <div class="container-fluid">
  	<div><?php echo $output; ?></div>
  </div>
+ <div class="modal fade" id="modalFormPay" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h5 class="modal-title">PAGO DE VALORIZACIONES</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                
+                
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p class="statusMsg"></p>
+                <form role="form">
+                    <h5 class="card-title">Datos de Contacto</h5>
+                           
+                           <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="NOMBRES">Nombres:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="nombres" name="nombres" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="APELLIDOS" >Apellidos:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="DNI" >Dni:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="dni" name="dni">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="FENAC">Fecha Nacimiento:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="fenac" name="fenac" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="CORREO" >Correo:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="correo" name="correo">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="TELEFONO" >Teléfono:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4">
+                                    <label for="" ></label>
+                             </div>   
+                            </div>
+                            <div class="row">                            
+                            <div class="col-sm-5">                                               
+                                <label for="COSTOTOTAL">***Costo Total Valorización S/.***</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="costo" name="costo">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</label>
+                                    
+                                    </div>
+                                </div>
+                            <h5 class="card-title">Registro de Pagos</h5>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="PAGO">Pago S/.</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="pago" name="pago" >
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="FECHA" >Fecha:</label>
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control" id="fecha" name="fecha">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 mt-2">
+                                    <br>
+                                <button type="button" class="btn btn-success" onclick="AgregarPagos()"><i class="mdi mdi-check"></i>Agregar</button>
+                                </div>
+                            </div>
+                             
+                            
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="guardarPagos()"><i class="mdi mdi-check"></i>Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
  <script src="<?= base_url(); ?>assets/codigos/js/tooltip.js"></script>
  <script src="<?= base_url(); ?>assets/codigos/js/popper.js"></script>  
  <script src="<?= base_url(); ?>assets/codigos/js/jquery-3.2.0.min.js"></script>
@@ -54,6 +169,34 @@
 			var url = $(this).attr("href");
 			var id = url.split("/").pop();
 			window.location.replace("<?=base_url()?>valoriza/leer/"+id);
- 		});
+		 });
+		
  	});
+ 	 function openPay(idvaluacion, idcontacto) {
+ 	     
+            $.ajax({
+                type: "post",
+                url: " <?php echo base_url(); ?>pago/getdata",
+                data: { idvaluacion: idvaluacion, idcontacto:idcontacto },
+                success: function(response) {
+                    let data = JSON.parse(response);
+                    if (data) {
+                        data.contacto;
+                        if(data.contacto){
+                            const contacto= data.contacto;
+                            $("#nombres").val(contacto.NOM_CONT);
+                            $('#apellidos').val(contacto.APP_CONT+' '+contacto.APM_CONT)
+                            $('#dni').val(contacto.DNI_CONT)
+                            $('#fenac').val(contacto.FENAC_CONT)
+                            $('#correo').val(contacto.EMAIL_CONT)
+                            $('#telefono').val(contacto.TEL_CONT)
+                        }
+                        $('#modalFormPay').modal('show');        
+                    }
+                },
+                error: function() {
+                    alert("Error al registrar el contacto");
+                }
+            });
+    }
  </script>

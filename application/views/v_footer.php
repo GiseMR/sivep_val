@@ -1,30 +1,30 @@
 <style type="text/css">
-	.footer {		
-	  position: fixed;
-	  bottom: 0;
-	  width: 100%;
-	  /* Set the fixed height of the footer here */
-	  height: 50px;
-	  background-color: #0073AA;
+	.vfooter {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		/* Set the fixed height of the footer here */
+		height: 25px;
+		background-color: #0073AA;
+		z-index: 1000;
 	}
+
 	.fcontainer {
-	  width: auto;
-	  height: 50px;
-	  max-width: 680px;
-	  padding: 0 5px;
-	  margin:0 auto;
+		padding-top: 5px;
+		width: auto;
 	}
-	.fcontainer .text-muted {
-	  margin: 0 5px;
-	  font-size: 15px;
-	  color: #FFF;
-	  text-align:right;
+
+	.mtext-muted {
+		font-size: 11px;
+		color: #000;
+		text-align: center;
 	}
 </style>
-<footer class="footer">
-      <div class="fcontainer">
-       <p class="text-muted">© Derechos Reservados - Sistema de Valuaciones Prediales - 2019</p>
-      </div>
+<footer class="vfooter">
+	<div class="fcontainer">
+		<p class="mtext-muted">© Derechos Reservados - Sistema de Valuaciones Prediales - 2019</p>
+	</div>
 </footer>
 </body>
+
 </html>

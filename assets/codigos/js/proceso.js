@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	//RUTA DE NUESTRO PROYECTO... IMPORTANTE!!!! CAMBIARLO CUANDO SE CAMBIA DE CARPETA O SE PONE EN UN SERVIDOR ****
-    var base_url ='http://localhost/sivep/';
+    var base_url ='https://sistema.valeperusrl.com/';
        
   	//Funcion que captura cuando se cambia la seleccion del combo DEPARTAMENTO
 	$("#a203a").change(function(event){  //Departamento
