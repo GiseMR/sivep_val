@@ -5,6 +5,7 @@ class Pago extends CI_Controller {
         parent::__construct();
 		
 		$this->load->model(array('m_contacto'));
+		$this->load->model(array('m_pago'));
     }
 	
 	public function index(){	}
@@ -17,6 +18,25 @@ class Pago extends CI_Controller {
 			$dataResult['contacto'] = $contanto[0];
 			echo json_encode($dataResult);
 		}
+
+	public function getdataresult($id)
+	{	
+		$pagos = $this->m_pago->getPagosByIdValuacion($id);
+		$view = $this->load->view('pago/pago_list', ['pagos'=>$pagos]);
+		return $view;
+	}
+
+	public function registrar()
+	{		
+		$data = $this->input->post();
+		$row = $this->m_pago->registrar($data);
+		if($row)
+			$dataResult["result"] = true;
+		else
+			$dataResult["result"] = false;
+
+		echo json_encode($dataResult);
+	}
 
 }
 ?>

@@ -224,7 +224,7 @@ class Valoriza extends CI_Controller
 		return $html;
 	}
 	function updateCost_callback($value, $row){
-		$html='<button  class="btn btn-success btn-sm" type="button" onclick="openPay('.$row->idvaluacion.', '.$row->idcontacto.')" > <i class="fa fa-dollar"></i>Actualizar Costo</button>';
+		$html='<button  class="btn btn-success btn-sm" type="button" onclick="openPay('.$row->idvaluacion.', '.$row->idcontacto.', '.$row->costo.')" > <i class="fa fa-dollar"></i>Actualizar Costo</button>';
 		return $row->pago.$html;
 	}
 

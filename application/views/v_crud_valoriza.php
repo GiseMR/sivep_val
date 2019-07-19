@@ -30,26 +30,26 @@
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form role="form">
-                    <h5 class="card-title">Datos de Contacto</h5>
-                           
+                    <h5 class="card-title">Datos de Contacto</h5>                           
                            <div class="row">
                                 <div class="col-sm-4">
                                     <label for="NOMBRES">Nombres:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nombres" name="nombres" >
+                                        <input type="hidden" name="idvaluacion" id="idvaluacion">
+                                        <input type="text" class="form-control" id="nombres" name="nombres" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label for="APELLIDOS" >Apellidos:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="DNI" >Dni:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="dni" name="dni">
+                                        <input type="text" class="form-control" id="dni" name="dni" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -57,20 +57,20 @@
                                 <div class="col-sm-4">
                                     <label for="FENAC">Fecha Nacimiento:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="fenac" name="fenac" >
+                                        <input type="text" class="form-control" id="fenac" name="fenac" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label for="CORREO" >Correo:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="correo" name="correo">
+                                        <input type="text" class="form-control" id="correo" name="correo" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="TELEFONO" >Teléfono:</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                        <input type="text" class="form-control" id="telefono" name="telefono" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -83,26 +83,23 @@
                             <div class="col-sm-5">                                               
                                 <label for="COSTOTOTAL">***Costo Total Valorización S/.***</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="costo" name="costo">
+                                    <input type="text" class="form-control" id="costo" name="costo" readonly>
                                 </div>
                             </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <label for="">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</label>
-                                    
-                                    </div>
-                                </div>
+                                    <hr>
+                            </div>
                             <h5 class="card-title">Registro de Pagos</h5>
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <label for="PAGO">Pago S/.</label>
+                                <div class="col-sm-5">
+                                    <label for="monto">Pago S/.</label>
                                     <div class="col-sm-12">
-                                        <input type="number" class="form-control" id="pago" name="pago" >
+                                        <input type="number" class="form-control" id="monto" name="monto" >
                                     </div>
                                 </div>
 
-                                <div class="col-sm-4">
+                                <div class="col-sm-5">
                                     <label for="FECHA" >Fecha:</label>
                                     <div class="col-sm-12">
                                         <input type="date" class="form-control" id="fecha" name="fecha">
@@ -110,18 +107,27 @@
                                 </div>
                                 <div class="col-sm-2 mt-2">
                                     <br>
-                                <button type="button" class="btn btn-success" onclick="AgregarPagos()"><i class="mdi mdi-check"></i>Agregar</button>
+                                     <button type="button" class="btn btn-success" onclick="registerpay()"><i class="mdi mdi-check"></i>Agregar</button>
                                 </div>
                             </div>
-                             
-                            
+                            <div class="row">                         
+                                <div class="col-sm-12">
+                                    <label for="descripcion" >Descripción:</label>
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="content-result-pay" class="row">
+                            </div>    
+                
                 </form>
             </div>
             
             <!-- Modal Footer -->
             <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cancelar</button>
-                <button type="button" class="btn btn-success" onclick="guardarPagos()"><i class="mdi mdi-check"></i>Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i>Cerrar</button>
             </div>
         </div>
     </div>
@@ -172,8 +178,18 @@
 		 });
 		
  	});
- 	 function openPay(idvaluacion, idcontacto) {
- 	     
+
+
+ 	 function openPay(idvaluacion, idcontacto, costo) {
+                $("#nombres").val('');
+                $('#apellidos').val('');
+                $('#dni').val('');
+                $('#fenac').val('');
+                $('#correo').val('');
+                $('#telefono').val('');
+                $('#idvaluacion').val('');
+                $('#costo').val('');
+
             $.ajax({
                 type: "post",
                 url: " <?php echo base_url(); ?>pago/getdata",
@@ -183,6 +199,7 @@
                     if (data) {
                         data.contacto;
                         if(data.contacto){
+                            clearFields();
                             const contacto= data.contacto;
                             $("#nombres").val(contacto.NOM_CONT);
                             $('#apellidos').val(contacto.APP_CONT+' '+contacto.APM_CONT)
@@ -190,13 +207,63 @@
                             $('#fenac').val(contacto.FENAC_CONT)
                             $('#correo').val(contacto.EMAIL_CONT)
                             $('#telefono').val(contacto.TEL_CONT)
+                            $('#idvaluacion').val(idvaluacion);
+                            $('#costo').val(costo);
                         }
-                        $('#modalFormPay').modal('show');        
+                        loadResultPayments(idvaluacion);
+                        $('#modalFormPay').modal('show');
                     }
                 },
                 error: function() {
                     alert("Error al registrar el contacto");
                 }
             });
+    }
+
+    function loadResultPayments(idvaluacion){
+        $.ajax({
+                type: "GET",
+                url: " <?php echo base_url(); ?>pago/getdataresult/"+idvaluacion,
+                success: function(response) {
+                    if (response) {
+                        $('#content-result-pay').text('')
+                        $("#content-result-pay").append(response);
+                    }
+                },
+                error: function() {
+                    alert("Error al registrar el contacto");
+                }
+            });
+    }
+
+    function registerpay(){
+        
+        $.ajax({
+                type: "post",
+                url: " <?php echo base_url(); ?>pago/registrar",
+                data: { 
+                        idvaluacion: $('#idvaluacion').val(),
+                        monto: $("#monto").val(),
+                        registro: $("#fecha").val(),
+                        persona: $("#nombres").val(),
+                        COD_USU: '<?php  if (isset($this->session->userdata['logged_in'])) { echo $this->session->userdata['nombres'];} ?>',
+                        descripcion: $('#descripcion').val()
+                    },
+                success: function(response) {
+                    if (response) {
+                        loadResultPayments($('#idvaluacion').val());
+                        clearFields();
+                    }
+                },
+                error: function() {
+                    alert("Error al registrar el contacto");
+                }
+            });
+    }
+
+    function clearFields(){
+        $("#monto").val('');
+        $("#fecha").val('');
+        $('#descripcion').val('');
     }
  </script>
